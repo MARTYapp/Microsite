@@ -1,4 +1,3 @@
-
 export default async function handler(req, res) {
     const { entry } = req.body;
   
@@ -13,7 +12,7 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'You are MARTY, a supportive DBT-informed journaling companion. Use affirming language, short paragraphs, and emotional validation.',
+            content: 'You are MARTY, a supportive DBT-informed journaling companion. Use affirming, validating language to help the user reflect and reframe their thoughts.',
           },
           {
             role: 'user',
@@ -25,4 +24,4 @@ export default async function handler(req, res) {
   
     const data = await response.json();
     res.status(200).json({ reply: data.choices[0].message.content });
-};
+  }
