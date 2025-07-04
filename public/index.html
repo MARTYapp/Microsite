@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MARTY MVP</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(ellipse at bottom, #0f0f23 0%, #0a0a1a 100%);
+      font-family: 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+    .stars1, .stars2 {
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      z-index: -1;
+      background-repeat: repeat;
+      background-size: cover;
+    }
+    .stars1 {
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, #ffffff88 50%, transparent 60%),
+        radial-gradient(1px 1px at 60% 80%, #ffffff55 50%, transparent 60%),
+        radial-gradient(1px 1px at 90% 20%, #b0c6d999 50%, transparent 60%),
+        radial-gradient(1px 1px at 10% 90%, #ffffff66 50%, transparent 60%);
+      animation: moveStars1 300s linear infinite;
+    }
+    .stars2 {
+      background-image:
+        radial-gradient(1px 1px at 30% 40%, #ffffff33 50%, transparent 60%),
+        radial-gradient(1px 1px at 70% 70%, #ffffff22 50%, transparent 60%),
+        radial-gradient(1px 1px at 80% 10%, #b0c6d944 50%, transparent 60%);
+      animation: moveStars2 500s linear infinite;
+    }
+    @keyframes moveStars1 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(100px, 200px); }
+    }
+    @keyframes moveStars2 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 100px); }
+    }
+    .glass {
+      background-color: rgba(26, 26, 46, 0.6);
+      backdrop-filter: blur(10px);
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    textarea {
+      resize: none;
+    }
+  </style>
+</head>
+<body class="relative">
+  <div class="stars1"></div>
+  <div class="stars2"></div>
+
+  <main class="min-h-screen flex flex-col justify-center items-center p-6 text-center space-y-8">
+    <div class="glass p-8 rounded-2xl shadow-lg max-w-xl w-full space-y-6">
+      <h1 class="text-4xl font-serif">Hi, I'm Marty.</h1>
+      <p class="text-lg text-gray-300">I'm here whenever you're ready.</p>
+
+      <div id="login" class="space-y-4">
+        <button onclick="startApp()" class="w-full bg-white text-[#1a1a2e] py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Continue Anonymously</button>
+      </div>
+
+      <div id="journalApp" class="hidden space-y-6 text-left">
+        <p class="text-md text-gray-300">Welcome back. How are you feeling today?</p>
+        <input type="range" min="1" max="5" value="3" id="moodSlider" class="w-full">
+        <div class="flex justify-between text-sm text-gray-400">
+          <span>😞</span><span>😐</span><span>😊</span>
+        </div>
+        <textarea id="journalInput" rows="5" class="w-full mt-2 p-3 rounded-lg text-[#1a1a2e]" placeholder="Write your thoughts here..."></textarea>
+        <button onclick="reflect()" class="bg-white text-[#1a1a2e] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Submit</button>
+        <div id="reflectionOutput" class="text-sm text-blue-200 pt-4"></div>
+        <details class="mt-6">
+          <summary class="cursor-pointer text-blue-300 underline">Need support? Open DBT Tools</summary>
+          <ul class="mt-2 space-y-2 text-gray-300 list-disc list-inside">
+            <li><strong>Mindfulness:</strong> Try box breathing for 1 minute.</li>
+            <li><strong>Distress Tolerance:</strong> Hold ice or splash cold water.</li>
+            <li><strong>Emotion Regulation:</strong> Name 3 emotions you’ve felt today.</li>
+            <li><strong>Interpersonal:</strong> Text someone and say one kind thing.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function startApp() {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("journalApp").classList.remove("hidden");
+    }
+
+    function reflect() {
+      const text = document.getElementById("journalInput").value;
+      const mood = document.getElementById("moodSlider").value;
+      let response = "Thanks for checking in. ";
+
+      if (mood <= 2) {
+        response += "It sounds like today’s been rough. Just know I’m glad you showed up anyway.";
+      } else if (mood == 3) {
+        response += "Seems like it’s been an okay day. Want to explore what made it feel that way?";
+      } else {
+        response += "I love that you’re feeling good. What’s been bringing that energy?";
+      }
+
+      if (text.length > 40) {
+        response += " I hear a lot of emotion in what you wrote. You're not alone.";
+      }
+
+      document.getElementById("reflectionOutput").innerText = response;
+    }
+  </script>
+</body>
+</html>
