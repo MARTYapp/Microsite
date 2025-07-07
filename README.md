@@ -1,3 +1,3 @@
-# MARTY
+# MARTY MVP
 
-Single-file MVP prototype. Built with HTML/CSS/JS. Deployed via Vercel.
+This is the MVP build of MARTY — a voice-first journaling app with AI support. Built with React + Tailwind.
