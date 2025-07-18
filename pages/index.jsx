@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import supabase from '../lib/supabase';
-import React, { useState } from 'react';
-import { supabase } from '../lib/supabase'; // ✅ fixed import
+import { supabase } from '../lib/supabase'; // ✅ correct import
 
 export default function Home() {
   const [step, setStep] = useState(1);
   const [mood, setMood] = useState('');
   const [entry, setEntry] = useState('');
   const [response, setResponse] = useState('');
-
-  const handleSubmit = async () => {
-    // Optional: store in Supabase if desired
-    // await supabase.from('journal_entries').insert([{ mood, entry }]);
-
-    setResponse("Thanks for sharing. It sounds like you're really feeling that today. I'm here.");
   const [bgMood, setBgMood] = useState('default');
 
   const handleSubmit = async () => {
