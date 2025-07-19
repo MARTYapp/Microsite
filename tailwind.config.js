@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -17,6 +18,4 @@ module.exports = {
     },
   },
   plugins: [],
-};<div
-className="absolute w-16 h-16 animate-ripple bg-white/10 rounded-full pointer-events-none"
-/>
+}

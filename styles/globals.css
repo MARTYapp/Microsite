@@ -1,11 +1,7 @@
-@keyframes ripple {
-  0% { opacity: 1; transform: scale(0.5); }
-  100% { opacity: 0; transform: scale(4); }
-}
+/* globals.css */
+/* Keep this file for general global styles only */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.animate-ripple {
-  animation: ripple 0.8s ease-out forwards;
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-  border-radius: 50%;
-}
+/* No ripple keyframes or animation here anymore */
