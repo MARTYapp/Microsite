@@ -1,3 +1,4 @@
+♻️ MARTY homepage refactor — old JSX out, TypeScript in
 import Head from "next/head";
 
 export default function Home() {
