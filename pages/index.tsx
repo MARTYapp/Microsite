@@ -1,18 +1,23 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="Voice-first mental wellness for the emotionally intelligent misfits." />
+        <meta name="description" content="The MARTY App – Designed for the Quiet Bros™, the executive dysfunction fam™, and the perfectionist avoiders™ alike." />
       </Head>
-      <main className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-8">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">The MARTY App</h1>
-        <p className="text-lg md:text-xl max-w-2xl text-center mb-8">
+      <main className="flex flex-col items-center justify-center min-h-screen px-4 py-12 bg-black text-white text-center">
+        <h1 className="text-5xl font-extrabold tracking-tight md:text-6xl mb-6">
+          The MARTY App
+        </h1>
+        <p className="text-xl md:text-2xl max-w-2xl mb-8">
           Designed for the Quiet Bros™, the executive dysfunction fam™, and the perfectionist avoiders™ alike.
         </p>
-        <a href="/journal" className="bg-white text-black px-6 py-3 rounded-lg text-lg font-medium">
+        <a
+          href="/journal"
+          className="text-lg font-semibold underline text-indigo-400 hover:text-indigo-200 transition"
+        >
           Try the Demo →
         </a>
       </main>
