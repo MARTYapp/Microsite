@@ -1,10 +1,11 @@
 {
   "/_app": "pages/_app.js",
-  "/cealan": "pages/cealan.js",
-  "/": "pages/index.js",
-  "/investor": "pages/investor.js",
-  "/journal": "pages/journal.js",
-  "/store": "pages/store.js",
+  "/cealan": "pages/cealan.html",
+  "/": "pages/index.html",
+  "/journal": "pages/journal.html",
+  "/investor": "pages/investor.html",
+  "/store": "pages/store.html",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }

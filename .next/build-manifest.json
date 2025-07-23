@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/CXcFukfPcgy6h-eTkFmYl/_buildManifest.js",
-    "static/CXcFukfPcgy6h-eTkFmYl/_ssgManifest.js"
+    "static/7y3q5w7tTsi4F8eeYIonY/_buildManifest.js",
+    "static/7y3q5w7tTsi4F8eeYIonY/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "rootMainFilesTree": {},
@@ -40,19 +40,19 @@
       "static/chunks/webpack-8cac0b4b405cede1.js",
       "static/chunks/framework-7c95b8e5103c9e90.js",
       "static/chunks/main-f1443708bf227f50.js",
-      "static/chunks/pages/investor-16fb65567e1ea410.js"
+      "static/chunks/pages/investor-382ef7f6543037f4.js"
     ],
     "/journal": [
       "static/chunks/webpack-8cac0b4b405cede1.js",
       "static/chunks/framework-7c95b8e5103c9e90.js",
       "static/chunks/main-f1443708bf227f50.js",
-      "static/chunks/pages/journal-d89c732e29b6fba1.js"
+      "static/chunks/pages/journal-5278655bfe40e201.js"
     ],
     "/store": [
       "static/chunks/webpack-8cac0b4b405cede1.js",
       "static/chunks/framework-7c95b8e5103c9e90.js",
       "static/chunks/main-f1443708bf227f50.js",
-      "static/chunks/pages/store-a9d5c44ac23376dd.js"
+      "static/chunks/pages/store-4468a757155e037b.js"
     ]
   },
   "ampFirstPages": []
