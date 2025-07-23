@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import Hero from '@/components/Hero';
-import Subheader from '@/components/Subheader';
-import QuoteCarousel from '@/components/QuoteCarousel';
-import FuelTheFounder from '@/components/FuelTheFounder';
-import Footer from '@/components/Footer';
+import Hero from '../components/Hero';
+import Subheader from '../components/Subheader';
+import QuoteCarousel from '../components/QuoteCarousel';
+import FuelTheFounder from '../components/FuelTheFounder';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
