@@ -1,1 +1,10 @@
-{}
+{
+  "/_app": "pages/_app.js",
+  "/cealan": "pages/cealan.js",
+  "/": "pages/index.js",
+  "/investor": "pages/investor.js",
+  "/journal": "pages/journal.js",
+  "/store": "pages/store.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js"
+}
