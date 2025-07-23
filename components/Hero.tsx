@@ -1,65 +1,78 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black text-white">
-
-      {/* 🔥 Background Video with optional fallback */}
+      {/* 🔥 Background Video */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        poster="/fallback.jpg" // Optional fallback preview
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-50 z-0"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-30 z-0"
       >
         <source src="/mb.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* 🌓 Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90 z-0" />
+      {/* 🔳 Fallback Overlay (gradient, safe) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 z-10" />
 
-      {/* 🔗 Top-left header */}
-      <Link
-        href="/microsite"
-        className="absolute top-6 left-6 z-10 text-white text-sm sm:text-base font-semibold tracking-wide uppercase bg-white/10 px-4 py-2 rounded-lg backdrop-blur hover:scale-105 transition"
-      >
-        The MARTY App
-      </Link>
-
-      {/* 🧠 Main Text Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center"
-      >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg max-w-4xl">
-          Built for the overthinkers, avoiders, and night-crawlers.
+      {/* 🧠 All Content */}
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
+        
+        {/* 🌈 Glow Text (Optional) */}
+        <h1 className="text-6xl font-black mb-8 drop-shadow-[0_0_40px_rgba(183,135,255,0.6)] pointer-events-none select-none">
+          MARTY
         </h1>
 
-        <p className="mt-6 text-lg sm:text-xl max-w-xl text-white/90">
+        {/* 🗣 Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-md"
+        >
+          Built for the overthinkers,<br />
+          avoiders, and night-crawlers.
+        </motion.h2>
+
+        {/* 💬 Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-6 text-lg sm:text-xl max-w-xl text-white/90"
+        >
           The MARTY App helps you pause, reflect, and move forward — even when your brain won't shut up.
-        </p>
+        </motion.p>
 
-        <Link href="/marty-ai">
-          <button className="mt-10 bg-white text-black font-bold py-3 px-6 rounded-2xl shadow-lg hover:scale-105 transition">
-            🧠 Talk to MARTY Now
-          </button>
-        </Link>
-      </motion.div>
+        {/* 🧠 CTA Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mt-10 bg-white text-black font-bold py-3 px-6 rounded-2xl shadow-lg hover:scale-105 transition"
+        >
+          🧠 Talk to MARTY Now
+        </motion.button>
+      </div>
 
-      {/* ⬇ Bottom-right M Icon */}
-      <Link href="/marty-ai">
-        <div className="absolute bottom-6 right-6 z-10 bg-white text-black font-extrabold text-xl sm:text-2xl px-4 py-2 rounded-full shadow-lg hover:scale-110 transition">
+      {/* 🔳 Top-left: “THE MARTY APP” Label */}
+      <div className="absolute top-5 left-5 z-30">
+        <span className="bg-white text-black text-xs font-bold px-3 py-1 rounded">
+          THE MARTY APP
+        </span>
+      </div>
+
+      {/* ⚪ Bottom-right: “M” Button */}
+      <div className="absolute bottom-6 right-6 z-30">
+        <button className="w-10 h-10 bg-white text-black text-xl font-bold rounded-full shadow hover:scale-110 transition">
           M
-        </div>
-      </Link>
+        </button>
+      </div>
     </section>
   );
 }
