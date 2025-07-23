@@ -1,34 +1,44 @@
-// components/Hero.tsx
-import React from "react";
+'use client';
+
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-br from-[#0D0D1D] via-[#1C1C2E] to-[#3D2E60] flex flex-col items-center justify-center text-white px-6 py-20">
-      {/* 🌌 Ambient Glow */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-indigo-700/20 to-purple-800/30 blur-3xl z-0" />
+    <section className="relative w-full h-screen overflow-hidden bg-black text-white">
+      {/* 🔥 Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-50 z-0"
+      >
+        <source src="/mb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* 🔥 Hero Content */}
-      <div className="z-10 text-center space-y-6">
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
-          MARTY
+      {/* 🌓 Optional Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90 z-0" />
+
+      {/* ✨ Main Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center"
+      >
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+          Built for the overthinkers, avoiders, and night-crawlers.
         </h1>
 
-        <p className="text-xl md:text-2xl max-w-xl mx-auto">
-          Designed for those who don’t fit traditional therapy, but still need
-          someone real to talk to.
+        <p className="mt-6 text-lg sm:text-xl max-w-xl text-white/90">
+          The MARTY App helps you pause, reflect, and move forward — even when your brain won't shut up.
         </p>
 
-        <p className="italic text-sm opacity-70">
-          He won’t fix you. But he’ll help you not spiral.
-        </p>
-
-        <a
-          href="/journal"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition rounded-full text-lg font-semibold shadow-lg"
-        >
-          🧠 Hit Up MARTY Now
-        </a>
-      </div>
+        <button className="mt-10 bg-white text-black font-bold py-3 px-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          🧠 Talk to MARTY Now
+        </button>
+      </motion.div>
     </section>
   );
 }
