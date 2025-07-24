@@ -28,10 +28,12 @@ export default function MartyHero() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleHover = () => {
+  const handleHoverSound = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0
-      audioRef.current.play()
+      audioRef.current
+        .play()
+        .catch((e) => console.warn('🔇 Audio blocked:', e.message))
     }
   }
 
@@ -44,7 +46,7 @@ export default function MartyHero() {
       const user = await getCurrentUser()
       await insertMood(newMode, user?.id)
     } catch (err) {
-      console.error('Error saving mode:', err)
+      console.error('🛑 Failed to save mode:', err)
     }
   }
 
@@ -55,6 +57,7 @@ export default function MartyHero() {
         mode === 'stim' ? 'bg-black' : 'bg-[#0d0d14]'
       )}
     >
+      {/* Mode Toggle */}
       <button
         onClick={toggleMode}
         className="absolute top-5 right-5 z-30 bg-white/10 px-3 py-2 text-xs rounded-full backdrop-blur border border-white/20 hover:bg-white/20 transition"
@@ -62,9 +65,10 @@ export default function MartyHero() {
         {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
       </button>
 
-      <audio ref={audioRef} src="/assets/hover-sound.mp3" preload="auto" />
+      {/* Audio element */}
+      <audio ref={audioRef} src="/assets/hover-sound.mp3" preload="auto" playsInline />
 
-      {/* Background */}
+      {/* Background Layers */}
       <Image
         src="/assets/waveform-bg.svg"
         alt="Waveform Background"
@@ -72,7 +76,13 @@ export default function MartyHero() {
         className="object-cover opacity-30 z-0"
         priority
       />
-
+      <Image
+        src="/assets/particles.svg"
+        alt="Particles"
+        fill
+        className="object-cover opacity-10 z-0"
+        priority
+      />
       <div
         className={clsx(
           'absolute inset-0 pointer-events-none z-0 transition-opacity duration-700',
@@ -82,13 +92,14 @@ export default function MartyHero() {
         )}
       />
 
+      {/* Main Content */}
       <div className="z-10 max-w-2xl px-6 space-y-6">
-        {/* Glowing Text Logo */}
+        {/* Logo - temporary glowing text */}
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#7f5af0] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
           THE MARTY APP
         </h1>
 
-        {/* Tagline loop */}
+        {/* Animated Tagline */}
         <div className="h-12 text-base sm:text-xl text-gray-200 relative font-light">
           <AnimatePresence mode="wait">
             <motion.p
@@ -106,10 +117,10 @@ export default function MartyHero() {
 
         {/* CTA */}
         <motion.button
-          onClick={() =>
+          onClick={() => {
+            handleHoverSound()
             document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
-          }
-          onMouseEnter={handleHover}
+          }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={clsx(
