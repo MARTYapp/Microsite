@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2021",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -8,14 +8,21 @@
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
-    "esModuleInterop": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",                       // ✅ Enables root-relative aliasing
+    "baseUrl": ".",                   // ✅ Root path for all aliasing
     "paths": {
-      "@/*": ["./*"]                      // ✅ Alias @/ points to root
+      "@/*": ["./*"],                 // Global fallback alias
+      "@lib/*": ["lib/*"],            // Supabase, utils, etc.
+      "@hooks/*": ["hooks/*"],        // Custom React hooks
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@pages/*": ["pages/*"],
+      "@types/*": ["types/*"],
+      "@public/*": ["public/*"]
     }
   },
   "include": [
