@@ -1,25 +1,61 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
-  return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center bg-gradient-to-b from-[#0f0f1a] via-[#1a1230] to-[#2c1d5b] text-white overflow-hidden">
-      {/* GLOW OVERLAY */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-700/30 via-transparent to-transparent animate-pulse" />
+  const [videoLoaded, setVideoLoaded] = useState(false)
 
-      {/* CONTENT */}
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true)
+    }, 500) // fallback in case onCanPlayThrough doesn't fire
+
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center text-white overflow-hidden bg-black">
+      {/* 🎥 BACKGROUND VIDEO with fallback + fade-in */}
+      {!videoLoaded && (
+        <Image
+          src="/Fallback.jpg"
+          alt="Background fallback"
+          fill
+          className="object-cover absolute inset-0 z-0 transition-opacity duration-500 opacity-100"
+          priority
+        />
+      )}
+
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className={`absolute inset-0 h-full w-full object-cover z-0 transition-opacity duration-1000 ${
+          videoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        onCanPlayThrough={() => setVideoLoaded(true)}
+      >
+        <source src="/mb.mp4" type="video/mp4" />
+      </video>
+
+      {/* 💡 GLOW OVERLAY */}
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-700/30 via-transparent to-transparent animate-pulse pointer-events-none" />
+
+      {/* 🧠 MAIN CONTENT */}
       <motion.div
-        className="z-10 max-w-3xl space-y-6"
+        className="z-20 max-w-3xl space-y-6"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-5xl font-extrabold sm:text-6xl tracking-tight">
+        <h1 className="text-5xl font-extrabold sm:text-6xl tracking-tight drop-shadow-md">
           MARTY ≠ THERAPY
         </h1>
 
-        <p className="text-lg sm:text-xl text-gray-300">
+        <p className="text-lg sm:text-xl text-gray-200">
           Built for the avoiders, the overthinkers, the night-crawlers.
           <br className="hidden sm:inline" />
           Not everyone needs a clinician. Some of us just need a narrator.
@@ -37,7 +73,7 @@ export default function Hero() {
       </motion.div>
 
       {/* VISUAL ELEMENTS */}
-      <div className="absolute bottom-4 left-4 z-0 hidden md:block">
+      <div className="absolute bottom-4 left-4 z-20 hidden md:block">
         <Image
           src="/assets/poster-dbt.png"
           alt="DBT Pillars Poster"
@@ -47,7 +83,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute bottom-4 right-4 z-0 hidden md:block">
+      <div className="absolute bottom-4 right-4 z-20 hidden md:block">
         <Image
           src="/assets/poster-quote.png"
           alt="Quote Poster"
@@ -57,7 +93,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute top-20 right-1/2 z-0 translate-x-1/2 hidden md:block">
+      <div className="absolute top-20 right-1/2 z-20 translate-x-1/2 hidden md:block">
         <Image
           src="/assets/marty-hoodie.png"
           alt="Marty Hoodie"
@@ -67,7 +103,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute top-6 left-6 z-0 hidden md:block">
+      <div className="absolute top-6 left-6 z-20 hidden md:block">
         <Image
           src="/assets/calendar-365.png"
           alt="The MARTY Method 365 Calendar"

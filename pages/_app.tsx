@@ -1,29 +1,24 @@
-// pages/_app.tsx
+import type { AppProps } from "next/app"
+import { useEffect } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { ThemeProvider } from "next-themes"
 
-import type { AppProps } from 'next/app'
-import { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ThemeProvider } from 'next-themes'
+import { supabase } from "../lib/supabaseClient" // ✅ RELATIVE PATH
+import { useUser, UserProvider } from "../hooks/useUser"
 
-import { supabase } from '@lib/supabaseClient'
-import { UserProvider, useUser } from '@hooks/useUser'
+import "../styles/globals.css"
 
-import '@/styles/globals.css'
-
-// Component wrapped in UserProvider context
 function InnerApp({ Component, pageProps, router }: AppProps) {
   const { setUser } = useUser()
 
   useEffect(() => {
-    // On initial load
     supabase.auth.getSession().then(({ data }) => {
       if (data?.session?.user) {
         setUser(data.session.user)
       }
     })
 
-    // On auth state change
-    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         setUser(session.user)
       } else {
@@ -32,19 +27,14 @@ function InnerApp({ Component, pageProps, router }: AppProps) {
     })
 
     return () => {
-      subscription?.unsubscribe()
+      authListener?.subscription?.unsubscribe()
     }
   }, [setUser])
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <AnimatePresence mode="wait">
-        <motion.div
-          key={router.route}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
+        <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <Component {...pageProps} />
         </motion.div>
       </AnimatePresence>

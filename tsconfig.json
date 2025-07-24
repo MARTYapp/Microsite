@@ -13,11 +13,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",                   // ✅ Root path for all aliasing
+    "baseUrl": ".",                   
     "paths": {
-      "@/*": ["./*"],                 // Global fallback alias
-      "@lib/*": ["lib/*"],            // Supabase, utils, etc.
-      "@hooks/*": ["hooks/*"],        // Custom React hooks
+      "@/*": ["./*"],                 
+      "@lib/*": ["lib/*"],            
+      "@hooks/*": ["hooks/*"],        
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@pages/*": ["pages/*"],
