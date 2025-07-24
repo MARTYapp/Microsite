@@ -13,11 +13,11 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+    const subscription = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
     })
-
-    return () => subscription.unsubscribe()
+  
+    return () => subscription.data.subscription.unsubscribe()
   }, [])
 
   return (
