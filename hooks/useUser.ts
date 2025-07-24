@@ -1,30 +1,42 @@
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+// hooks/useUser.ts
+import { createContext, useContext, useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabaseClient'
 
-export function useUser() {
-  const [user, setUser] = useState(null);
+type UserContextType = {
+  user: any
+  setUser: React.Dispatch<React.SetStateAction<any>>
+}
+
+const UserContext = createContext<UserContextType | null>(null)
+
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
+    const session = supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null)
+    })
 
-      if (error) console.error("❌ Supabase error:", error);
-      else setUser(user);
-    };
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
 
-    getUser();
+    return () => subscription.unsubscribe()
+  }, [])
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  )
+}
 
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
-  }, []);
-
-  return user;
+export function useUser() {
+  const context = useContext(UserContext)
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
+  return context
 }

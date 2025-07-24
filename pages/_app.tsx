@@ -1,49 +1,45 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
-import { UserProvider, useUser } from '@/hooks/useUser';
-import { supabase } from '@/lib/supabase';
-import { AnimatePresence, motion } from 'framer-motion';
+import type { AppProps } from 'next/app'
+import { useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ThemeProvider } from 'next-themes'
 
-function InnerApp({ Component, pageProps, router }: AppProps) {
-  const { setUser } = useUser();
+import { supabase } from '@lib/supabaseClient'
+import { useUser, UserProvider } from '@hooks/useUser'
+
+import '../styles/globals.css'
+
+export default function MyApp({ Component, pageProps, router }: AppProps) {
+  const { setUser } = useUser()
 
   useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
+    const session = supabase.auth.getSession().then(({ data }) => {
+      if (data?.session?.user) {
+        setUser(data.session.user)
+      }
+    })
 
-    // Initial check on load
-    supabase.auth.getSession().then(({ data }) => {
-      setUser(data?.session?.user || null);
-    });
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user)
+      } else {
+        setUser(null)
+      }
+    })
 
     return () => {
-      subscription?.unsubscribe();
-    };
-  }, [setUser]);
+      authListener?.subscription?.unsubscribe()
+    }
+  }, [setUser])
 
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={router.route}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        <Component {...pageProps} />
-      </motion.div>
-    </AnimatePresence>
-  );
-}
-
-export default function MyApp(props: AppProps) {
   return (
     <UserProvider>
-      <InnerApp {...props} />
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <AnimatePresence mode="wait">
+          <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
+      </ThemeProvider>
     </UserProvider>
-  );
+  )
 }
