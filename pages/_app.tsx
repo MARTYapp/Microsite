@@ -1,59 +1,49 @@
-import { useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ThemeProvider } from 'next-themes';
-import { createClient } from '@supabase/supabase-js';
 import '../styles/globals.css';
-
-import { useUser } from '@hooks/useUser';
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { UserProvider, useUser } from '@/hooks/useUser';
+import { supabase } from '@/lib/supabase';
+import { AnimatePresence, motion } from 'framer-motion';
 
-// Initialize Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/+$/, '');
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+function InnerApp({ Component, pageProps, router }: AppProps) {
+  const { setUser } = useUser();
 
-if (!supabaseUrl?.startsWith('https://') || !supabaseAnonKey) {
-  throw new Error(
-    '❌ Invalid Supabase credentials: Check NEXT_PUBLIC_SUPABASE_URL and ANON_KEY in your .env.local file.'
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    // Initial check on load
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data?.session?.user || null);
+    });
+
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, [setUser]);
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={router.route}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Component {...pageProps} />
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-export default function MyApp({ Component, pageProps, router }: AppProps) {
-  const userContext = useUser();
-
-  // Optional loading fallback
-  if (!userContext) {
-    return <div className="text-white p-4">Loading...</div>;
-  }
-
-  const { setUser } = userContext;
-
-  useEffect(() => {
-    const session = supabase.auth.getSession().then(({ data }) => {
-      if (data?.session) {
-        setUser(data.session.user);
-      }
-    });
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user || null);
-      }
-    );
-
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
-  }, []);
-
+export default function MyApp(props: AppProps) {
   return (
-    <ThemeProvider attribute="class">
-      <AnimatePresence mode="wait">
-        <motion.div key={router.route} initial="initial" animate="animate" exit="exit">
-          <Component {...pageProps} />
-        </motion.div>
-      </AnimatePresence>
-    </ThemeProvider>
+    <UserProvider>
+      <InnerApp {...props} />
+    </UserProvider>
   );
 }
