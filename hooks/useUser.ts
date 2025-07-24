@@ -1,5 +1,3 @@
-// hooks/useUser.ts
-
 import {
   createContext,
   useContext,
@@ -7,28 +5,28 @@ import {
   useEffect,
   ReactNode,
 } from "react"
-import { supabase } from "../lib/supabaseClient"
+import { supabase } from "@lib/supabaseClient"
 
 type UserContextType = {
   user: any
   setUser: (user: any) => void
 }
 
-// Create context with type safety
 const UserContext = createContext<UserContextType | undefined>(undefined)
 
-// Context provider wrapper
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+    const { data: subscription } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setUser(session?.user ?? null)
       }
     )
 
-    return () => subscription.unsubscribe()
+    return () => {
+      subscription?.unsubscribe()
+    }
   }, [])
 
   return (
@@ -38,7 +36,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   )
 }
 
-// Custom hook to use user context
 export function useUser() {
   const context = useContext(UserContext)
   if (!context) {
