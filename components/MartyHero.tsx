@@ -12,8 +12,8 @@ const taglines = [
 ]
 
 export default function MartyHero() {
-  const [currentTagline, setCurrentTagline] = useState(0)
   const [mode, setMode] = useState<'stim' | 'calm'>('calm')
+  const [currentTagline, setCurrentTagline] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
@@ -44,46 +44,42 @@ export default function MartyHero() {
       const user = await getCurrentUser()
       await insertMood(newMode, user?.id)
     } catch (err) {
-      console.error('Error saving mood toggle:', err)
+      console.error('Error saving mode:', err)
     }
   }
 
   return (
     <section
       className={clsx(
-        'relative flex min-h-screen items-center justify-center px-6 text-center text-white overflow-hidden transition-colors duration-700',
+        'relative flex min-h-screen flex-col items-center justify-center text-center text-white overflow-hidden transition-colors duration-700',
         mode === 'stim' ? 'bg-black' : 'bg-[#0d0d14]'
       )}
     >
-      {/* Toggle */}
+      {/* 🔁 MODE TOGGLE */}
       <button
         onClick={toggleMode}
-        className="absolute top-6 right-6 z-30 bg-white/10 text-xs px-3 py-2 rounded-full backdrop-blur hover:bg-white/20 transition shadow-sm border border-white/20"
+        className="absolute top-5 right-5 z-30 bg-white/10 px-3 py-2 text-xs rounded-full backdrop-blur border border-white/20 hover:bg-white/20 transition"
       >
         {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
       </button>
 
-      {/* Sound */}
+      {/* 🔊 SOUND */}
       <audio ref={audioRef} src="/assets/hover-sound.mp3" preload="auto" />
 
-      {/* Background */}
+      {/* 🔮 BACKGROUND LAYERS */}
       <Image
         src="/assets/waveform-bg.svg"
-        alt="Waveform"
+        alt="Waveform Background"
         fill
-        className={clsx(
-          'object-cover z-0 transition-opacity duration-700',
-          mode === 'stim' ? 'opacity-40' : 'opacity-20'
-        )}
+        className="object-cover opacity-30 z-0"
+        priority
       />
       <Image
         src="/assets/particles.svg"
-        alt="Particles"
+        alt="Floating particles"
         fill
-        className={clsx(
-          'object-cover z-0 transition-opacity duration-700',
-          mode === 'stim' ? 'opacity-30' : 'opacity-10'
-        )}
+        className="object-cover opacity-20 z-0"
+        priority
       />
       <div
         className={clsx(
@@ -94,33 +90,28 @@ export default function MartyHero() {
         )}
       />
 
-      {/* Main */}
-      <div className="z-10 max-w-3xl space-y-6">
-        <div
-          className={clsx(
-            'mx-auto w-[280px] sm:w-[360px]',
-            mode === 'stim'
-              ? 'drop-shadow-[0_0_1.5rem_#7f5af0aa]'
-              : 'drop-shadow-[0_0_1rem_#7f5af066]'
-          )}
-        >
+      {/* 🧠 HERO CONTENT */}
+      <div className="z-10 max-w-2xl px-6 space-y-6">
+        {/* 🔹 LOGO (Transparent PNG Only) */}
+        <div className="mx-auto w-[200px] sm:w-[280px] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
           <Image
-            src="/assets/logo-marty-glow.png"
-            alt="MARTY Logo"
-            width={360}
+            src="/assets/logo-transparent.png" // <- should have NO background
+            alt="The MARTY App Logo"
+            width={280}
             height={100}
             className="mx-auto"
             priority
           />
         </div>
 
-        <div className="h-12 text-lg sm:text-xl text-gray-200 relative">
+        {/* ✏️ TAGLINE LOOP */}
+        <div className="h-12 text-base sm:text-xl text-gray-200 relative font-light">
           <AnimatePresence mode="wait">
             <motion.p
               key={currentTagline}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.6 }}
               className="absolute w-full"
             >
@@ -129,19 +120,20 @@ export default function MartyHero() {
           </AnimatePresence>
         </div>
 
+        {/* 🟣 CTA BUTTON */}
         <motion.button
-          className={clsx(
-            'mt-6 inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition backdrop-blur shadow-md',
-            mode === 'stim'
-              ? 'border-white/30 bg-white/10 text-white hover:bg-white/20 hover:shadow-purple-500/40'
-              : 'border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:shadow-purple-300/20'
-          )}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onMouseEnter={handleHover}
           onClick={() =>
             document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
           }
+          onMouseEnter={handleHover}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className={clsx(
+            'inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-medium backdrop-blur transition',
+            mode === 'stim'
+              ? 'bg-white/10 text-white border-white/30 hover:bg-white/20 hover:shadow-purple-500/40'
+              : 'bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:shadow-purple-300/20'
+          )}
         >
           💬 Enter Quiet Mode
         </motion.button>
