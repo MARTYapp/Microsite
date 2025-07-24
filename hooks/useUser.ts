@@ -10,16 +10,11 @@ type UserContextType = {
 const UserContext = createContext<UserContextType | null>(null)
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const session = supabase.auth.getSession()
-    session.then(({ data }) => setUser(data?.session?.user || null))
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null)
+    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
     })
 
     return () => subscription.unsubscribe()
