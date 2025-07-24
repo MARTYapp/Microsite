@@ -55,7 +55,6 @@ export default function MartyHero() {
         mode === 'stim' ? 'bg-black' : 'bg-[#0d0d14]'
       )}
     >
-      {/* 🔁 MODE TOGGLE */}
       <button
         onClick={toggleMode}
         className="absolute top-5 right-5 z-30 bg-white/10 px-3 py-2 text-xs rounded-full backdrop-blur border border-white/20 hover:bg-white/20 transition"
@@ -63,10 +62,9 @@ export default function MartyHero() {
         {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
       </button>
 
-      {/* 🔊 SOUND */}
       <audio ref={audioRef} src="/assets/hover-sound.mp3" preload="auto" />
 
-      {/* 🔮 BACKGROUND LAYERS */}
+      {/* Background */}
       <Image
         src="/assets/waveform-bg.svg"
         alt="Waveform Background"
@@ -74,13 +72,7 @@ export default function MartyHero() {
         className="object-cover opacity-30 z-0"
         priority
       />
-      <Image
-        src="/assets/particles.svg"
-        alt="Floating particles"
-        fill
-        className="object-cover opacity-20 z-0"
-        priority
-      />
+
       <div
         className={clsx(
           'absolute inset-0 pointer-events-none z-0 transition-opacity duration-700',
@@ -90,21 +82,13 @@ export default function MartyHero() {
         )}
       />
 
-      {/* 🧠 HERO CONTENT */}
       <div className="z-10 max-w-2xl px-6 space-y-6">
-        {/* 🔹 LOGO (Transparent PNG Only) */}
-        <div className="mx-auto w-[200px] sm:w-[280px] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
-          <Image
-            src="/assets/logo-transparent.png" // <- should have NO background
-            alt="The MARTY App Logo"
-            width={280}
-            height={100}
-            className="mx-auto"
-            priority
-          />
-        </div>
+        {/* Glowing Text Logo */}
+        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#7f5af0] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
+          THE MARTY APP
+        </h1>
 
-        {/* ✏️ TAGLINE LOOP */}
+        {/* Tagline loop */}
         <div className="h-12 text-base sm:text-xl text-gray-200 relative font-light">
           <AnimatePresence mode="wait">
             <motion.p
@@ -120,7 +104,7 @@ export default function MartyHero() {
           </AnimatePresence>
         </div>
 
-        {/* 🟣 CTA BUTTON */}
+        {/* CTA */}
         <motion.button
           onClick={() =>
             document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
