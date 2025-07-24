@@ -13,14 +13,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
-    const session = supabase.auth.getSession().then(({ data }) => {
-      setUser(data.session?.user ?? null)
-    })
+    const session = supabase.auth.getSession()
+    session.then(({ data }) => setUser(data?.session?.user || null))
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
+      setUser(session?.user || null)
     })
 
     return () => subscription.unsubscribe()
@@ -35,8 +34,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
 export function useUser() {
   const context = useContext(UserContext)
-  if (!context) {
-    throw new Error('useUser must be used within a UserProvider')
-  }
+  if (!context) throw new Error('useUser must be used within a UserProvider')
   return context
 }
