@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ThemeProvider } from "next-themes"
 
-import { supabase } from "../lib/supabaseClient" // ✅ RELATIVE PATH
+import { supabase } from "../lib/supabase" // ✅ RELATIVE PATH
 import { useUser, UserProvider } from "../hooks/useUser"
 
 import "../styles/globals.css"

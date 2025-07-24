@@ -6,7 +6,7 @@ import {
   useEffect,
   ReactNode,
 } from "react"
-import { supabase } from "@/lib/supabaseClient"
+import { supabase } from "@/lib/supabase"
 
 // Type definition for the context
 type UserContextType = {
