@@ -50,7 +50,7 @@ export default function HomeHero() {
   return (
     <section
       className={clsx(
-        'relative flex min-h-screen items-center justify-center text-center text-white overflow-hidden',
+        'relative z-20 flex min-h-screen items-center justify-center text-center text-white overflow-hidden transition-colors duration-700',
         mode === 'stim' ? 'bg-black' : 'bg-[#0d0d14]'
       )}
     >
