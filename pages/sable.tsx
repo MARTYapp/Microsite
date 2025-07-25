@@ -1,44 +1,80 @@
-// pages/sable.tsx
+'use client'
+
+import { motion } from 'framer-motion'
 import Head from 'next/head'
-import Layout from '@/components/Layout' // adjust path if needed
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function SablePage() {
   return (
-    <Layout>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Head>
-        <title>SABLE MEET MARTY</title>
-        <meta name="description" content="Private onboarding for Sable Adler — your MARTY mission starts here." />
+        <title>Welcome, Sable — The MARTY App</title>
+        <meta
+          name="description"
+          content="Your onboarding hub to help launch MARTY into orbit."
+        />
       </Head>
 
-      <section className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-6 py-20 text-center space-y-10">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">SABLE MEET MARTY</h1>
-        <p className="text-lg md:text-xl max-w-2xl">
-          This is your command center. Your job? Grow our voice, own our story, and help us win the funding to scale.
+      {/* 🎥 Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-0 opacity-30"
+      >
+        <source src="/Assets/mb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* 🖤 Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90 z-10" />
+
+      {/* 🎉 Content */}
+      <main className="relative z-20 px-6 pt-24 pb-32 max-w-3xl mx-auto text-center space-y-10">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white"
+        >
+          Welcome, Sable 🧠
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-lg sm:text-xl text-gray-300"
+        >
+          You’re officially cleared for launch. This is your custom onboarding hub — filled with tools, links, and your mission roadmap to help grow The MARTY App.
+        </motion.p>
+
+        {/* 🔗 Links Section */}
+        <div className="grid gap-6 text-left">
+          <SectionLink title="🌍 MARTY Microsite Overview" href="/" />
+          <SectionLink title="📄 Your Offer Letter + Role" href="/Assets/Sable_Offer.pdf" />
+          <SectionLink title="🎯 2025–2028 Roadmap ($2B by 2028)" href="/Assets/Marty_Roadmap.pdf" />
+          <SectionLink title="📈 Grant Strategy + Templates" href="/Assets/Grant_Strategy.pdf" />
+          <SectionLink title="📊 VC Deck Preview" href="/Assets/Marty_VC_Deck.pdf" />
+          <SectionLink title="📸 Arabella: Modeling & Roth IRA Notes" href="/Assets/Arabella_Section.pdf" />
+        </div>
+
+        <p className="text-xs text-gray-500 mt-10">
+          All materials © 2025 The MARTY App. This page is private and unlisted.
         </p>
+      </main>
+    </div>
+  )
+}
 
-        <div className="bg-white/10 p-6 md:p-8 rounded-2xl border border-white/20 shadow-md max-w-3xl text-left space-y-4 backdrop-blur-md">
-          <h2 className="text-2xl font-semibold">📈 MARTY: $2B by 2028</h2>
-          <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
-            <li><strong>2025:</strong> 2,000 active users by Thanksgiving</li>
-            <li><strong>2026:</strong> Grant funding + licensing MVP to school orgs</li>
-            <li><strong>2027:</strong> Premium tiers, community, merch, content</li>
-            <li><strong>2028:</strong> Brand, B2B, and licensing expansions — <strong>$2B valuation</strong></li>
-          </ul>
-          <p className="mt-4">You're the operator. Make us loud, make us visible, and secure the money we need to build it all.</p>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-4 items-center">
-          <Link href="/assets/Sable-Onboarding.pdf" className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
-            📄 View Onboarding Packet
-          </Link>
-          <Link href="/investors" className="text-white underline text-sm hover:text-gray-300">
-            🔗 View Investor Preview
-          </Link>
-        </div>
-
-        <p className="text-sm text-gray-500 mt-8">© {new Date().getFullYear()} The MARTY App. All rights reserved.</p>
-      </section>
-    </Layout>
+function SectionLink({ title, href }: { title: string; href: string }) {
+  return (
+    <Link href={href} target="_blank" rel="noopener noreferrer">
+      <a className="block rounded-lg border border-white/20 bg-white/5 px-5 py-4 hover:bg-white/10 transition">
+        {title}
+      </a>
+    </Link>
   )
 }
