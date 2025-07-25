@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Hero from "@/components/MartyHero";
+import MartyHero from "@/components/MartyHero";
 import PosterWall from "@/components/PosterWall";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import FuelTheFounder from "@/components/FuelTheFounder";
@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
       </Head>
 
-      <Hero />
+      <MartyHero />
       <PosterWall />
       <QuoteCarousel />
       <FuelTheFounder />
