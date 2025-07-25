@@ -4,6 +4,7 @@ import PosterWall from "@/components/PosterWall";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import FuelTheFounder from "@/components/FuelTheFounder";
 import Footer from "@/components/Footer";
+import HomeHero from "@/components/HomeHero";
 
 export default function Home() {
   return (
@@ -12,8 +13,7 @@ export default function Home() {
         <title>The MARTY App</title>
         <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
       </Head>
-
-      <MartyHero />
+      <HomeHero />
       <PosterWall />
       <QuoteCarousel />
       <FuelTheFounder />
