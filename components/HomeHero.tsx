@@ -1,81 +1,71 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import clsx from "clsx";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
+import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import clsx from 'clsx'
 
 const taglines = [
-  "Quiet tech for loud minds.",
-  "Built for the avoiders, the overthinkers, and the night-crawlers.",
-];
+  'Quiet tech for loud minds.',
+  'Built for the avoiders, the overthinkers, and the night-crawlers.',
+]
 
 export default function HomeHero() {
-  const [mode, setMode] = useState<'stim' | 'calm'>('calm');
-  const [currentTagline, setCurrentTagline] = useState(0);
-  const { theme } = useTheme();
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [currentTagline, setCurrentTagline] = useState(0)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTagline((prev) => (prev + 1) % taglines.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+      setCurrentTagline((prev) => (prev + 1) % taglines.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center bg-black text-white overflow-hidden">
-      {/* Background Video */}
+    <section className="relative min-h-screen w-full flex items-center justify-center text-white bg-black overflow-hidden">
+      {/* 🔵 Background video */}
       <video
-        ref={videoRef}
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
         loop
         muted
         playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-70 z-0"
       >
-        <source src="/Assets/mb.mp4" type="video/mp4" />
+        <source src="/mb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 z-10" />
+      {/* 🧠 Glow overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90 z-10"></div>
 
-      {/* Tagline Content */}
-      <div className="relative z-20 max-w-4xl px-6 text-center space-y-6">
+      {/* 🔤 Main content */}
+      <div className="relative z-20 text-center px-6 py-20 max-w-4xl">
         <motion.h1
+          className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl font-bold leading-tight"
+          transition={{ duration: 0.8 }}
         >
           THE MARTY APP
         </motion.h1>
 
         <motion.p
           key={currentTagline}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.8 }}
-          className="text-lg md:text-2xl text-gray-300"
+          className="text-lg md:text-xl text-gray-300 mb-8 transition-opacity duration-700"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
           {taglines[currentTagline]}
         </motion.p>
 
-        <div className="flex justify-center">
-          <Button
-            size="lg"
-            className="text-white bg-indigo-600 hover:bg-indigo-700 shadow-md rounded-xl px-6 py-3"
-            onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            🧠 Talk to MARTY Now
-          </Button>
-        </div>
-
-        <p className="text-xs text-gray-400 mt-6">MARTY™ is a trademark of The MARTY App. All rights reserved.</p>
+        <motion.a
+          href="#"
+          className="inline-block px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition"
+          whileHover={{ scale: 1.05 }}
+        >
+          🧠 Talk to MARTY Now
+        </motion.a>
       </div>
     </section>
-  );
+  )
 }
