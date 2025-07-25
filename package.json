@@ -5,7 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf .next && rm -rf node_modules && rm -f package-lock.json",
+    "analyze": "NODE_OPTIONS='--inspect' next build",
+    "postinstall": "npm run lint && npm run format && git init && git add . && git commit -m 'init(marty): first clean structure'"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -24,9 +30,10 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9.31.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5"
   }
 }
