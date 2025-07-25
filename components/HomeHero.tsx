@@ -50,48 +50,48 @@ export default function HomeHero() {
   return (
     <section
       className={clsx(
-        'relative flex min-h-screen flex-col items-center justify-center text-center text-white overflow-hidden transition-colors duration-700',
+        'relative flex min-h-screen items-center justify-center text-center text-white overflow-hidden',
         mode === 'stim' ? 'bg-black' : 'bg-[#0d0d14]'
       )}
     >
-      {/* Mode Toggle */}
-      <button
-        onClick={toggleMode}
-        className="absolute top-5 right-5 z-30 bg-white/10 px-3 py-2 text-xs rounded-full backdrop-blur border border-white/20 hover:bg-white/20 transition"
-      >
-        {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
-      </button>
-
-      {/* Audio */}
-      <audio ref={audioRef} src="/Assets/hover-sound.mp3" preload="auto" playsInline />
-
-      {/* Cinematic Background */}
+      {/* 🎥 Video Background */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+        className="fixed top-0 left-0 w-full h-full object-cover z-0 opacity-40"
       >
         <source src="/Assets/mb.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Glow Overlay */}
+      {/* 🟣 Glow Overlay */}
       <div
         className={clsx(
-          'absolute inset-0 pointer-events-none z-0 transition-opacity duration-700',
+          'fixed inset-0 pointer-events-none z-10 transition-opacity duration-700',
           mode === 'stim'
             ? 'bg-gradient-radial from-purple-700/30 via-transparent to-transparent animate-pulse'
             : 'bg-gradient-radial from-purple-800/10 via-transparent to-transparent'
         )}
       />
 
-      {/* Dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
+      {/* 🖤 Dark Layer for Contrast */}
+      <div className="fixed inset-0 bg-black/60 z-10 pointer-events-none" />
 
-      {/* Foreground Content */}
-      <div className="z-10 max-w-2xl px-6 space-y-6">
+      {/* 🔘 Mode Toggle */}
+      <button
+        onClick={toggleMode}
+        className="absolute top-5 right-5 z-20 bg-white/10 px-3 py-2 text-xs rounded-full backdrop-blur border border-white/20 hover:bg-white/20 transition"
+      >
+        {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
+      </button>
+
+      {/* 🔊 Audio Element */}
+      <audio ref={audioRef} src="/Assets/hover-sound.mp3" preload="auto" playsInline />
+
+      {/* 🧠 Foreground Content */}
+      <div className="relative z-20 max-w-2xl px-6 space-y-6">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#7f5af0] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
           THE MARTY APP
         </h1>
@@ -128,7 +128,6 @@ export default function HomeHero() {
           💬 Enter Quiet Mode
         </motion.button>
 
-        {/* Trademark */}
         <p className="text-xs text-gray-500 mt-6">
           MARTY™ is a trademark of The MARTY App. All rights reserved. Not therapy, just tools.
         </p>
