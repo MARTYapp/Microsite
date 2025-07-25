@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
 import { insertMood, getCurrentUser } from '@/lib/supabase'
@@ -31,9 +30,7 @@ export default function HomeHero() {
   const handleHoverSound = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0
-      audioRef.current
-        .play()
-        .catch((e) => console.warn('🔇 Audio blocked:', e.message))
+      audioRef.current.play().catch((e) => console.warn('🔇 Audio blocked:', e.message))
     }
   }
 
@@ -65,24 +62,22 @@ export default function HomeHero() {
         {mode === 'calm' ? '☀️ Stim Mode' : '🌙 Calm Mode'}
       </button>
 
-      {/* Audio element */}
-      <audio ref={audioRef} src="/assets/hover-sound.mp3" preload="auto" playsInline />
+      {/* Audio */}
+      <audio ref={audioRef} src="/Assets/hover-sound.mp3" preload="auto" playsInline />
 
-      {/* Background Layers */}
-      <Image
-        src="/assets/waveform-bg.svg"
-        alt="Waveform Background"
-        fill
-        className="object-cover opacity-30 z-0"
-        priority
-      />
-      <Image
-        src="/assets/particles.svg"
-        alt="Particles"
-        fill
-        className="object-cover opacity-10 z-0"
-        priority
-      />
+      {/* Cinematic Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
+      >
+        <source src="/Assets/mb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Glow Overlay */}
       <div
         className={clsx(
           'absolute inset-0 pointer-events-none z-0 transition-opacity duration-700',
@@ -92,7 +87,10 @@ export default function HomeHero() {
         )}
       />
 
-      {/* Main Content */}
+      {/* Dark overlay for text contrast */}
+      <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
+
+      {/* Foreground Content */}
       <div className="z-10 max-w-2xl px-6 space-y-6">
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#7f5af0] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
           THE MARTY APP
@@ -130,7 +128,7 @@ export default function HomeHero() {
           💬 Enter Quiet Mode
         </motion.button>
 
-        {/* Trademark line */}
+        {/* Trademark */}
         <p className="text-xs text-gray-500 mt-6">
           MARTY™ is a trademark of The MARTY App. All rights reserved. Not therapy, just tools.
         </p>

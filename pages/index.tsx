@@ -1,23 +1,21 @@
-import Head from "next/head";
-import Homehero from "@/components/HomeHero";
-import PosterWall from "@/components/PosterWall";
-import QuoteCarousel from "@/components/QuoteCarousel";
-import FuelTheFounder from "@/components/FuelTheFounder";
-import Footer from "@/components/Footer";
-import HomeHero from "@/components/HomeHero";
+import Head from "next/head"
+import HomeHero from "@/components/HomeHero"
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
+        <meta
+          name="description"
+          content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and the night-crawlers."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <HomeHero />
-      <PosterWall />
-      <QuoteCarousel />
-      <FuelTheFounder />
-      <Footer />
+
+      <main>
+        <HomeHero />
+      </main>
     </>
-  );
+  )
 }
