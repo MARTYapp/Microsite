@@ -1,5 +1,5 @@
 import Head from "next/head";
-import MartyHero from "@/components/MartyHero";
+import Homehero from "@/components/HomeHero";
 import PosterWall from "@/components/PosterWall";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import FuelTheFounder from "@/components/FuelTheFounder";
