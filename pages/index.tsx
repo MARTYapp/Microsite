@@ -1,23 +1,23 @@
-import Head from "next/head";
-import HomeHero from "@/components/HomeHero"; // ✅ Must be HomeHero
-import PosterWall from "@/components/PosterWall";
-import QuoteCarousel from "@/components/QuoteCarousel";
-import FuelTheFounder from "@/components/FuelTheFounder";
-import Footer from "@/components/Footer";
+import Head from 'next/head'
+import HomeHero from '@/components/HomeHero'
+import PosterWall from '@/components/PosterWall'
+import QuoteCarousel from '@/components/QuoteCarousel'
+import FuelTheFounder from '@/components/FuelTheFounder'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
+        <meta name="description" content="MARTY ≠ THERAPY — Built for the avoiders, overthinkers, and night-crawlers." />
       </Head>
 
-      <HomeHero /> {/* ← this must be here */}
+      <HomeHero />
       <PosterWall />
       <QuoteCarousel />
       <FuelTheFounder />
       <Footer />
     </>
-  );
+  )
 }
