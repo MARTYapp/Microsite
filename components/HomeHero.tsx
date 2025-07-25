@@ -11,7 +11,7 @@ const taglines = [
   'Built for the avoiders, the overthinkers, and the night-crawlers.',
 ]
 
-export default function MartyHero() {
+export default function HomeHero() {
   const [mode, setMode] = useState<'stim' | 'calm'>('calm')
   const [currentTagline, setCurrentTagline] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -94,12 +94,10 @@ export default function MartyHero() {
 
       {/* Main Content */}
       <div className="z-10 max-w-2xl px-6 space-y-6">
-        {/* Logo - temporary glowing text */}
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#7f5af0] drop-shadow-[0_0_1.5rem_#7f5af0aa]">
           THE MARTY APP
         </h1>
 
-        {/* Animated Tagline */}
         <div className="h-12 text-base sm:text-xl text-gray-200 relative font-light">
           <AnimatePresence mode="wait">
             <motion.p
@@ -115,7 +113,6 @@ export default function MartyHero() {
           </AnimatePresence>
         </div>
 
-        {/* CTA */}
         <motion.button
           onClick={() => {
             handleHoverSound()
@@ -132,6 +129,11 @@ export default function MartyHero() {
         >
           💬 Enter Quiet Mode
         </motion.button>
+
+        {/* Trademark line */}
+        <p className="text-xs text-gray-500 mt-6">
+          MARTY™ is a trademark of The MARTY App. All rights reserved. Not therapy, just tools.
+        </p>
       </div>
     </section>
   )
