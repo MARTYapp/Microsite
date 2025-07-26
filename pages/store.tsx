@@ -11,16 +11,22 @@ export default function StorePage() {
     <>
       <Head>
         <title>MARTY Store — Real Tools. Real Style.</title>
-        <meta name="description" content="Merch from The MARTY App. Wear it. Use it. No fluff." />
+        <meta
+          name="description"
+          content="Merch from The MARTY App. Wear it. Use it. No fluff."
+        />
       </Head>
 
       <div className="min-h-screen w-full bg-black text-white">
         <MartyHeader />
 
         <section className="text-center px-6 py-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2 tracking-tight">WHAT MARTY’S INTO</h1>
+          <h1 className="text-4xl font-bold mb-2 tracking-tight">
+            WHAT MARTY’S INTO
+          </h1>
           <p className="text-lg opacity-80 mb-6">
-            WEAR IT. READ IT. USE IT. Real tools, real style, real talk.<br />
+            WEAR IT. READ IT. USE IT. Real tools, real style, real talk.
+            <br />
             Picked with purpose. No fluff. All function.
           </p>
         </section>
