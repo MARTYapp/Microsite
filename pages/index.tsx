@@ -1,10 +1,23 @@
 import Head from "next/head"
 import { motion } from "framer-motion"
+
 import HeroScene from "@/components/ui/HeroScene"
-import PosterWall from "@/components/PosterWall"
-import QuoteCarousel from "@/components/QuoteCarousel"
-import FuelTheFounder from "@/components/FuelTheFounder"
-import Footer from "@/components/Footer"
+import PosterWall from "@/components/ui/PosterWall"
+import QuoteCarousel from "@/components/ui/QuoteCarousel"
+import FuelTheFounder from "@/components/ui/FuelTheFounder"
+import Footer from "@/components/ui/Footer"
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+}
 
 export default function Home() {
   return (
@@ -13,47 +26,60 @@ export default function Home() {
         <title>The MARTY App</title>
         <meta
           name="description"
-          content="MARTY ≠ THERAPY — Built for the avoiders, overthinkers, and night-crawlers™."
+          content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers."
         />
       </Head>
 
-      <main className="bg-black text-white overflow-x-hidden">
+      <main className="relative w-full overflow-x-hidden bg-black text-white">
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          key="hero"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <HeroScene />
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
+          key="poster"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <PosterWall />
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: true }}
+          key="quotes"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <QuoteCarousel />
         </motion.section>
 
         <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true }}
+          key="fuel"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
         >
           <FuelTheFounder />
         </motion.section>
 
-        <Footer />
+        <motion.section
+          key="footer"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <Footer />
+        </motion.section>
       </main>
     </>
   )
