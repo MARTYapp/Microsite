@@ -7,9 +7,10 @@ export default function DashboardPage() {
         🔒 Dashboard Locked
       </h1>
       <p className="text-lg sm:text-xl max-w-xl text-gray-400">
-        This space is being built for your future reflections, entries, and patterns. <br />
+        This space is being built for your future reflections, entries, and
+        patterns. <br />
         For now, just keep showing up. We’re working on the rest.
       </p>
     </main>
-  )
+  );
 }

@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { insertJournal, getCurrentUser } from '@/lib/supabase'
+import { useState } from "react";
+import { insertJournal, getCurrentUser } from "@/lib/supabase";
 
 export default function JournalEntry() {
-  const [text, setText] = useState('')
-  const [saving, setSaving] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [text, setText] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSave = async () => {
-    if (!text.trim()) return
-    setSaving(true)
+    if (!text.trim()) return;
+    setSaving(true);
 
     try {
-      const user = await getCurrentUser()
-      await insertJournal(text, user?.id)
-      setSuccess(true)
-      setText('')
-      setTimeout(() => setSuccess(false), 3000)
+      const user = await getCurrentUser();
+      await insertJournal(text, user?.id);
+      setSuccess(true);
+      setText("");
+      setTimeout(() => setSuccess(false), 3000);
     } catch (err) {
-      console.error('Error saving journal:', err)
+      console.error("Error saving journal:", err);
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
-  }
+  };
 
   return (
     <div className="max-w-xl mx-auto mt-12 px-4 text-white space-y-4">
@@ -39,10 +39,10 @@ export default function JournalEntry() {
         disabled={saving}
         className="px-5 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 transition disabled:opacity-50"
       >
-        {saving ? 'Saving...' : 'Save Entry'}
+        {saving ? "Saving..." : "Save Entry"}
       </button>
 
       {success && <p className="text-green-400">✓ Entry saved</p>}
     </div>
-  )
+  );
 }

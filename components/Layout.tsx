@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from "next/head";
+import Link from "next/link";
 
 export default function Layout({
   children,
-  title = 'The MARTY App',
+  title = "The MARTY App",
 }: {
-  children: React.ReactNode
-  title?: string
+  children: React.ReactNode;
+  title?: string;
 }) {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col font-sans">
@@ -27,5 +27,5 @@ export default function Layout({
         © {new Date().getFullYear()} The MARTY App
       </footer>
     </div>
-  )
+  );
 }

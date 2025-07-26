@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
-import clsx from 'clsx'
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
 
 const taglines = [
-  'Quiet tech for loud minds.',
-  'Built for the avoiders, the overthinkers, and the night-crawlers.',
-]
+  "Quiet tech for loud minds.",
+  "Built for the avoiders, the overthinkers, and the night-crawlers.",
+];
 
 export default function HomeHero() {
-  const [currentTagline, setCurrentTagline] = useState(0)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [currentTagline, setCurrentTagline] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTagline((prev) => (prev + 1) % taglines.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentTagline((prev) => (prev + 1) % taglines.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center text-white bg-black overflow-hidden">
@@ -67,5 +67,5 @@ export default function HomeHero() {
         </motion.a>
       </div>
     </section>
-  )
+  );
 }

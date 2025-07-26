@@ -6,16 +6,20 @@ export default function ArabellaSection() {
           ✨ Arabella’s Section
         </h2>
         <p className="text-lg text-gray-300 leading-relaxed mb-6">
-          This space is for Arabella — a modeling opportunity and a custodial Roth IRA breakdown.
-          We’re integrating her into the brand's pipeline with clarity, care, and long-term growth in mind.
+          This space is for Arabella — a modeling opportunity and a custodial
+          Roth IRA breakdown. We’re integrating her into the brand's pipeline
+          with clarity, care, and long-term growth in mind.
         </p>
 
         <div className="bg-[#111] border border-gray-800 rounded-xl py-6 px-4 shadow-inner mb-6">
-          <h3 className="text-xl font-semibold text-indigo-400 mb-2">📈 Projected Growth (Custodial Roth)</h3>
+          <h3 className="text-xl font-semibold text-indigo-400 mb-2">
+            📈 Projected Growth (Custodial Roth)
+          </h3>
           <p className="text-gray-400 text-sm">
             If we contribute $1,000/year from age 5 to 18, she could have:
             <br />
-            <strong>$24,000+</strong> at 18 → <strong>$82,000+</strong> by 30 (compounded).
+            <strong>$24,000+</strong> at 18 → <strong>$82,000+</strong> by 30
+            (compounded).
           </p>
         </div>
 

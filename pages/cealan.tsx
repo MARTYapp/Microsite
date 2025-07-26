@@ -1,6 +1,6 @@
 // pages/cealan.tsx
-import Layout from '@/components/Layout'
-import Link from 'next/link'
+import Layout from "@/components/Layout";
+import Link from "next/link";
 
 export default function CealanPage() {
   return (
@@ -11,25 +11,37 @@ export default function CealanPage() {
         </h1>
 
         <p className="text-gray-300 text-lg">
-          Welcome to your private MARTY portal. It’s confidential, personalized, and tailored for what we talked about — Legal & Licensing Lead. You’ll find everything you need below:
+          Welcome to your private MARTY portal. It’s confidential, personalized,
+          and tailored for what we talked about — Legal & Licensing Lead. You’ll
+          find everything you need below:
         </p>
 
         <div className="border border-gray-700 rounded-xl p-6 bg-gray-950 space-y-4">
-          <h2 className="text-2xl font-semibold text-white">🧾 Offer Overview</h2>
+          <h2 className="text-2xl font-semibold text-white">
+            🧾 Offer Overview
+          </h2>
           <p className="text-gray-400">
-            Cealan Clifford — we’re offering you a defining role in MARTY as our <strong>Legal & Licensing Lead</strong>. Your responsibilities would include:
+            Cealan Clifford — we’re offering you a defining role in MARTY as our{" "}
+            <strong>Legal & Licensing Lead</strong>. Your responsibilities would
+            include:
           </p>
           <ul className="list-disc pl-5 text-gray-300 space-y-1">
             <li>Overseeing legal structuring & licensing agreements</li>
             <li>IP protection (US & international)</li>
-            <li>Strategic contracts for content, partnerships, and AI deployment</li>
+            <li>
+              Strategic contracts for content, partnerships, and AI deployment
+            </li>
           </ul>
         </div>
 
         <div className="border border-gray-700 rounded-xl p-6 bg-gray-950 space-y-4">
-          <h2 className="text-2xl font-semibold text-white">💸 Compensation & Equity</h2>
+          <h2 className="text-2xl font-semibold text-white">
+            💸 Compensation & Equity
+          </h2>
           <p className="text-gray-400">
-            We’re early — but your equity will be real. This is a founding team offer. We'll structure compensation flexibly depending on time commitment and revenue/grant stage. Expect:
+            We’re early — but your equity will be real. This is a founding team
+            offer. We'll structure compensation flexibly depending on time
+            commitment and revenue/grant stage. Expect:
           </p>
           <ul className="list-disc pl-5 text-gray-300 space-y-1">
             <li>Equity in the parent company</li>
@@ -39,9 +51,16 @@ export default function CealanPage() {
         </div>
 
         <div className="border border-gray-700 rounded-xl p-6 bg-gray-950 space-y-4">
-          <h2 className="text-2xl font-semibold text-white">🛠️ What’s Already Built</h2>
+          <h2 className="text-2xl font-semibold text-white">
+            🛠️ What’s Already Built
+          </h2>
           <ul className="list-disc pl-5 text-gray-300 space-y-1">
-            <li>Live microsite at <Link href="/" className="text-blue-400 underline">themartyapp.com</Link></li>
+            <li>
+              Live microsite at{" "}
+              <Link href="/" className="text-blue-400 underline">
+                themartyapp.com
+              </Link>
+            </li>
             <li>Proprietary AI architecture — MARTY ≠ therapy</li>
             <li>Pitch deck, 7-day user prototype, and merch line</li>
           </ul>
@@ -50,7 +69,9 @@ export default function CealanPage() {
         <div className="border border-gray-700 rounded-xl p-6 bg-gray-950 space-y-4">
           <h2 className="text-2xl font-semibold text-white">🚀 Why Now?</h2>
           <p className="text-gray-300">
-            This is a pivotal moment — we're building a platform for neurodivergent, therapy-resistant, and emotionally reactive users. We need your expertise to lock in:
+            This is a pivotal moment — we're building a platform for
+            neurodivergent, therapy-resistant, and emotionally reactive users.
+            We need your expertise to lock in:
           </p>
           <ul className="list-disc pl-5 text-gray-300 space-y-1">
             <li>Licensing protection across all core content</li>
@@ -69,5 +90,5 @@ export default function CealanPage() {
         </div>
       </section>
     </Layout>
-  )
+  );
 }

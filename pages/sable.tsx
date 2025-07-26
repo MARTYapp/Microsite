@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
+import { motion } from "framer-motion";
+import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function SablePage() {
   return (
@@ -48,25 +48,43 @@ export default function SablePage() {
           transition={{ delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-300"
         >
-          You’re officially cleared for launch. This is your custom onboarding hub — filled with tools, links, and your mission roadmap to help grow The MARTY App.
+          You’re officially cleared for launch. This is your custom onboarding
+          hub — filled with tools, links, and your mission roadmap to help grow
+          The MARTY App.
         </motion.p>
 
         {/* 🔗 Links Section */}
         <div className="grid gap-6 text-left">
           <SectionLink title="🌍 MARTY Microsite Overview" href="/" />
-          <SectionLink title="📄 Your Offer Letter + Role" href="/Assets/Sable_Offer.pdf" />
-          <SectionLink title="🎯 2025–2028 Roadmap ($2B by 2028)" href="/Assets/Marty_Roadmap.pdf" />
-          <SectionLink title="📈 Grant Strategy + Templates" href="/Assets/Grant_Strategy.pdf" />
-          <SectionLink title="📊 VC Deck Preview" href="/Assets/Marty_VC_Deck.pdf" />
-          <SectionLink title="📸 Arabella: Modeling & Roth IRA Notes" href="/Assets/Arabella_Section.pdf" />
+          <SectionLink
+            title="📄 Your Offer Letter + Role"
+            href="/Assets/Sable_Offer.pdf"
+          />
+          <SectionLink
+            title="🎯 2025–2028 Roadmap ($2B by 2028)"
+            href="/Assets/Marty_Roadmap.pdf"
+          />
+          <SectionLink
+            title="📈 Grant Strategy + Templates"
+            href="/Assets/Grant_Strategy.pdf"
+          />
+          <SectionLink
+            title="📊 VC Deck Preview"
+            href="/Assets/Marty_VC_Deck.pdf"
+          />
+          <SectionLink
+            title="📸 Arabella: Modeling & Roth IRA Notes"
+            href="/Assets/Arabella_Section.pdf"
+          />
         </div>
 
         <p className="text-xs text-gray-500 mt-10">
-          All materials © 2025 The MARTY App. This page is private and unlisted.
+          All materials © 2025 The MARTY App. This page is private and
+          unlisted.
         </p>
       </main>
     </div>
-  )
+  );
 }
 
 function SectionLink({ title, href }: { title: string; href: string }) {
@@ -76,5 +94,5 @@ function SectionLink({ title, href }: { title: string; href: string }) {
         {title}
       </a>
     </Link>
-  )
+  );
 }

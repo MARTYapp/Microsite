@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="w-full text-center text-gray-500 text-xs py-6">
-      &copy; {new Date().getFullYear()} The MARTY App. All rights reserved.{' '}
+      &copy; {new Date().getFullYear()} The MARTY App. All rights reserved.{" "}
       <a
         href="https://coff.ee/ericadler"
         target="_blank"
@@ -11,5 +11,5 @@ export default function Footer() {
         $END ME $
       </a>
     </footer>
-  )
+  );
 }

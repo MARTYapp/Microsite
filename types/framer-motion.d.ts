@@ -1,1 +1,1 @@
-declare module 'framer-motion';
+declare module "framer-motion";
