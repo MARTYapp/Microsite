@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
+import { Button } from '@/components/ui/Button'
 
 const taglines = [
   'Quiet tech for loud minds.',
@@ -22,29 +23,38 @@ export default function HeroScene() {
   }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 sm:px-6 lg:px-8">
-      {/* Animated Glowing Text */}
-      <motion.h1
-        initial={{ opacity: 0, y: 10 }}
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 text-center">
+      {/* Glow Overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-black/80 to-black" />
+
+      {/* Animated Taglines */}
+      <AnimatePresence mode="wait">
+        <motion.h1
+          key={taglines[currentTagline]}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className={clsx(
+            'z-10 text-3xl sm:text-5xl md:text-6xl font-bold text-purple-400',
+            'drop-shadow-[0_0_12px_rgba(168,85,247,0.9)] px-4'
+          )}
+        >
+          {taglines[currentTagline]}
+        </motion.h1>
+      </AnimatePresence>
+
+      {/* CTA Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className={clsx(
-          'text-center text-3xl sm:text-4xl md:text-5xl font-bold text-purple-400',
-          'drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] transition-all duration-700 ease-in-out'
-        )}
+        transition={{ delay: 1, duration: 0.7 }}
+        className="z-10 mt-12"
       >
-        {taglines[currentTagline]}
-      </motion.h1>
-
-      {/* Optional Glow Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-0" />
-
-      {/* Future CTA Anchor */}
-      <div className="absolute bottom-12 z-10">
-        <button className="rounded-xl border border-purple-500 bg-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-purple-700 hover:shadow-lg">
-          🧠 Talk to MARTY Now
-        </button>
-      </div>
+        <Button size="lg" icon="🧠">
+          Talk to MARTY Now
+        </Button>
+      </motion.div>
     </section>
   )
 }

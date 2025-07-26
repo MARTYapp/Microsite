@@ -1,18 +1,28 @@
-import { Button } from "@/components/ui/button"; // adjust if you're not using shadcn/ui
+"use client";
 
-export default function HeroCTA() {
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button"; // 🧠 MARTY custom button
+
+export default function FuelTheFounderCTA() {
   return (
-    <div className="flex justify-center mt-8">
-      <Button
-        className="text-white bg-indigo-600 hover:bg-indigo-700 shadow-lg rounded-xl px-6 py-3 text-lg tracking-tight transition duration-200 ease-in-out"
-        onClick={() =>
-          document
-            .getElementById("how-it-works")
-            ?.scrollIntoView({ behavior: "smooth" })
-        }
+    <div className="flex justify-center mt-10">
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        See How It Works
-      </Button>
+        <Button
+          size="lg"
+          className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-4 rounded-xl shadow-xl tracking-tight"
+          onClick={() =>
+            document
+              .getElementById("how-it-works")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          🔥 Fuel the Founder
+        </Button>
+      </motion.div>
     </div>
   );
 }

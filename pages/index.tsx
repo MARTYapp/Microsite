@@ -1,10 +1,10 @@
 import Head from "next/head"
 import { motion } from "framer-motion"
-
 import HeroScene from "@/components/ui/HeroScene"
 import PosterWall from "@/components/ui/PosterWall"
 import QuoteCarousel from "@/components/ui/QuoteCarousel"
 import FuelTheFounder from "@/components/ui/FuelTheFounder"
+import GrowthRoadmap from "@/components/GrowthRoadmap"
 import Footer from "@/components/ui/Footer"
 
 const sectionVariants = {
@@ -69,6 +69,16 @@ export default function Home() {
           viewport={{ once: true, amount: 0.6 }}
         >
           <FuelTheFounder />
+        </motion.section>
+
+        <motion.section
+          key="growth"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <GrowthRoadmap />
         </motion.section>
 
         <motion.section
