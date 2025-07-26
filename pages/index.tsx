@@ -1,10 +1,27 @@
+import Head from "next/head"
+import MartyHero from "@/components/MartyHero"
+import PosterWall from "@/components/PosterWall"
+import QuoteCarousel from "@/components/QuoteCarousel"
+import FuelTheFounder from "@/components/FuelTheFounder"
+import Footer from "@/components/Footer"
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      <h1 className="text-4xl font-bold">Welcome to The MARTY App</h1>
-      <p className="mt-4 text-xl">
-        Built for the avoiders, overthinkers, and night-crawlers.
-      </p>
-    </div>
-  );
+    <>
+      <Head>
+        <title>The MARTY App</title>
+        <meta
+          name="description"
+          content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers."
+        />
+      </Head>
+      <main>
+        <MartyHero />
+        <PosterWall />
+        <QuoteCarousel />
+        <FuelTheFounder />
+        <Footer />
+      </main>
+    </>
+  )
 }
