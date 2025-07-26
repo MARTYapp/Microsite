@@ -1,7 +1,11 @@
-export default function PressPage() {
+export default function Press() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black text-white">
-      <h1 className="text-4xl font-bold">Press & Media Kit</h1>
-    </main>
+    <div className="min-h-screen p-8">
+      <h1 className="text-4xl font-bold mb-4">Press</h1>
+      <p className="mb-4">
+        Coming soon: press releases, media kits, and podcast drops.
+      </p>
+      <p className="text-muted">To contact the team: press@themartyapp.com</p>
+    </div>
   );
 }

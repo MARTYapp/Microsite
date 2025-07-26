@@ -1,16 +1,15 @@
-// pages/dashboard.tsx
-
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight">
-        🔒 Dashboard Locked
-      </h1>
-      <p className="text-lg sm:text-xl max-w-xl text-gray-400">
-        This space is being built for your future reflections, entries, and
-        patterns. <br />
-        For now, just keep showing up. We’re working on the rest.
+    <div className="min-h-screen p-8">
+      <h1 className="text-4xl font-bold mb-4">Your Dashboard</h1>
+      <p className="mb-4">
+        Your daily rituals, reflection, and reminders — all in one place.
       </p>
-    </main>
+      <ul className="space-y-2">
+        <li>📓 Your Journal</li>
+        <li>📊 Emotional Pattern Tracker</li>
+        <li>🛠️ Skills Toolkit (DBT/EF)</li>
+      </ul>
+    </div>
   );
 }

@@ -1,7 +1,16 @@
-export default function Marty365Page() {
+export default function Marty365() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black text-white">
-      <h1 className="text-4xl font-bold">The MARTY Method – 365</h1>
-    </main>
+    <div className="min-h-screen p-8">
+      <h1 className="text-4xl font-bold mb-4">THE MARTY METHOD — 365</h1>
+      <p className="mb-4">
+        Structure without shame. 365 days of support that meets you where you’re
+        at.
+      </p>
+      <ul className="space-y-2">
+        <li>📅 Daily prompt + reflection</li>
+        <li>📈 Mood tracking + trends</li>
+        <li>🧭 Weekly goal recalibration</li>
+      </ul>
+    </div>
   );
 }
