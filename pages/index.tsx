@@ -4,7 +4,7 @@ import HeroScene from "@/components/ui/HeroScene"
 import PosterWall from "@/components/PosterWall"
 import QuoteCarousel from "@/components/QuoteCarousel"
 import FuelTheFounder from "@/components/FuelTheFounder"
-import Footer from "@/components/ui/Footer"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
