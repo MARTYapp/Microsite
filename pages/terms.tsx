@@ -1,11 +1,8 @@
 export default function Terms() {
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold">Terms of Use</h1>
-      <p className="mt-4">
-        These are the terms of using The MARTY App. By using this site, you
-        agree to be cool, ethical, and not a jerk.
-      </p>
+    <div className="min-h-screen p-10 text-white bg-black">
+      <h1 className="text-3xl font-bold mb-4">Terms of Use</h1>
+      <p>By accessing The MARTY App, you agree to these terms. MARTY is not a replacement for medical advice. We keep it real, not clinical.</p>
     </div>
-  );
+  )
 }
