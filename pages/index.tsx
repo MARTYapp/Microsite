@@ -1,9 +1,9 @@
 import Head from "next/head"
 import { motion } from "framer-motion"
 import HeroScene from "@/components/ui/HeroScene"
-import PosterWall from "@/components/ui/PosterWall"
-import QuoteCarousel from "@/components/ui/QuoteCarousel"
-import FuelTheFounder from "@/components/ui/FuelTheFounder"
+import PosterWall from "@/components/PosterWall"
+import QuoteCarousel from "@/components/QuoteCarousel"
+import FuelTheFounder from "@/components/FuelTheFounder"
 import Footer from "@/components/ui/Footer"
 
 export default function Home() {
