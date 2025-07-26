@@ -1,5 +1,5 @@
 import Head from "next/head"
-import MartyHero from "@/components/MartyHero"
+import HomeHero from "@/components/HomeHero"
 import PosterWall from "@/components/PosterWall"
 import QuoteCarousel from "@/components/QuoteCarousel"
 import FuelTheFounder from "@/components/FuelTheFounder"
@@ -16,7 +16,7 @@ export default function Home() {
         />
       </Head>
       <main>
-        <MartyHero />
+        <HomeHero />
         <PosterWall />
         <QuoteCarousel />
         <FuelTheFounder />
