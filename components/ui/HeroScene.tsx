@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/Button'
 
 const taglines = [
   'Quiet tech for loud minds.',
@@ -13,7 +13,6 @@ const taglines = [
 
 export default function HeroScene() {
   const [currentTagline, setCurrentTagline] = useState(0)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {

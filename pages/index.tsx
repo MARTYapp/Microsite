@@ -4,7 +4,7 @@ import HeroScene from '@/components/ui/HeroScene'
 import PosterWall from '@/components/ui/PosterWall'
 import QuoteCarousel from '@/components/ui/QuoteCarousel'
 import FuelTheFounder from '@/components/ui/FuelTheFounder'
-import GrowthRoadmap from '@/components/GrowthRoadmap'
+import GrowthRoadmap from '@/components/ui/GrowthRoadmap'
 import Footer from '@/components/ui/Footer'
 
 export default function Home() {

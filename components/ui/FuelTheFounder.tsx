@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button' // 🧠 MARTY custom button
+import { Button } from '@/components/ui/Button' // 🧠 MARTY custom button
 
 export default function FuelTheFounderCTA() {
   return (

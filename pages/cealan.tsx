@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import GrowthRoadmap from '@/components/GrowthRoadmap'
+import GrowthRoadmap from '@/components/ui/GrowthRoadmap'
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },

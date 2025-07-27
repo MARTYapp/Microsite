@@ -3,7 +3,7 @@ button'use client'
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/Button'
 
 const taglines = [
   'Quiet tech for loud minds.',
