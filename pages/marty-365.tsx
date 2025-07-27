@@ -12,5 +12,5 @@ export default function Marty365() {
         <li>🧭 Weekly goal recalibration</li>
       </ul>
     </div>
-  );
+  )
 }

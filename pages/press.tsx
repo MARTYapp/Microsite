@@ -7,5 +7,5 @@ export default function Press() {
       </p>
       <p className="text-muted">To contact the team: press@themartyapp.com</p>
     </div>
-  );
+  )
 }

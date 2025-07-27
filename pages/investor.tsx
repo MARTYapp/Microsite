@@ -1,3 +1,3 @@
 export default function InvestorPage() {
-  return <div>Investor Page Placeholder</div>;
+  return <div>Investor Page Placeholder</div>
 }

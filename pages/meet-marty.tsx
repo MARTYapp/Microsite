@@ -8,5 +8,5 @@ export default function MeetMarty() {
         therapy voice.
       </p>
     </div>
-  );
+  )
 }

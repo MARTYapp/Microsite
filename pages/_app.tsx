@@ -1,12 +1,12 @@
-import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ThemeProvider } from "next-themes";
+import type { AppProps } from 'next/app'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ThemeProvider } from 'next-themes'
 
-import { supabase } from "../lib/supabase"; // ✅ RELATIVE PATH
-import { useUser, UserProvider } from "../hooks/useUser";
+import { supabase } from '../lib/supabase' // ✅ RELATIVE PATH
+import { useUser, UserProvider } from '../hooks/useUser'
 
-import "../styles/globals.css";
+import '../styles/globals.css'
 
 function InnerApp({ Component, pageProps, router }: AppProps) {
   const { setUser } = useUser()
@@ -50,5 +50,5 @@ export default function MyApp(props: AppProps) {
     <UserProvider>
       <InnerApp {...props} />
     </UserProvider>
-  );
+  )
 }

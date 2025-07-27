@@ -1,11 +1,11 @@
-import Head from "next/head"
-import { motion } from "framer-motion"
-import HeroScene from "@/components/ui/HeroScene"
-import PosterWall from "@/components/ui/PosterWall"
-import QuoteCarousel from "@/components/ui/QuoteCarousel"
-import FuelTheFounder from "@/components/ui/FuelTheFounder"
-import GrowthRoadmap from "@/components/GrowthRoadmap"
-import Footer from "@/components/ui/Footer"
+import Head from 'next/head'
+import { motion } from 'framer-motion'
+import HeroScene from '@/components/ui/HeroScene'
+import PosterWall from '@/components/ui/PosterWall'
+import QuoteCarousel from '@/components/ui/QuoteCarousel'
+import FuelTheFounder from '@/components/ui/FuelTheFounder'
+import GrowthRoadmap from '@/components/GrowthRoadmap'
+import Footer from '@/components/ui/Footer'
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -14,7 +14,7 @@ const sectionVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   },
 }

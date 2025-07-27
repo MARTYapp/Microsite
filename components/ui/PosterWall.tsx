@@ -20,6 +20,6 @@ export default function PosterWall() {
           </div>
         </div>
       </section>
-    );
+    )
   }
   

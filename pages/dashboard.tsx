@@ -11,5 +11,5 @@ export default function Dashboard() {
         <li>🛠️ Skills Toolkit (DBT/EF)</li>
       </ul>
     </div>
-  );
+  )
 }

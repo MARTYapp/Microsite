@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { products } from "@/data/products"; // assumes product data lives here
+import Link from 'next/link'
+import { products } from '@/data/products' // assumes product data lives here
 
 export default function Store() {
   return (
@@ -34,5 +34,5 @@ export default function Store() {
         ))}
       </div>
     </div>
-  );
+  )
 }

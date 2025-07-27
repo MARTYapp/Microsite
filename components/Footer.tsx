@@ -13,5 +13,5 @@ export default function Footer() {
         $END ME $
       </a>
     </footer>
-  );
+  )
 }

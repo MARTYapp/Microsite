@@ -1,24 +1,18 @@
-import { useEffect } from "react";
-import { supabase } from "@/lib/supabase"; // assumes client is set up
+'use client'
 
-export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+import { useContext } from 'react'
+import { User } from '@supabase/supabase-js'
+import { UserContext } from '@/context/UserContext'
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) setUser(session.user);
-    });
+interface UserContextType {
+  user: User | null
+  setUser: React.Dispatch<React.SetStateAction<User | null>>
+}
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => listener.subscription.unsubscribe();
-  }, []);
-
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
+export const useUser = (): UserContextType => {
+  const context = useContext(UserContext)
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
+  return context
+}

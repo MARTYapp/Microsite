@@ -7,5 +7,5 @@ export default function Privacy() {
         everything stays between you and MARTY.
       </p>
     </div>
-  );
+  )
 }

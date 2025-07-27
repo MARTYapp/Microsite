@@ -24,5 +24,5 @@ export default function Terms() {
         For legal inquiries or data requests, contact: legal@themartyapp.com
       </p>
     </div>
-  );
+  )
 }

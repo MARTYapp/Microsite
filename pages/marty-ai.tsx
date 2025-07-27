@@ -15,5 +15,5 @@ export default function MartyAI() {
         <li>🪞 Backward Review Journaling</li>
       </ul>
     </div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import Head from "next/head"
-import { motion } from "framer-motion"
-import GrowthRoadmap from "@/components/GrowthRoadmap"
+import Head from 'next/head'
+import { motion } from 'framer-motion'
+import GrowthRoadmap from '@/components/GrowthRoadmap'
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: 'easeOut' },
   },
 }
 

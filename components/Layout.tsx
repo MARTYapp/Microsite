@@ -1,11 +1,11 @@
-import Head from "next/head"
-import { AnimatePresence, motion } from "framer-motion"
-import Link from "next/link"
-import CTABanner from "@/components/ui/CTABanner"
+import Head from 'next/head'
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import CTABanner from '@/components/ui/CTABanner'
 
 export default function Layout({
   children,
-  title = "The MARTY App",
+  title = 'The MARTY App',
 }: {
   children: React.ReactNode
   title?: string

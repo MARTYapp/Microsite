@@ -4,16 +4,16 @@ import { motion } from 'framer-motion'
 
 const quotes = [
   {
-    text: "MARTY feels like a real one. Not a shrink. Just someone who actually gets it.",
-    author: "— 27yo grad student, NYC"
+    text: 'MARTY feels like a real one. Not a shrink. Just someone who actually gets it.',
+    author: '— 27yo grad student, NYC'
   },
   {
-    text: "I’ve never stuck with journaling. Until now. This one actually talks back.",
-    author: "— Freelance designer, Chicago"
+    text: 'I’ve never stuck with journaling. Until now. This one actually talks back.',
+    author: '— Freelance designer, Chicago'
   },
   {
-    text: "It’s like having an older brother who studied DBT and knows my chaos.",
-    author: "— Tech lead, Berlin"
+    text: 'It’s like having an older brother who studied DBT and knows my chaos.',
+    author: '— Tech lead, Berlin'
   },
 ]
 
