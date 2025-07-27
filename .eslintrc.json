@@ -1,7 +1,9 @@
 {
-  "semi": false,
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "printWidth": 100,
-  "tabWidth": 2
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "no-unused-vars": ["warn"],
+    "react/react-in-jsx-scope": "off"
+  }
 }

@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf .next && rm -rf node_modules && rm -f package-lock.json",
-    "analyze": "NODE_OPTIONS='--inspect' next build",
+    "analyze": "NODE_OPTIONS='--inspect' next build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
