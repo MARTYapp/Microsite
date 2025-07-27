@@ -11,7 +11,6 @@
     "check-types": "tsc --noEmit",
     "clean": "rm -rf .next && rm -rf node_modules && rm -f package-lock.json",
     "analyze": "NODE_OPTIONS='--inspect' next build",
-    "postinstall": "npm run lint && npm run format && git init && git add . && git commit -m 'init(marty): first clean structure'"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
