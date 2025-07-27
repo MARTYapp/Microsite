@@ -5,3 +5,19 @@
 @tailwind utilities;
 
 /* No ripple keyframes or animation here anymore */
+body {
+    transition: background-color 0.6s ease;
+  }
+  
+  .bg-hero {
+    background-image: url('/hero-room.jpg'); /* Replace with actual asset path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000; /* Fallback */
+  }
+  
+  .bg-monotone {
+    background-color: #0e0e0e; /* Clean matte black-charcoal */
+    background-image: none;
+  }
