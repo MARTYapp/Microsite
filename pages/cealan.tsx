@@ -11,7 +11,7 @@ const sectionVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.42, 0, 0.58, 1], // Fixed Framer Motion format
+      ease: "easeInOut", // Fixed Framer Motion format
     },
   },
 }
