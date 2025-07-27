@@ -1,7 +1,7 @@
 'use client'
 
 import Head from 'next/head'
-import MartyHoodie from '@/components/ui/MartyHoodie'
+import MartyHoodie from '@/components/ui/MartyHoodie' // ✅ Fixed path
 
 export default function HoodiePage() {
   return (
