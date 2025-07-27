@@ -94,18 +94,23 @@ h1 {
   font-size: clamp(3rem, 8vw, 7rem);
   color: #b792ff;
   text-shadow: 0 0 24px #b792ff40;
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: translateY(-4px);
 }
 
 .subheading {
   margin-top: 20px;
   font-size: 1.25rem;
-  color: #aaa;
+  color: #ccc;
   max-width: 90%;
 }
 
 .cta {
   margin-top: 50px;
-  padding: 14px 32px;
+  padding: 16px 40px;
   font-size: 1rem;
   color: #fff;
   background: rgba(183, 146, 255, 0.1);
@@ -116,7 +121,7 @@ h1 {
   backdrop-filter: blur(4px);
 }
 .cta:hover {
-  background: #b792ff;
+  background: #c18fff;
   color: #000;
   box-shadow: 0 0 12px #b792ff88;
 }

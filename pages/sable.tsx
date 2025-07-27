@@ -52,6 +52,71 @@ export default function Sable() {
         >
           <GrowthRoadmap />
         </motion.section>
+
+        <motion.section
+          className="mt-12"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <h2 className="text-2xl font-bold mb-4">📂 Key Docs & Resources</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a
+              href="/docs/Sable_Offer_Letter.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">Offer Letter</h3>
+              <p className="text-gray-400 text-sm">Your official onboarding document</p>
+            </a>
+            <a
+              href="/docs/Social_Media_Calendar.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">3-Week Social Calendar</h3>
+              <p className="text-gray-400 text-sm">Pre-filled rollout plan + ideas</p>
+            </a>
+            <a
+              href="/docs/Analytics_Dashboard_Access.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">Analytics Access</h3>
+              <p className="text-gray-400 text-sm">Track growth, conversions & reach</p>
+            </a>
+            <a
+              href="/docs/PostLaunch_Media_Blast.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">Post-Launch Media Blast</h3>
+              <p className="text-gray-400 text-sm">Copy + instructions to amplify the drop</p>
+            </a>
+            <a
+              href="/docs/Community_Engagement_Protocol.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">Community Engagement Protocol</h3>
+              <p className="text-gray-400 text-sm">How we interact, respond & build trust</p>
+            </a>
+            <a
+              href="/docs/Company_Valuation_Roadmap.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 border border-gray-800 rounded hover:bg-gray-900 transition"
+            >
+              <h3 className="font-semibold text-white mb-1">$2B by 2028 Valuation Roadmap</h3>
+              <p className="text-gray-400 text-sm">How you grow — and how we scale</p>
+            </a>
+          </div>
+        </motion.section>
       </main>
     </>
   )

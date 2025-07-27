@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { products } from "@/data/products"; // assumes product data lives here
+
 export default function Store() {
   return (
     <div className="min-h-screen p-8 bg-black text-white">
@@ -12,17 +15,24 @@ export default function Store() {
         <br />
         Picked with purpose. No fluff. All function.
       </p>
-      <ul className="space-y-6 text-left text-lg">
-        <li>
-          <strong>🧥 Beige/Navy Crewneck:</strong> Cozy, collegiate, zero cringe. Built for journaling marathons and late-night overthinking.
-        </li>
-        <li>
-          <strong>🧥 Navy/Gold Crewneck:</strong> Masculine, premium, bold. For the big-feelings crew who still want to look sharp.
-        </li>
-        <li>
-          <strong>🖼️ “Change. Acceptance. Inhale. Exhale.” Poster:</strong> Minimalist. Merch-ready. DBT-coded. Your wall’s new anchor.
-        </li>
-      </ul>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => (
+          <Link
+            key={product.slug}
+            href={`/product/${product.slug}`}
+            className="block group border border-gray-800 hover:border-white p-6 rounded-md transition-colors"
+          >
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-64 object-contain mb-4 transition-transform group-hover:scale-105"
+            />
+            <h2 className="text-xl font-semibold">{product.name}</h2>
+            <p className="text-gray-400 text-sm mt-1">{product.description}</p>
+            <p className="text-white font-bold mt-2">{product.price}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

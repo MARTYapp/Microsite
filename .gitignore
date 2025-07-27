@@ -136,7 +136,6 @@ dist
 .pnp.*
 .DS_Store
 .vercel
-.DS_Store
 
 # Local Netlify folder
 .netlify
