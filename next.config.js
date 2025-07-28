@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export', // required for `npx next export`
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    unoptimized: true, // required for static export if using <Image>
+    unoptimized: true, // required if using <Image> with static export
+  },
+  experimental: {
+    // Optional: if you’re using App Router (Next.js 13+)
+    appDir: true,
   },
 }
 
