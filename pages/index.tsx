@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and the perfectionist avoiders™ alike." />
+        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
