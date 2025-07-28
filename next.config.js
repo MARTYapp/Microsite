@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
-  // output: 'export', ← DO NOT ENABLE THIS WITH MIDDLEWARE
+  swcMinify: true,
+  images: {
+    unoptimized: true, // required for static export if using <Image>
+  },
 }
 
 module.exports = nextConfig
