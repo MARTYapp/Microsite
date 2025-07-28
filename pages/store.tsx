@@ -7,7 +7,7 @@ type Product = {
   id: string
   name: string
   price: string
-  slug: string
+  slug: string //
 }
 
 const products: Product[] = [
