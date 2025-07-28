@@ -1,3 +1,4 @@
+// HomeScene.tsx
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
@@ -8,7 +9,7 @@ const taglines = [
   'Built for the avoiders, the overthinkers, and the night-crawlers.',
 ]
 
-export default function HeroScene() {
+export default function HomeScene() {
   const [mode, setMode] = useState<'stim' | 'calm'>('calm')
   const [currentTagline, setCurrentTagline] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
