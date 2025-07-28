@@ -1,59 +1,42 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button' // ✅ FIXED: capital B
 
 const taglines = [
   'Quiet tech for loud minds.',
   'Built for the avoiders, the overthinkers, and the night-crawlers.',
-  'Designed for the executive dysfunction fam™.',
 ]
 
 export default function HeroScene() {
   const [currentTagline, setCurrentTagline] = useState(0)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTagline((prev) => (prev + 1) % taglines.length)
-    }, 5000)
+    }, 4000)
     return () => clearInterval(interval)
   }, [])
 
+  const handleHover = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play()
+    }
+  }
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 text-center">
-      {/* Glow Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-black/80 to-black" />
-
-      {/* Animated Taglines */}
-      <AnimatePresence mode="wait">
-        <motion.h1
-          key={taglines[currentTagline]}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className={clsx(
-            'z-10 text-3xl sm:text-5xl md:text-6xl font-bold text-purple-400',
-            'drop-shadow-[0_0_12px_rgba(168,85,247,0.9)] px-4'
-          )}
-        >
-          {taglines[currentTagline]}
-        </motion.h1>
-      </AnimatePresence>
-
-      {/* CTA Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.7 }}
-        className="z-10 mt-12"
-      >
-        <Button size="lg" icon="🧠">
-          Talk to MARTY Now
+    <section className="relative flex min-h-screen items-center justify-center px-4 text-center">
+      <div className="z-10">
+        <h1 className="text-4xl font-bold text-white">{taglines[currentTagline]}</h1>
+        <Button size="lg" className="mt-6">
+          🧠 Talk to MARTY Now
         </Button>
-      </motion.div>
+      </div>
     </section>
   )
 }
