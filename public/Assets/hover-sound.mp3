@@ -1,1 +1,0 @@
-<audio ref={audioRef} src="/Assets/hover-sound.mp3" preload="auto" />
