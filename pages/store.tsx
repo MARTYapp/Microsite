@@ -1,38 +1,100 @@
-import Link from 'next/link'
-import { products } from '@/data/products' // assumes product data lives here
+'use client'
 
-export default function Store() {
+import Head from 'next/head'
+import Link from 'next/link'
+
+const products: {
+  id: string
+  name: string
+  price: string
+  slug: string
+}[] = [
+  {
+    id: '1',
+    name: 'Navy + Gold Crewneck',
+    price: '$60',
+    slug: 'navy-gold-crewneck',
+  },
+  {
+    id: '2',
+    name: 'Beige + Navy Crewneck',
+    price: '$60',
+    slug: 'beige-navy-crewneck',
+  },
+  {
+    id: '3',
+    name: '“Change. Inhale…” Quote Poster',
+    price: '$28',
+    slug: 'quote-poster',
+  },
+  {
+    id: '4',
+    name: '4-Count Breathing Spiral Poster',
+    price: '$28',
+    slug: 'breathwork-spiral-poster',
+  },
+  {
+    id: '5',
+    name: '“Overthinker” Dad Cap',
+    price: '$32',
+    slug: 'overthinker-dad-cap',
+  },
+  {
+    id: '6',
+    name: '“What Just Happened?” Pocket Journal',
+    price: '$24',
+    slug: 'pocket-journal',
+  },
+  {
+    id: '7',
+    name: '“Mirror Talk” Decal Set',
+    price: '$18',
+    slug: 'mirror-decal-set',
+  },
+  {
+    id: '8',
+    name: 'MARTY Desk Mat / Mood Pad',
+    price: '$45',
+    slug: 'marty-desk-mat',
+  },
+  {
+    id: '9',
+    name: '“Built for the Avoiders” Mug',
+    price: '$22',
+    slug: 'avoidance-mug',
+  },
+  {
+    id: '10',
+    name: 'MARTY Daypack Tote',
+    price: '$38',
+    slug: 'marty-tote',
+  },
+]
+
+export default function StorePage() {
   return (
-    <div className="min-h-screen p-8 bg-black text-white">
-      <h1 className="text-5xl font-extrabold mb-6 tracking-tight">
-        WHAT MARTY’S INTO
-      </h1>
-      <p className="text-xl mb-2 leading-snug">
-        WEAR IT. <br /> READ IT. <br /> USE IT.
-      </p>
-      <p className="mb-10 text-lg text-gray-300 max-w-2xl">
-        Real tools, real style, real talk.
-        <br />
-        Picked with purpose. No fluff. All function.
-      </p>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => (
-          <Link
-            key={product.slug}
-            href={`/product/${product.slug}`}
-            className="block group border border-gray-800 hover:border-white p-6 rounded-md transition-colors"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-64 object-contain mb-4 transition-transform group-hover:scale-105"
-            />
-            <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-gray-400 text-sm mt-1">{product.description}</p>
-            <p className="text-white font-bold mt-2">{product.price}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <>
+      <Head>
+        <title>MARTY Store</title>
+        <meta name="description" content="Wear it. Read it. Use it. Real tools, real style, real talk." />
+      </Head>
+
+      <main className="bg-black text-white min-h-screen px-6 py-12 sm:px-12 md:px-24">
+        <h1 className="text-4xl font-bold mb-10 text-center">MARTY STORE</h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {products.map((product) => (
+            <Link
+              key={product.slug}
+              href={`/product/${product.slug}`}
+              className="block group border border-gray-800 hover:border-white p-6 rounded-md transition-colors"
+            >
+              <h2 className="text-xl font-semibold group-hover:underline">{product.name}</h2>
+              <p className="text-gray-400 mt-2">{product.price}</p>
+            </Link>
+          ))}
+        </div>
+      </main>
+    </>
   )
 }
