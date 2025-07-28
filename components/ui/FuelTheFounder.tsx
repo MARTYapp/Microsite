@@ -1,18 +1,23 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button' // ✅ FIXED: capital B
+import Link from 'next/link'
 
-export default function FuelTheFounderCTA() {
+export default function FuelTheFounder() {
   return (
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className="inline-block"
-    >
-      <Button size="lg" className="mt-6">
+    <section className="py-20 px-4 bg-gradient-to-b from-black via-zinc-900 to-black text-center text-white">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+        Believe in the builder?
+      </h2>
+      <p className="mb-6 text-white/80 max-w-md mx-auto">
+        Every dollar helps keep the vision alive. Fund the founder — no fluff.
+      </p>
+      <Link
+        href="https://coff.ee/ericadler"
+        target="_blank"
+        className="inline-block bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-full transition-all duration-300 shimmer-m"
+      >
         💸 Fund the Founder 💸
-      </Button>
-    </motion.div>
+      </Link>
+    </section>
   )
 }
