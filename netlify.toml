@@ -4,3 +4,12 @@
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
+
+[build.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://lsmvrymnpqzofebwbkeq.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_Kn1qH0KGcL2yp8unDgh00w_7ncvDSnM"
+
+[[redirects]]
+  from = "/404"
+  to = "/"
+  status = 200

@@ -32,6 +32,15 @@ export default function Layout({
         <Link href="/privacy" className="underline hover:text-white">
           Privacy
         </Link>
+        {' • '}
+        <Link
+          href="https://coff.ee/ericadler"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white"
+        >
+          💸Fund the Founder 💸
+        </Link>
       </footer>
     </>
   )

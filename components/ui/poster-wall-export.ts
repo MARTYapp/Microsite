@@ -1,0 +1,1 @@
+export { default as PosterWall } from './poster-wall-export';

@@ -94,7 +94,6 @@ dist/
 build/
 .netlify
 .vercel
-deploy-trigger.txt
 
 # Framework-specific
 .nuxt

@@ -22,7 +22,7 @@ export default function SablePage() {
     <>
       <Head>
         <title>Welcome, Sable</title>
-        <meta name="description" content="Onboarding for Sable Adler — Social & Grants" />
+        <meta name="description" content="Sable Adler's private onboarding hub for The MARTY App — includes grants strategy, social templates, analytics tools, and launch protocol." />
       </Head>
 
       <main className="bg-black text-white min-h-screen px-6 py-12 sm:px-12 md:px-24">

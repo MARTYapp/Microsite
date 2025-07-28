@@ -1,15 +1,15 @@
-// HomeScene.tsx
+// HeroScene.tsx
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { insertMood, getCurrentUser } from '@/lib/supabase'
 
 const taglines = [
   'Quiet tech for loud minds.',
   'Built for the avoiders, the overthinkers, and the night-crawlers.',
+  'Not your therapist. Not your dad. Just MARTY.',
 ]
 
-export default function HomeScene() {
+export default function HeroScene() {
   const [mode, setMode] = useState<'stim' | 'calm'>('calm')
   const [currentTagline, setCurrentTagline] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -39,7 +39,7 @@ export default function HomeScene() {
       </div>
 
       <div className="absolute bottom-4 right-4 text-xs text-gray-400">
-        💸 <a href="/donate" className="underline">Fund the Founder</a>
+        💸 <a href="https://coff.ee/ericadler" className="underline">Fund the Founder</a>
       </div>
     </section>
   )

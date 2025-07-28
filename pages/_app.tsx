@@ -6,23 +6,33 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const body = document.body
+      const root = document.documentElement
       if (scrollY > 80) {
-        body.classList.add('bg-monotone')
-        body.classList.remove('bg-hero')
+        root.classList.add('bg-monotone')
+        root.classList.remove('bg-hero')
       } else {
-        body.classList.add('bg-hero')
-        body.classList.remove('bg-monotone')
+        root.classList.add('bg-hero')
+        root.classList.remove('bg-monotone')
       }
     }
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll)
+      let ticking = false
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll()
+            ticking = false
+          })
+          ticking = true
+        }
+      }
+      window.addEventListener('scroll', onScroll)
       handleScroll() // trigger on mount
-    }
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
+      return () => {
+        window.removeEventListener('scroll', onScroll)
+      }
     }
   }, [])
 

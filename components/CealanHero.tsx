@@ -9,15 +9,14 @@ export default function CealanHero() {
       transition={{ duration: 0.7, ease: 'easeOut' }}
     >
       <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-        COCO, MEET MARTY
+        Yo Coco — come meet MARTY.
       </h1>
       <p className="text-lg sm:text-xl max-w-xl mb-6 text-gray-300">
-        Not my dad. Not your dad. A digital dad.
-        <br />
-        This is your private portal into what we’re building — and why we need your mind.
+        My dad was Marty. You met him, true. <br />
+        This one’s Marty — but built for you.
       </p>
       <p className="text-sm text-gray-500 italic">
-        Legal. Licensing. Legacy.
+        Your private portal is live. Legal. Licensing. Legacy. You in?
       </p>
     </motion.section>
   )

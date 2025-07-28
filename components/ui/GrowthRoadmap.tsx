@@ -6,37 +6,37 @@ const growthPhases = [
   {
     title: '📍 DAY 1–30: Ground Zero → Traction',
     points: [
-      '✅ Live prototype + microsite launched',
-      '✅ Merch & affiliate streams activated',
-      '✅ Cealan & Sable onboarded (Founding Team)',
-      '✅ Initial grants + investor outreach initiated',
+      '✅ Live, animated microsite + functional prototype launched to public acclaim',
+      '✅ E-commerce stack deployed with merch, affiliate links, and Stripe integration',
+      '✅ Cealan Clifford (Legal & Licensing Lead) and Sable Adler (Social/Grants Lead) fully onboarded',
+      '✅ Initial $50–100K in grants + angel investor discovery pipeline initiated with branded decks',
     ],
   },
   {
     title: '🧠 MONTH 2–4: Deepen the Stack',
     points: [
-      '🔁 Pattern Recognizer v1 deployed',
-      '📓 Journal, DBT, and EF tools embedded',
-      '🎥 Persona cinematic series live',
-      '📈 2,000+ returning users by Thanksgiving',
+      '🔁 AI-powered Pattern Recognizer v1 launched for mood + thought tracking with reflection prompts',
+      '📓 Fully embedded DBT, journaling, and executive function modules — live, styled, and sharable',
+      '🎥 Release of 3-part cinematic user story series (Coco, Robert, Dad) capturing MARTY’s real-life impact',
+      '📈 Community activation + 2,000+ returning users milestone hit by Thanksgiving (via content + organic reach)',
     ],
   },
   {
     title: '⚙️ MONTH 4–6: Monetize & Scale',
     points: [
-      '🏥 Licensing pitch to IOP/Medicaid partners',
-      '📡 AI27 API tier + white-label B2B model',
-      '🛠️ MARTY Method Planner + Quote Poster live',
-      '💰 3–5 new revenue streams activated',
+      '🏥 Licensing deck + IOP / Medicaid pitch initiative sent to 10+ clinical institutions for review',
+      '📡 AI27 B2B tier built — white-labeled version of MARTY’s engine for orgs, therapists, and peer support apps',
+      '🛠️ Launch of MARTY Method Planner (daily journal + cue cards) and first drop of premium quote posters',
+      '💰 Activation of 3–5 new revenue levers: licensing, group coaching, affiliate bundles, B2B subscriptions',
     ],
   },
   {
     title: '🚀 YEAR 1–2: Institutional Lift-Off',
     points: [
-      '🏛️ School + public health system partnerships',
-      '🔒 HIPAA-grade therapist dashboards live',
-      '🌍 Global neurodivergent expansion campaign',
-      '📊 Revenue + valuation milestones validated',
+      '🏛️ School districts, universities, and public health systems onboarded for long-term licensing trials',
+      '🔒 Launch of HIPAA-compliant therapist dashboards with client insights, journaling visibility, and usage trends',
+      '🌍 Global expansion campaign into Canada, UK, Australia — focused on neurodivergent + men’s wellness orgs',
+      '📊 Verified $2M+ in revenue and independent $40M–$75M valuation with sustained B2B + D2C traction',
     ],
   },
 ]

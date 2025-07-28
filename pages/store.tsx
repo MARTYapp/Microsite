@@ -71,6 +71,24 @@ const products: Product[] = [
     price: '$38',
     slug: 'marty-tote',
   },
+  {
+    id: '11',
+    name: 'MARTY Freemium Plan',
+    price: '$0',
+    slug: 'freemium-plan',
+  },
+  {
+    id: '12',
+    name: 'MARTY Pro Plan (Monthly)',
+    price: '$9/month',
+    slug: 'pro-monthly',
+  },
+  {
+    id: '13',
+    name: 'MARTY Pro Plan (Annual)',
+    price: '$99/year',
+    slug: 'pro-annual',
+  },
 ]
 
 export default function StorePage() {

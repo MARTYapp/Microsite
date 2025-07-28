@@ -6,9 +6,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const taglines = [
-  'Quiet tech for loud minds.',
-  'Built for the avoiders, the overthinkers, and the night-crawlers.',
-  'Not your therapist. Not your dad. Just MARTY.',
+  "Quiet tech for loud minds.",
+  "Built for the avoiders, the overthinkers, and the night-crawlers.",
+  "Not your therapist. Not your dad. Just MARTY.",
 ]
 
 export default function HeroScene() {
@@ -56,7 +56,7 @@ export default function HeroScene() {
             animate={{ opacity: fade ? 1 : 0, y: 0, filter: 'blur(0px)' }}
             exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-300 drop-shadow-lg max-w-2xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg max-w-2xl"
           >
             {taglines[current]}
           </motion.h1>
@@ -68,7 +68,7 @@ export default function HeroScene() {
 
         <Link href="#demo" className="mt-8">
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 0 12px #a855f7' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 12px #ffffff' }}
             whileTap={{ scale: 0.95 }}
             className="cta px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 transition-all text-white font-semibold text-sm shadow-lg"
           >
@@ -81,7 +81,7 @@ export default function HeroScene() {
       <div className="absolute top-1/2 left-[6%] -translate-y-1/2 z-10">
         <Image
           src="/assets/quote-poster.png"
-          alt="Quote Poster"
+          alt="Change. Inhale. Acceptance. Exhale. Poster"
           width={200}
           height={300}
           className="opacity-80 hover:opacity-100 hover:scale-105 transition duration-300"
@@ -91,7 +91,7 @@ export default function HeroScene() {
       <div className="absolute top-1/2 right-[6%] -translate-y-1/2 z-10">
         <Image
           src="/assets/dbt-visualizer.png"
-          alt="DBT Visualizer"
+          alt="Breathing Spiral / DBT Grid"
           width={200}
           height={300}
           className="opacity-80 hover:opacity-100 hover:scale-105 transition duration-300"
@@ -101,7 +101,7 @@ export default function HeroScene() {
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
         <Image
           src="/assets/marty-hoodie.png"
-          alt="MARTY Crewneck"
+          alt="MARTY Crewneck (beige/navy or navy/gold)"
           width={240}
           height={280}
           className="animate-pulse hover:scale-105 transition duration-300 cursor-pointer"

@@ -9,16 +9,14 @@ export default function SableHero() {
       transition={{ duration: 0.7, ease: 'easeOut' }}
     >
       <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
-        Hey Sable, welcome to your HQ 🧠
+        Welcome to HQ, Sable 🧠
       </h1>
       <p className="text-lg sm:text-xl max-w-xl mb-6 text-gray-300">
-        You’re officially the Social & Grants Lead of The MARTY App —
-        a tech brand built for avoiders, perfectionists, and night-crawlers.
-        <br />
-        This is your private onboarding zone.
+        You’re now officially leading Social + Grant Ops at The MARTY App —<br />
+        a next-gen mental wellness platform built for avoiders, perfectionists, and night-crawlers.
       </p>
       <p className="text-sm text-gray-500 italic">
-        Media. Grants. Growth. Let’s build it right.
+        Strategy. Growth. Funding. Let’s make it undeniable.
       </p>
     </motion.section>
   )

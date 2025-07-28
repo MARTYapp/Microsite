@@ -12,19 +12,18 @@ export default function SableOffer() {
           <strong>• Role:</strong> Social & Grant Ops Lead
         </p>
         <p>
-          <strong>• Status:</strong> Core Team – Co-founder Track
+          <strong>• Status:</strong> Core Team — Co-founder Track
         </p>
         <p>
-          <strong>• Focus:</strong> Content & community growth, grant pipeline,
-          and social execution
+          <strong>• Focus:</strong> You’re running point on content + community growth, grant pipelines, and social media firepower.
         </p>
         <p>
-          <strong>• Growth:</strong> Build your own team as we scale
+          <strong>• Growth:</strong> Build your own dream team as we scale. You’ve got the vision — now you’ve got the title.
         </p>
       </div>
 
       <p className="mt-6 text-sm italic text-gray-400">
-        (We already talked about the grant role — this just makes it official.)
+        We already talked through the grant side — this just makes it official.
       </p>
 
       {/* Download PDF */}
@@ -38,7 +37,7 @@ export default function SableOffer() {
 
       {/* Optional acceptance */}
       <Link
-        href="mailto:ericadlerbiz@gmail.com?subject=I'm%20In%20—%20Sable%20Adler&body=Hey%20Eric%2C%20I'm%20confirming%20I%27m%20in%20for%20the%20Social%20%26%20Grant%20Ops%20Lead%20role.%20Let%27s%20go."
+        href="mailto:ericadlerbiz@gmail.com?subject=I'm%20In%20—%20Sable%20Adler&body=Hey%20Eric%2C%20I%27m%20confirming%20I%27m%20in%20for%20the%20Social%20%26%20Grant%20Ops%20Lead%20role.%20Let%27s%20go."
         className="inline-block mt-4 ml-4 bg-white text-black px-6 py-3 rounded-xl text-sm font-semibold shadow-md transition hover:bg-gray-100"
       >
         ✅ Accept Offer

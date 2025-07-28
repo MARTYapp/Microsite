@@ -32,7 +32,7 @@ export default function JournalEntry() {
         onChange={(e) => setText(e.target.value)}
         rows={6}
         placeholder="What’s on your mind?"
-        className="w-full rounded-xl bg-white/10 p-4 text-white border border-white/20 backdrop-blur placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+        className="w-full rounded-xl bg-neutral-900 font-mono animate-pulse p-4 text-white border border-neutral-700 backdrop-blur placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
       />
       <button
         onClick={handleSave}

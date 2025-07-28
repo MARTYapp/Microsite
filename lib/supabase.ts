@@ -42,3 +42,15 @@ export const getCurrentUser = async () => {
   if (error) throw new Error(`Failed to get user: ${error.message}`)
   return data.user
 }
+
+// 📚 Fetch all journal entries for a user
+export const getUserJournals = async (user_id: string) => {
+  const { data, error } = await supabase
+    .from('journal_entries')
+    .select('*')
+    .eq('user_id', user_id)
+    .order('created_at', { ascending: false })
+
+  if (error) throw new Error(`Failed to fetch journal entries: ${error.message}`)
+  return data
+}

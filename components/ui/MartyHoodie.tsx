@@ -1,9 +1,9 @@
 'use client'
 
 import Head from 'next/head'
-import MartyHoodie from '@/components/ui/MartyHoodie' // ✅ Fixed path
+import MartyHoodie from '@/components/ui/MartyHoodie'
 
-export default function HoodiePage() {
+export default function MartyCrewneckPage() {
   return (
     <>
       <Head>
