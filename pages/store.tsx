@@ -3,12 +3,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-const products: {
+type Product = {
   id: string
   name: string
   price: string
   slug: string
-}[] = [
+}
+
+const products: Product[] = [
   {
     id: '1',
     name: 'Navy + Gold Crewneck',
