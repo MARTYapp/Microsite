@@ -14,7 +14,7 @@ export default function FuelTheFounder() {
       <Link
         href="https://coff.ee/ericadler"
         target="_blank"
-        className="inline-block bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-full transition-all duration-300 shimmer-m"
+        className="inline-block bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-full transition-all duration-300 pulse"
       >
         💸 Fund the Founder 💸
       </Link>
