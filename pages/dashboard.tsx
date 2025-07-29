@@ -8,7 +8,7 @@ export default function Dashboard() {
       <ul className="space-y-4 text-base leading-relaxed">
         <li>📓 <strong>Journal Entries:</strong> Speak your mind or type it out — judgment-free.</li>
         <li>📊 <strong>Pattern Recognizer:</strong> See what your emotions are really saying.</li>
-        <li>🛠️ <strong>Skills Toolkit:</strong> DBT and executive function tools when you need 'em.</li>
+        <li>🛠️ <strong>Skills Toolkit:</strong> DBT and executive function tools when you need &rsquo;em.</li>
       </ul>
     </div>
   )
