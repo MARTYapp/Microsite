@@ -1,46 +1,74 @@
-// ✅ Eliot’s WWDC-Ready Polish Layer — START HERE
+'use client'
 
-// ✅ Layout Foundation: /pages/index.tsx
 import Head from 'next/head'
-import HeroScene from '@/components/ui/HeroScene'
-import PosterWall from '@/components/ui/poster-wall-export'
-import QuoteCarousel from '@/components/ui/QuoteCarousel'
-import FuelTheFounder from '@/components/ui/FuelTheFounder'
+import Image from 'next/image'
+import CTAButton from '@/components/CTAButton'
 import Footer from '@/components/ui/Footer'
+import FuelTheFounder from '@/components/ui/FuelTheFounder'
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta
-          name="description"
-          content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and the night-crawlers."
-        />
-        <link rel="preload" as="video" href="/media/mb.mp4" type="video/mp4" />
+        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
       </Head>
-      <main className="min-h-screen bg-black text-white font-space antialiased">
-        <HeroScene />
-        <section className="w-full py-16 text-center border-y border-white/10">
-          <h2 className="text-3xl font-bold mb-4">🎬 Upcoming: MARTY in Motion</h2>
-          <p className="text-gray-400 mb-2">Cinematic short films coming soon — meet Robert, Coco, and the Tech Bro.</p>
-          <p className="text-xs text-gray-600">Watch this space. We’re not done yet.</p>
+
+      <main className="relative w-full h-screen overflow-hidden bg-black text-white">
+        {/* 🔁 Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
+        >
+          <source src="/videos/mb.mp4" type="video/mp4" />
+        </video>
+
+        {/* 🔆 Glow overlay */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-10" />
+
+        {/* 👁️‍🗨️ Hero Content */}
+        <section className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
+
+          {/* 🧥 MARTY Crewneck */}
+          <Image
+            src="/images/crewneck-beige-navy.png"
+            alt="MARTY Crewneck"
+            width={240}
+            height={240}
+            className="mb-6 rounded-md shadow-xl"
+          />
+
+          {/* 🖼️ Quote Poster */}
+          <div className="mb-4 text-xl font-semibold tracking-wide leading-tight">
+            “Change. Inhale. Acceptance. Exhale.”
+          </div>
+
+          {/* 🧠 CTA Button */}
+          <div className="mt-2 mb-6">
+            <CTAButton />
+          </div>
+
+          {/* 🌀 Breathing Spiral Poster (static for now) */}
+          <Image
+            src="/images/breath-spiral.png"
+            alt="4-Count Breathing Spiral"
+            width={200}
+            height={200}
+            className="my-4"
+          />
+
+          {/* 💸 Fund the Founder */}
+          <div className="mt-4">
+            <FuelTheFounder />
+          </div>
+
         </section>
-        <PosterWall />
-        <QuoteCarousel />
-        <FuelTheFounder />
-        <div className="text-center py-8">
-          <a
-            href="https://coff.ee/ericadler"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-white text-black font-semibold rounded-full shadow-md hover:bg-gray-200 transition"
-          >
-            💸 Fund the Founder 💸
-          </a>
-        </div>
-        <Footer />
       </main>
+
+      <Footer />
     </>
   )
 }
