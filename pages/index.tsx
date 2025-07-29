@@ -11,7 +11,10 @@ export default function Home() {
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
+        <meta
+          name="description"
+          content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers."
+        />
       </Head>
 
       <div
@@ -22,13 +25,18 @@ export default function Home() {
           <div className="mb-4 text-xl font-semibold tracking-wide leading-tight">
             “Change. Inhale. Acceptance. Exhale.”
           </div>
+
           <Image
             src="/images/crewneck-beige-navy.png"
             alt="MARTY Crewneck"
             width={240}
             height={240}
             className="mb-6 rounded-md shadow-xl"
+            placeholder="blur"
+            blurDataURL="/images/blur-placeholder.png"
+            priority
           />
+
           <Image
             src="/images/breath-spiral.png"
             alt="4-Count Breathing Spiral"
@@ -36,9 +44,11 @@ export default function Home() {
             height={200}
             className="my-4"
           />
+
           <div className="mt-2 mb-6">
             <CTAButton />
           </div>
+
           <div className="mt-4">
             <FuelTheFounder />
           </div>

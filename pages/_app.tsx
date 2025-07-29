@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }
       }
       window.addEventListener('scroll', onScroll)
-      handleScroll() // trigger on mount
+      handleScroll()
 
       return () => {
         window.removeEventListener('scroll', onScroll)
