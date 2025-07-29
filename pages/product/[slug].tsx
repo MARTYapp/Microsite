@@ -32,12 +32,12 @@ export default function ProductPage() {
         <p className="text-lg max-w-xl mx-auto mb-8">
           This is a placeholder page for the <strong>{productName}</strong>. Product details and checkout integration coming soon.
         </p>
-        <a
-          href="/store"
-          className="inline-block px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
-        >
-          ← Back to Store
-        </a>
+        import Link from 'next/link'
+        <Link href="/store">
+          <a className="inline-block px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">
+            ← Back to Store
+          </a>
+        </Link>
       </main>
 
       <Footer />

@@ -3,7 +3,7 @@ export default function CealanOnboarding() {
     <div className="text-white text-center py-16 px-6 max-w-3xl mx-auto">
       <h1 className="text-4xl font-bold mb-6">Hey Cealan — welcome home.</h1>
       <p className="text-lg mb-8 text-white/80">
-        This is your private onboarding page. It’s just for you, and it's loaded with everything you need to dive in as Legal & Licensing Lead for The MARTY App.
+        This is your private onboarding page. It’s just for you, and it&rsquo;s loaded with everything you need to dive in as Legal & Licensing Lead for The MARTY App.
       </p>
       <div className="space-y-6 text-left text-white/90">
         <div>
