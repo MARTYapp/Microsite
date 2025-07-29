@@ -1,120 +1,121 @@
 'use client'
 
 import Head from 'next/head'
-import Link from 'next/link'
+import Image from 'next/image'
+import Footer from '@/components/ui/Footer'
 
-type Product = {
-  id: string
-  name: string
-  price: string
-  slug: string //
-}
-
-const products: Product[] = [
+const merch = [
   {
-    id: '1',
-    name: 'Navy + Gold Crewneck',
-    price: '$60',
-    slug: 'navy-gold-crewneck',
+    title: 'Beige/Navy Crewneck',
+    price: '$54',
+    img: '/images/crewneck-beige-navy.png',
+    href: '/products/crewneck-beige-navy',
   },
   {
-    id: '2',
-    name: 'Beige + Navy Crewneck',
-    price: '$60',
-    slug: 'beige-navy-crewneck',
+    title: 'Navy/Gold Crewneck',
+    price: '$54',
+    img: '/images/crewneck-navy-gold.png',
+    href: '/products/crewneck-navy-gold',
   },
   {
-    id: '3',
-    name: '“Change. Inhale…” Quote Poster',
-    price: '$28',
-    slug: 'quote-poster',
-  },
-  {
-    id: '4',
-    name: '4-Count Breathing Spiral Poster',
-    price: '$28',
-    slug: 'breathwork-spiral-poster',
-  },
-  {
-    id: '5',
-    name: '“Overthinker” Dad Cap',
-    price: '$32',
-    slug: 'overthinker-dad-cap',
-  },
-  {
-    id: '6',
-    name: '“What Just Happened?” Pocket Journal',
-    price: '$24',
-    slug: 'pocket-journal',
-  },
-  {
-    id: '7',
-    name: '“Mirror Talk” Decal Set',
-    price: '$18',
-    slug: 'mirror-decal-set',
-  },
-  {
-    id: '8',
-    name: 'MARTY Desk Mat / Mood Pad',
-    price: '$45',
-    slug: 'marty-desk-mat',
-  },
-  {
-    id: '9',
-    name: '“Built for the Avoiders” Mug',
+    title: '"Change. Inhale..." Poster',
     price: '$22',
-    slug: 'avoidance-mug',
+    img: '/images/poster-quote.png',
+    href: '/products/poster-quote',
   },
   {
-    id: '10',
-    name: 'MARTY Daypack Tote',
-    price: '$38',
-    slug: 'marty-tote',
+    title: 'Breathing Spiral Poster',
+    price: '$22',
+    img: '/images/poster-spiral.png',
+    href: '/products/poster-spiral',
   },
   {
-    id: '11',
-    name: 'MARTY Freemium Plan',
-    price: '$0',
-    slug: 'freemium-plan',
+    title: '"Overthinker" Dad Cap',
+    price: '$32',
+    img: '/images/hat-overthinker.png',
+    href: '/products/hat-overthinker',
   },
   {
-    id: '12',
-    name: 'MARTY Pro Plan (Monthly)',
-    price: '$9/month',
-    slug: 'pro-monthly',
+    title: '“What Just Happened?” Pocket Journal',
+    price: '$18',
+    img: '/images/journal-pocket.png',
+    href: '/products/journal-pocket',
   },
   {
-    id: '13',
-    name: 'MARTY Pro Plan (Annual)',
-    price: '$99/year',
-    slug: 'pro-annual',
+    title: 'Mirror Talk Decal Set',
+    price: '$14',
+    img: '/images/decals-mirror-talk.png',
+    href: '/products/decals-mirror-talk',
+  },
+  {
+    title: 'MARTY Mood Pad / Desk Mat',
+    price: '$28',
+    img: '/images/mat-deskpad.png',
+    href: '/products/mat-deskpad',
+  },
+  {
+    title: '"Built for the Avoiders" Mug',
+    price: '$18',
+    img: '/images/mug-avoiders.png',
+    href: '/products/mug-avoiders',
+  },
+  {
+    title: 'MARTY Daypack Tote',
+    price: '$36',
+    img: '/images/tote-daypack.png',
+    href: '/products/tote-daypack',
   },
 ]
 
-export default function StorePage() {
+export default function Store() {
   return (
     <>
       <Head>
         <title>MARTY Store</title>
-        <meta name="description" content="Wear it. Read it. Use it. Real tools, real style, real talk." />
+        <meta name="description" content="Shop official MARTY gear and tools." />
       </Head>
 
-      <main className="bg-black text-white min-h-screen px-6 py-12 sm:px-12 md:px-24">
-        <h1 className="text-4xl font-bold mb-10 text-center">MARTY STORE</h1>
+      <main className="bg-black text-white px-6 pb-16">
+        {/* 🛍️ Store Header */}
+        <section className="max-w-4xl mx-auto text-center py-14">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
+            WHAT MARTY’S INTO
+          </h1>
+          <p className="mt-4 text-lg leading-snug">
+            WEAR IT. <br />
+            READ IT. <br />
+            USE IT. <br />
+            <br />
+            Real tools, real style, real talk. <br />
+            Picked with purpose. No fluff. All function.
+          </p>
+        </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <Link
-              key={product.slug}
-              href={`/product/${product.slug}`}
-              className="block group border border-gray-800 hover:border-white p-6 rounded-md transition-colors"
-            >
-              <h2 className="text-xl font-semibold group-hover:underline">{product.name}</h2>
-              <p className="text-gray-400 mt-2">{product.price}</p>
-            </Link>
+        {/* 🧒 Product Grid */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {merch.map(({ title, price, img, href }) => (
+            <div key={title} className="bg-neutral-900 p-4 rounded-xl shadow-md hover:shadow-xl transition">
+              <Image
+                src={img}
+                alt={title}
+                width={500}
+                height={500}
+                className="rounded-md object-cover w-full h-64"
+              />
+              <h2 className="mt-4 text-xl font-semibold">{title}</h2>
+              <p className="text-sm text-gray-400">{price}</p>
+              <a
+                href={href}
+                className="inline-block mt-3 px-4 py-2 bg-white text-black rounded-full font-medium hover:bg-gray-200 transition"
+              >
+                View
+              </a>
+            </div>
           ))}
-        </div>
+        </section>
       </main>
+
+      <Footer />
     </>
   )
 }
