@@ -13,7 +13,7 @@ export default function Privacy() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-2">🧠 How We Use It</h2>
       <p className="mb-4">
-        Data powers features like the Pattern Recognizer and your personalized journaling prompts. It's used solely to improve your experience within the app.
+        Data powers features like the Pattern Recognizer and your personalized journaling prompts. It&rsquo;s used solely to improve your experience within the app.
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-2">🛡️ Data Security</h2>
@@ -28,7 +28,7 @@ export default function Privacy() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-2">📬 Questions or Concerns?</h2>
       <p className="mb-4">
-        You can always reach out at <a href="mailto:privacy@themartyapp.com" className="text-amber-400 underline">privacy@themartyapp.com</a>. We're here to keep things human, honest, and secure.
+        You can always reach out at <a href="mailto:privacy@themartyapp.com" className="text-amber-400 underline">privacy@themartyapp.com</a>. We&rsquo;re here to keep things human, honest, and secure.
       </p>
     </div>
   )

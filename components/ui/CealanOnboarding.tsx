@@ -20,6 +20,7 @@ export default function CealanOnboarding() {
             <li><a href="/legal/licensing-models.pdf" className="underline text-purple-300 hover:text-purple-100">Licensing Models Overview</a></li>
             <li><a href="/legal/medicaid-research.pdf" className="underline text-purple-300 hover:text-purple-100">Medicaid Eligibility Research</a></li>
             <li><a href="/legal/grant-compliance-matrix.pdf" className="underline text-purple-300 hover:text-purple-100">Grant Compliance Matrix</a></li>
+            <li><a href="/legal/legal-faq.pdf" className="underline text-purple-300 hover:text-purple-100">Legal FAQ</a></li>
           </ul>
         </div>
         <div>

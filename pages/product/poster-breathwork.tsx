@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function PosterBreathwork() {
   return (
@@ -19,7 +20,7 @@ export default function PosterBreathwork() {
         DBT-coded. Lo-fi. Perfect for any wall that needs a little breath and a little backbone.
       </p>
       <div className="mt-6">
-        <a href="/store" className="text-blue-400 hover:underline">← Back to all merch</a>
+        <Link href="/store" className="text-blue-400 hover:underline">← Back to all merch</Link>
       </div>
     </div>
   )

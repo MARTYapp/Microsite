@@ -30,15 +30,12 @@ export default function HeroScene() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#0e0e11] text-white">
-      {/* Background shimmer / animated layer */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-[#0e0e11] to-black/80 backdrop-blur-sm" />
 
-      {/* Logo */}
       <div className="absolute top-6 left-6 text-sm text-white/70 tracking-widest z-20">
         THE MARTY APP
       </div>
 
-      {/* Donation shimmer */}
       <Link
         href="https://coff.ee/ericadler"
         className="absolute top-6 right-6 text-amber-400 hover:text-amber-300 font-semibold text-xs tracking-wider shimmer-m z-20"
@@ -47,7 +44,6 @@ export default function HeroScene() {
         $END ME $
       </Link>
 
-      {/* Tagline container */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         <AnimatePresence mode="wait">
           <motion.h1
@@ -77,7 +73,6 @@ export default function HeroScene() {
         </Link>
       </div>
 
-      {/* Merch Posters */}
       <div className="absolute top-1/2 left-[6%] -translate-y-1/2 z-10">
         <Image
           src="/assets/quote-poster.png"

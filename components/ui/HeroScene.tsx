@@ -1,7 +1,7 @@
 // HeroScene.tsx
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const taglines = [
   'Quiet tech for loud minds.',
@@ -12,7 +12,6 @@ const taglines = [
 export default function HeroScene() {
   const [mode, setMode] = useState<'stim' | 'calm'>('calm')
   const [currentTagline, setCurrentTagline] = useState(0)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,7 +21,11 @@ export default function HeroScene() {
   }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-4 text-center text-white">
+    <section className="relative flex min-h-screen items-center justify-center px-4 text-center text-white bg-[#0e0e11]">
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-[#0e0e11] to-black/80 backdrop-blur-sm" />
+      <div className="absolute top-6 left-6 text-sm text-white/70 tracking-widest z-20">
+        THE MARTY APP
+      </div>
       <div className="max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-glow">
           The MARTY App
@@ -34,11 +37,11 @@ export default function HeroScene() {
           className="rounded-xl border border-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-all duration-200 glow-on-hover"
           onClick={() => setMode(mode === 'stim' ? 'calm' : 'stim')}
         >
-          {mode === 'stim' ? 'Switch to Calm Mode' : 'Switch to Stim Mode'}
+          {mode === 'stim' ? '🌙 Calm Mode' : '⚡ Stim Mode'}
         </button>
       </div>
 
-      <div className="absolute bottom-4 right-4 text-xs text-gray-400">
+      <div className="absolute bottom-4 right-4 text-xs text-gray-500">
         💸 <a href="https://coff.ee/ericadler" className="underline">Fund the Founder</a>
       </div>
     </section>
