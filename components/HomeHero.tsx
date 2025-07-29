@@ -6,9 +6,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const taglines = [
-  "Quiet tech for loud minds.",
-  "Built for the avoiders, the overthinkers, and the night-crawlers.",
-  "Not your therapist. Not your dad. Just MARTY.",
+  'Quiet tech for loud minds.',
+  'Built for the avoiders, the overthinkers, and the night-crawlers.',
+  'Not your therapist. Not your dad. Just MARTY.',
 ]
 
 export default function HeroScene() {

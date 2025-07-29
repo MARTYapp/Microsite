@@ -39,6 +39,9 @@ export default function CealanOnboarding() {
           </p>
         </div>
       </div>
+      <div className="mt-12 text-center text-white/60 text-sm italic">
+        It&rsquo;s not just a job, it&rsquo;s Cealan&rsquo;s mission.
+      </div>
     </div>
   )
 }
