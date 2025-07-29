@@ -1,27 +1,49 @@
 /* globals.css */
-/* Keep this file for general global styles only */
+/* ✅ Eliot-Polished Global Styles */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* No ripple keyframes or animation here anymore */
-body {
-    transition: background-color 0.6s ease;
-  }
-  
-  .bg-hero {
-    background-image: url('/hero-room.jpg'); /* Replace with actual asset path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #000; /* Fallback */
-  }
-  
-  .bg-monotone {
-    background-color: #0e0e0e; /* Clean matte black-charcoal */
-    background-image: none;
-  }
+/* -------------------- */
+/* 🎨 Base Typography & Reset */
+html {
+  font-family: 'Space Grotesk', sans-serif;
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  background-color: #0e0e11;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* -------------------- */
+/* 🎥 Background Styles */
+.bg-hero {
+  background-image: url('/hero-room.jpg'); /* ✅ Replace w/ final asset */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000; /* Fallback */
+  z-index: 0;
+}
+
+.bg-monotone {
+  background-color: #0e0e0e;
+  background-image: none;
+}
+
+/* -------------------- */
+/* ✨ Utility Glow */
 .glow-on-hover:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
