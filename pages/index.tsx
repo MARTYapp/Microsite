@@ -16,7 +16,7 @@ export default function Home() {
 
       <div
         className="relative bg-cover bg-center bg-no-repeat h-screen w-full"
-        style={{ backgroundImage: "url('/images/landing-hero.png')" }}
+        style={{ backgroundImage: 'url('/images/landing-hero.png')' }}
       >
         <section className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white px-6">
           <div className="mb-4 text-xl font-semibold tracking-wide leading-tight">
