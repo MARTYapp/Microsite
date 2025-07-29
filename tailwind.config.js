@@ -1,20 +1,11 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './styles/**/*.css',
-    './app/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Space Grotesk"', 'sans-serif'],
-      },
-    },
+    extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 }
