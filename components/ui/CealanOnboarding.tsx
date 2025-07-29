@@ -1,15 +1,15 @@
 export default function CealanOnboarding() {
   return (
     <div className="text-white text-center py-16 px-6 max-w-3xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6">Hey Cealan — welcome home.</h1>
+      <h1 className="text-4xl font-bold mb-6">Hey Cealan – welcome home.</h1>
       <p className="text-lg mb-8 text-white/80">
-        This is your private onboarding page. It’s just for you, and it&rsquo;s loaded with everything you need to dive in as Legal & Licensing Lead for The MARTY App.
+        This is your private onboarding page. It’s just for you, and it’s loaded with everything you need to dive in as Legal & Licensing Lead for The MARTY App.
       </p>
       <div className="space-y-6 text-left text-white/90">
         <div>
           <h2 className="text-2xl font-semibold mb-2">🔒 Your Role</h2>
           <p>
-            Legal & Licensing Lead — you’ll shape the frameworks that let MARTY grow: IP, grants, partnerships, and long-term compliance.
+            Legal & Licensing Lead – you’ll shape the frameworks that let MARTY grow: IP, grants, partnerships, and long-term compliance.
           </p>
         </div>
         <div>
@@ -40,7 +40,7 @@ export default function CealanOnboarding() {
         </div>
       </div>
       <div className="mt-12 text-center text-white/60 text-sm italic">
-        It&rsquo;s not just a job, it&rsquo;s Cealan&rsquo;s mission.
+        It’s not just a job, it’s your mission, Cealan.
       </div>
     </div>
   )
