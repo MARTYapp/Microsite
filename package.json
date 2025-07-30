@@ -20,16 +20,17 @@
     "framer-motion": "^12.23.6",
     "next": "^15.4.4",
     "next-themes": "^0.4.6",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@types/react": "19.1.8",
-    "autoprefixer": "^10.4.16",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.9",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.4.4",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.5"
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
   }
 }
