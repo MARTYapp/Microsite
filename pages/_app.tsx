@@ -36,5 +36,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <div className="transition-colors duration-500 ease-in-out">
+      <Component {...pageProps} />
+    </div>
+  )
 }
