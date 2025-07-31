@@ -32,10 +32,10 @@ export default function CealanPage() {
           animate="visible"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Welcome, Cealan.
+            You met the inspiration — now meet the legacy.
           </h1>
           <p className="text-lg text-gray-400 mb-10 max-w-2xl">
-            You’re stepping into the role of Legal & Licensing Lead for The MARTY App — a role with weight, vision, and room to build. This space is your launchpad.
+            This role isn’t just open — it was designed with you in mind. Legal. Licensing. Protection. Expansion. You already know what to do.
           </p>
           <CealanOnboarding />
         </motion.section>

@@ -6,7 +6,7 @@ export const products = [
     description:
       'Beige with navy + orange varsity lettering. Warm, grounded, and built for overstim days. Cozy, collegiate, zero cringe.',
     image: '/assets/crewneck-beige.png',
-    link: 'https://yourprintify-or-affiliate-link.com/beige-crewneck',
+    link: 'https://printify.com/product/beige-crewneck-id',
     price: '$54',
     category: 'apparel',
   },
@@ -17,7 +17,7 @@ export const products = [
     description:
       'Navy with gold collegiate font. Clean, confident, neuro-spiritual energy. Masculine. Premium. Built for the big-feelings crew who still want to look sharp.',
     image: '/assets/crewneck-navy.png',
-    link: 'https://yourprintify-or-affiliate-link.com/navy-crewneck',
+    link: 'https://printify.com/product/navy-crewneck-id',
     price: '$54',
     category: 'apparel',
   },
@@ -28,7 +28,7 @@ export const products = [
     description:
       '24x36 matte poster. Daily mantra meets masculine recovery visual. Subtle. Sharp. DBT-coded. Lo-fi. Perfect for any wall that needs a little breath and a little backbone.',
     image: '/assets/poster-change-acceptance.png',
-    link: 'https://yourprintify-or-affiliate-link.com/change-acceptance-poster',
+    link: 'https://printify.com/product/change-acceptance-poster-id',
     price: '$18',
     category: 'poster',
   },

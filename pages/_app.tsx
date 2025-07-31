@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import '../styles/globals.css'
+import { UserProvider } from '@/context/UserContext'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -37,8 +38,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <div className="transition-colors duration-500 ease-in-out">
-      <Component {...pageProps} />
-    </div>
+    <UserProvider>
+      <div className="transition-colors duration-500 ease-in-out">
+        <Component {...pageProps} />
+      </div>
+    </UserProvider>
   )
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import { createClient } from '@supabase/supabase-js'
 
 // ✅ Trim trailing slashes from the URL
@@ -15,25 +17,31 @@ if (!supabaseUrl?.startsWith('https://') || !supabaseAnonKey) {
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // 🧠 Store mode toggle (stim/calm)
-export const insertMood = async (mode: 'stim' | 'calm', user_id?: string) => {
+export const insertMood = async (mode: 'stim' | 'calm', user_id?: string): Promise<boolean> => {
   const { error } = await supabase.from('mood_preferences').insert([
     {
       mode,
       user_id: user_id || null,
     },
   ])
-  if (error) throw new Error(`Failed to insert mood: ${error.message}`)
+  if (error) {
+    throw new Error(`Failed to insert mood: ${error.message}`)
+  }
+  return true
 }
 
 // 📝 Store journal entry
-export const insertJournal = async (entry: string, user_id?: string) => {
+export const insertJournal = async (entry: string, user_id?: string): Promise<boolean> => {
   const { error } = await supabase.from('journal_entries').insert([
     {
       entry,
       user_id: user_id || null,
     },
   ])
-  if (error) throw new Error(`Failed to insert journal: ${error.message}`)
+  if (error) {
+    throw new Error(`Failed to insert journal: ${error.message}`)
+  }
+  return true
 }
 
 // (Optional) ✉️ Get current user if using Supabase Auth
@@ -44,7 +52,7 @@ export const getCurrentUser = async () => {
 }
 
 // 📚 Fetch all journal entries for a user
-export const getUserJournals = async (user_id: string) => {
+export const getUserJournals = async (user_id: string): Promise<any[]> => {
   const { data, error } = await supabase
     .from('journal_entries')
     .select('*')
