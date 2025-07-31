@@ -3,8 +3,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    serverActions: true,
+    serverActions: {},
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
