@@ -14,6 +14,10 @@ type ClassValue =
  *
  * @param inputs - An array of class values to be concatenated.
  * @returns A space-separated string of class names.
+ *
+ * @category Utilities
+ * @example
+ * cn('foo', { bar: true, baz: false }) // 'foo bar'
  */
 export function cn(...inputs: ClassValue[]): string {
   const result: string[] = []
@@ -32,8 +36,6 @@ export function cn(...inputs: ClassValue[]): string {
       for (const [key, enabled] of Object.entries(val)) {
         if (enabled) result.push(key)
       }
-    } else {
-      console.warn('Unsupported value type passed to cn:', val)
     }
   }
 

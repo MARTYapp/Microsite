@@ -4,19 +4,19 @@ import Link from 'next/link'
 
 export default function FuelTheFounder() {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black via-zinc-900 to-black text-center text-white">
-      <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-        Real ones fund the vision.
+    <section className="py-20 px-4 bg-gradient-to-b from-black via-zinc-900 to-black text-center text-white backdrop-blur-sm">
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-amber-400 drop-shadow-md">
+        Fund the Founder.
       </h2>
-      <p className="mb-6 text-white/80 max-w-md mx-auto">
-        No VC yet. No fluff ever. Every dollar fuels the mission. 
+      <p className="mb-8 text-white/70 max-w-lg mx-auto text-base md:text-lg">
+        No investors. No noise. Just one founder building something real
       </p>
       <Link
         href="https://coff.ee/ericadler"
         target="_blank"
-        className="inline-block bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-full transition-all duration-300 hover:border-b-2 hover:border-[#FF6B6B] shimmer-m"
+        className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
       >
-        💸 Support the Build 💸
+        💸 Back the Build 💸
       </Link>
     </section>
   )

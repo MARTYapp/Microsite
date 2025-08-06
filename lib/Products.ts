@@ -43,4 +43,15 @@ export const products = [
     price: '$18',
     category: 'poster',
   },
+  {
+    slug: 'lube-radical-acceptance',
+    id: 'lube-radical',
+    name: '💧 Radical Acceptance Lube',
+    description:
+      '4oz bottle. Slick, scent-free, and emotionally safe. Inspired by DBT and built for full-contact intimacy with yourself or another. Consent-forward. Friction-free. A nod to pleasure with presence.',
+    image: '/assets/lube-radical-acceptance.png',
+    link: 'https://printify.com/products/lube-radical-acceptance-id777',
+    price: '$28',
+    category: 'intimacy',
+  },
 ] as const;

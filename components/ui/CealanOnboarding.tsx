@@ -3,8 +3,8 @@ export default function CealanOnboarding() {
     <div className="text-white text-center py-16 px-6 max-w-3xl mx-auto">
       <h1 className="text-4xl font-bold mb-6">Hey Cealan — welcome home.</h1>
       <p className="text-lg mb-8 text-white/80">
-        You met the inspiration. Now meet his digital legacy — embodied. This isn’t just an app. It’s MARTY.
-        And this role? It’s yours if you want it.
+        You’ve been the North Star, the reference point. Now meet MARTY — your ripple effect in product form.
+        This isn’t therapy. It’s something new. And this role? It’s yours if you’re ready to build the future with us.
       </p>
 
       <div className="space-y-6 text-left text-white/90">
