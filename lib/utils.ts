@@ -7,7 +7,14 @@ type ClassValue =
   | { [key: string]: boolean | undefined }
   | ClassValue[]
 
-// ✅ Eliot-approved, type-safe, non-recursive flattening
+/**
+ * Concatenates class names from various input types into a single string.
+ * Supports strings, numbers, arrays, and objects with boolean values.
+ * Ignores null, false, and undefined values.
+ *
+ * @param inputs - An array of class values to be concatenated.
+ * @returns A space-separated string of class names.
+ */
 export function cn(...inputs: ClassValue[]): string {
   const result: string[] = []
   const stack = [...inputs]
@@ -25,6 +32,8 @@ export function cn(...inputs: ClassValue[]): string {
       for (const [key, enabled] of Object.entries(val)) {
         if (enabled) result.push(key)
       }
+    } else {
+      console.warn('Unsupported value type passed to cn:', val)
     }
   }
 

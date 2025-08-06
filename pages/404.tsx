@@ -18,7 +18,7 @@ export default function NotFound() {
         animate={{ scale: 1 }}
         transition={{ delay: 0.2, duration: 0.45, ease: 'easeInOut' }}
       >
-        404
+        MARTY NOT FOUND
       </motion.h1>
       <motion.p
         className="mt-4 text-2xl text-gray-300"
@@ -34,7 +34,7 @@ export default function NotFound() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.45, ease: 'easeInOut' }}
       >
-        Even avoiders find their way back.
+        Avoiders. Overthinkers. Wanderers. You’re still in the right place.
       </motion.p>
       <motion.div
         className="mt-6"

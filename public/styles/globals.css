@@ -29,7 +29,7 @@ body {
 /* -------------------- */
 /* 🎥 Background Styles */
 .bg-hero {
-  background-image: url('/hero-room.jpg'); /* ✅ Replace w/ final asset */
+  background-image: url('/assets/bg/hero-room-final.jpg'); /* Final asset */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -46,4 +46,17 @@ body {
 /* ✨ Utility Glow */
 .glow-on-hover:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.pulse-faint {
+  animation: pulseFaint 2.4s infinite ease-in-out;
+}
+
+@keyframes pulseFaint {
+  0%, 100% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.15;
+  }
 }

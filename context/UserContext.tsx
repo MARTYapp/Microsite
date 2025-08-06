@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import { User } from '@supabase/supabase-js'
 
 export type UserContextType = {
@@ -10,13 +10,11 @@ export type UserContextType = {
 
 export const UserContext = createContext<UserContextType | null>(null)
 
-// Optional provider setup for later:
-// import { useState } from 'react'
-// export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-//   const [user, setUser] = useState<User | null>(null)
-//   return (
-//     <UserContext.Provider value={{ user, setUser }}>
-//       {children}
-//     </UserContext.Provider>
-//   )
-// }
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null)
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  )
+}

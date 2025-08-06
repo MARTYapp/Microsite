@@ -21,4 +21,4 @@ steps.forEach(({ label, cmd }) => {
   }
 })
 
-console.log('🎉 All checks passed. You’re clear to commit + deploy.\n')
+console.log('✅ Preflight Complete — Lock and load. You’re cleared to launch, Commander.\n')

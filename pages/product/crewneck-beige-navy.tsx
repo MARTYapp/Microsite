@@ -20,6 +20,14 @@ export default function CrewneckBeigeNavy() {
         <p className="text-xl text-gray-300 max-w-2xl">
           Cozy, collegiate, zero cringe. Built for journaling marathons and late-night overthinking.
         </p>
+        <a
+          href="https://printify.com/products/crewneck-beige-navy-id123"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-6 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
+        >
+          Buy Now — $54
+        </a>
         <div className="absolute bottom-6 right-6 text-gray-800 opacity-10 text-9xl animate-pulse select-none pointer-events-none">
           M
         </div>

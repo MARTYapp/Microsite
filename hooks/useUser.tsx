@@ -1,13 +1,7 @@
 'use client'
 
 import { useContext } from 'react'
-import { User } from '@supabase/supabase-js'
-import { UserContext } from '@/context/UserContext'
-
-interface UserContextType {
-  user: User | null
-  setUser: React.Dispatch<React.SetStateAction<User | null>>
-}
+import { UserContext, UserContextType } from '@/context/UserContext'
 
 export const useUser = (): UserContextType => {
   const context = useContext(UserContext)

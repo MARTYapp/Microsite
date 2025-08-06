@@ -19,6 +19,14 @@ export default function PosterBreathwork() {
       <p className="text-lg text-gray-300 max-w-2xl">
         DBT-coded. Lo-fi. Perfect for any wall that needs a little breath and a little backbone.
       </p>
+      <a
+        href="https://printify.com/products/poster-change-acceptance-id789"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-6 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
+      >
+        Buy Now — $18
+      </a>
       <div className="mt-6">
         <Link href="/store" className="text-blue-400 hover:underline">← Back to all merch</Link>
       </div>

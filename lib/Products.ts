@@ -1,3 +1,14 @@
+export interface Product {
+  readonly slug: string;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly image: string;
+  readonly link: string;
+  readonly price: string;
+  readonly category: string;
+}
+
 export const products = [
   {
     slug: 'crewneck-beige-navy',
@@ -32,4 +43,4 @@ export const products = [
     price: '$18',
     category: 'poster',
   },
-]
+] as const;

@@ -1,7 +1,3 @@
-export * from './button'
-// export * from './footer'
-// export * from './poster-wall'
-// export * from './quote-carousel'
-// export * from './hero-scene'
-// export * from './fuel-the-founder'
-// export * from './sable-onboarding'
+export * from './button';
+export * from './card';
+export * from './input';

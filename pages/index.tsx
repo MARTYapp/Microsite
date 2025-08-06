@@ -26,6 +26,9 @@ export default function Home() {
             “Change. Inhale. Acceptance. Exhale.”
           </div>
 
+          <p className="text-white/80 text-sm sm:text-base mt-2">
+            Designed for the Quiet Ones™, the executive dysfunction fam™, and the perfectionist overthinkers™ alike.
+          </p>
           <Image
             src="/images/crewneck-beige-navy.png"
             alt="MARTY Crewneck"

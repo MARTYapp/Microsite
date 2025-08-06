@@ -55,7 +55,8 @@ const scanDir = (dir) => {
 
 console.log('🔍 Validating imports...\n')
 
-const broken = scanDir(path.join(PROJECT_ROOT, 'pages'))
+const TARGET_DIRS = ['pages', 'app', 'components', 'lib']
+const broken = TARGET_DIRS.flatMap((dir) => scanDir(path.join(PROJECT_ROOT, dir)))
 
 if (broken.length > 0) {
   console.log('❌ Broken imports found:\n')
