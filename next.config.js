@@ -8,6 +8,6 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'res.cloudinary.com', 'images.unsplash.com'],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
