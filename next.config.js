@@ -5,6 +5,9 @@ const nextConfig = {
   experimental: {
     serverActions: {},
   },
+  images: {
+    domains: ['localhost', 'res.cloudinary.com', 'images.unsplash.com'],
+  },
 };
 
 module.exports = nextConfig;
