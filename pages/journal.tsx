@@ -5,7 +5,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export default function Journal() {
+export default function MartyChat() {
   const [entry, setEntry] = useState("");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -54,39 +54,35 @@ export default function Journal() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-12 space-y-8 overflow-y-auto">
-      <textarea
-        value={entry}
-        onChange={(e) => setEntry(e.target.value)}
-        rows={6}
-        placeholder="Type it. No one’s watching."
-        className="w-full resize-none bg-neutral-950 text-white font-mono text-lg leading-relaxed border border-neutral-800 p-6 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600"
-      />
-      <div className="flex justify-end">
+    <div className="max-w-sm mx-auto h-[90vh] bg-black text-white rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col">
+      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+        {history.map((item, idx) => (
+          <div key={idx} className="flex flex-col items-end">
+            <p className="text-[10px] text-gray-400 mb-1">
+              {new Date(item.created_at).toLocaleTimeString()}
+            </p>
+            <div className="bg-purple-700 text-white p-3 rounded-2xl rounded-br-none max-w-[80%] self-end font-mono text-sm">
+              {item.entry}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-t border-white/10 p-3 bg-neutral-950 flex gap-2 items-center">
+        <textarea
+          value={entry}
+          onChange={(e) => setEntry(e.target.value)}
+          rows={1}
+          placeholder="Type to Marty..."
+          className="flex-1 resize-none bg-neutral-900 text-white font-mono text-sm p-3 rounded-full border border-neutral-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+        />
         <button
           onClick={saveEntry}
           disabled={saving}
-          className="px-6 py-2 bg-purple-700 hover:bg-purple-800 transition rounded-lg text-sm font-semibold disabled:opacity-50"
+          className="px-4 py-2 bg-purple-700 hover:bg-purple-800 transition rounded-full text-sm font-semibold disabled:opacity-50"
         >
-          {saving ? 'Saving...' : 'Save Entry'}
+          {saving ? '...' : 'Send'}
         </button>
-      </div>
-      {saved && <p className="text-green-500">✓ Entry saved</p>}
-
-      <div className="space-y-6 border-t border-neutral-800 pt-8">
-        {history.map((item, idx) => (
-          <div
-            key={idx}
-            className="bg-neutral-950 p-5 rounded-lg border border-neutral-800"
-          >
-            <p className="text-sm text-neutral-500 mb-2">
-              {new Date(item.created_at).toLocaleString()}
-            </p>
-            <p className="whitespace-pre-wrap font-mono text-base text-white">
-              {item.entry}
-            </p>
-          </div>
-        ))}
       </div>
     </div>
   )
