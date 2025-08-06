@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Font */
 html {
   font-family: "Space Grotesk", sans-serif;
 }
 
-/* Global Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body,
 html {
   height: 100%;
@@ -24,7 +26,7 @@ html {
   position: relative;
 }
 
-/* Background loop */
+/* Background Grid Animation */
 .background {
   position: fixed;
   top: 0;
@@ -52,7 +54,7 @@ html {
   }
 }
 
-/* Top logo */
+/* Top Left Logo */
 .logo {
   position: absolute;
   top: 24px;
@@ -63,7 +65,7 @@ html {
   opacity: 0.6;
 }
 
-/* Bottom shimmer icon */
+/* Bottom Right Glow M */
 .shimmer-m {
   position: absolute;
   bottom: 20px;
@@ -85,7 +87,7 @@ html {
   }
 }
 
-/* Content layout */
+/* Main Content Container */
 .container {
   height: 100vh;
   display: flex;
@@ -96,6 +98,7 @@ html {
   text-align: center;
 }
 
+/* Hero Headline */
 h1 {
   font-size: clamp(3rem, 8vw, 7rem);
   color: #b792ff;
@@ -107,6 +110,7 @@ h1:hover {
   transform: translateY(-4px);
 }
 
+/* Subheading Style */
 .subheading {
   margin-top: 20px;
   font-size: 1.25rem;
@@ -114,6 +118,7 @@ h1:hover {
   max-width: 90%;
 }
 
+/* CTA Button */
 .cta {
   margin-top: 50px;
   padding: 16px 40px;
@@ -124,8 +129,10 @@ h1:hover {
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
+
 .cta:hover {
   background: #c18fff;
   color: #000;
