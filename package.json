@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "optimize": "node scripts/marty-optimize.js",
+    "build": "npm run optimize && next build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
@@ -17,6 +18,10 @@
     "@supabase/supabase-js": "^2.53.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
+    "glob": "^11.0.3",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
     "next": "^15.4.5",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",
@@ -35,5 +40,8 @@
     "postcss-loader": "^8.1.1",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
+  },
+  "bin": {
+    "marty-optimize": "./bin/marty-optimize.js"
   }
 }
