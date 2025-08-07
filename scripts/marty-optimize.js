@@ -1,11 +1,7 @@
-#!/usr/bin/env node
-
+// marty-optimize.js
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
-const imagemin = require('imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
 
 const cleanDirs = [
   '.next/cache/webpack/client-development',
@@ -34,6 +30,10 @@ function minifyFiles(pattern) {
 }
 
 async function compressImages() {
+  const imagemin = (await import('imagemin')).default;
+  const imageminMozjpeg = (await import('imagemin-mozjpeg')).default;
+  const imageminPngquant = (await import('imagemin-pngquant')).default;
+
   const files = await imagemin(['public/**/*.{jpg,jpeg,png}'], {
     destination: 'public/',
     plugins: [
@@ -50,7 +50,6 @@ async function compressImages() {
   cleanWebpackCache();
   minifyFiles('public/**/*.css');
   minifyFiles('public/**/*.json');
-  minifyFiles('public/**/*.js');
   await compressImages();
   console.log('✅ Optimization complete!');
 })();
