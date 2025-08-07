@@ -3,6 +3,11 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
+}
+
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export default function MartyChat() {
@@ -52,7 +57,6 @@ export default function MartyChat() {
       setSaving(false)
     }
   }
-
   return (
     <div className="max-w-sm mx-auto h-[90vh] bg-black text-white rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col">
       <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
