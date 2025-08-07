@@ -9,7 +9,6 @@ export default function Home() {
         <title>The MARTY App</title>
         <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
       </Head>
-
       <main className="bg-black text-white scroll-smooth min-h-screen overflow-x-hidden">
       {/* 🎬 Hero Slide */}
       <section
@@ -35,7 +34,7 @@ export default function Home() {
         <p className="text-white/70 mb-8 max-w-2xl mx-auto text-lg">
           Not a therapist. Not a vibe app. Just MARTY. Steady, private, AI reflection when you need it.
         </p>
-        <Link href="/journal" passHref>
+        <Link href="/journal" passHref legacyBehavior>
           <span className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200">
             🧠 Journal with MARTY
           </span>
@@ -61,7 +60,7 @@ export default function Home() {
       <section className="py-24 px-6 bg-zinc-900 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Drop Incoming</h2>
         <p className="text-white/60 mb-8">Crewnecks, posters, journals. No cringe merch. Just calm tech with texture.</p>
-        <Link href="/store" passHref>
+        <Link href="/store" passHref legacyBehavior>
           <span className="inline-block bg-white text-black font-semibold py-2 px-6 rounded-full shadow hover:bg-zinc-200 transition">
             🛒 Browse Store
           </span>
@@ -86,5 +85,5 @@ export default function Home() {
       </footer>
       </main>
     </>
-  )
+  );
 }
