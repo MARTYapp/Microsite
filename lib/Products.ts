@@ -54,4 +54,15 @@ export const products = [
     price: '$28',
     category: 'intimacy',
   },
-] as const;
+  {
+    slug: 'journal-hardcover',
+    id: 'journal-hardcover',
+    name: '📓 The MARTY Hardcover Journal',
+    description:
+      'A5 hardcover. 160 pages of premium paper, dot-grid layout. Built for late-night thoughts, midday breakthroughs, and accountability check-ins. Minimal exterior, maximum self-respect.',
+    image: '/assets/journal-hardcover.png',
+    link: 'https://printify.com/products/journal-hardcover-id888',
+    price: '$22',
+    category: 'stationery',
+  },
+] as const

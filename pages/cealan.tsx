@@ -32,10 +32,10 @@ export default function CealanPage() {
           animate="visible"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            You met the inspiration — now meet the legacy.
+            Cealan, your legacy is already in motion.
           </h1>
           <p className="text-lg text-gray-400 mb-10 max-w-2xl">
-            This role isn’t just open — it was designed with you in mind. Legal. Licensing. Protection. Expansion. You already know what to do.
+            You’re not onboarding — you’re authoring the next chapter of MARTY. IP. Grants. Strategy. You know the assignment.
           </p>
           <CealanOnboarding />
         </motion.section>
