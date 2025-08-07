@@ -29,8 +29,6 @@ coverage
 # Grunt intermediate storage
 .grunt
 
-# Bower dependency directory
-bower_components
 
 # node-waf configuration
 .lock-wscript
@@ -40,10 +38,7 @@ build/Release
 
 # Dependency directories
 node_modules/
-jspm_packages/
 
-# Snowpack
-web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -92,8 +87,9 @@ web_modules/
 out/
 dist/
 build/
-.netlify
-.vercel
+.netlify/
+.vercel/
+supabase/migrations/.snapshots/
 
 # Framework-specific
 .nuxt

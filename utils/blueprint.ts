@@ -8,7 +8,7 @@ const siteConfig = {
     { path: '/404', title: '404', isPublic: true },
     { path: '/sable', title: 'Sable Onboarding', isPublic: false, authRequired: true },
     { path: '/cealan', title: 'Cealan Onboarding', isPublic: false, authRequired: true },
-    { path: '/dashboard', title: 'Dashboard', isPublic: false, authRequired: true },
+    { path: '/marty', title: 'MARTY', isPublic: false, authRequired: true },
     { path: '/marty-ai', title: 'MARTY AI', isPublic: false, featureFlag: 'v6' },
     { path: '/marty-365', title: 'MARTY 365', isPublic: false, featureFlag: 'v6' },
     { path: '/method', title: 'The Method', isPublic: true },

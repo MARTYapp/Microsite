@@ -50,6 +50,7 @@ async function compressImages() {
   cleanWebpackCache();
   minifyFiles('public/**/*.css');
   minifyFiles('public/**/*.json');
+  minifyFiles('public/**/*.js');
   await compressImages();
   console.log('✅ Optimization complete!');
 })();
