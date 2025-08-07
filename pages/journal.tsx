@@ -1,57 +1,57 @@
-import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { useEffect, useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export default function MartyChat() {
-  const [entry, setEntry] = useState("");
-  const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [history, setHistory] = useState([]);
+  const [entry, setEntry] = useState('')
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const [history, setHistory] = useState([])
 
   useEffect(() => {
     const fetchEntries = async () => {
       const {
         data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) return;
+      } = await supabase.auth.getUser()
+      if (!user) return
       const { data, error } = await supabase
-        .from("journal_entries")
-        .select("entry, created_at")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false });
-      if (!error) setHistory(data);
-    };
-    fetchEntries();
-  }, [saved]);
+        .from('journal_entries')
+        .select('entry, created_at')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+      if (!error) setHistory(data)
+    }
+    fetchEntries()
+  }, [saved])
 
   const saveEntry = async () => {
-    if (!entry.trim()) return;
-    setSaving(true);
+    if (!entry.trim()) return
+    setSaving(true)
     try {
       const {
         data: { user },
         error,
-      } = await supabase.auth.getUser();
-      if (error || !user) throw new Error("Auth session missing");
+      } = await supabase.auth.getUser()
+      if (error || !user) throw new Error('Auth session missing')
 
       const { error: insertError } = await supabase
-        .from("journal_entries")
-        .insert([{ entry, user_id: user.id }]);
+        .from('journal_entries')
+        .insert([{ entry, user_id: user.id }])
 
-      if (insertError) throw new Error(insertError.message);
+      if (insertError) throw new Error(insertError.message)
 
-      setEntry("");
-      setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
+      setEntry('')
+      setSaved(true)
+      setTimeout(() => setSaved(false), 3000)
     } catch (err) {
-      console.error("Error saving journal:", err.message);
+      console.error('Error saving journal:', err.message)
     } finally {
-      setSaving(false);
+      setSaving(false)
     }
-  };
+  }
 
   return (
     <div className="max-w-sm mx-auto h-[90vh] bg-black text-white rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col">

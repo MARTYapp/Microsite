@@ -47,7 +47,7 @@ export default function Home() {
         {/* Hero Section */}
         <section
           className="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center px-4"
-          style={{ backgroundImage: `url('/images/landing-hero.png')` }}
+          style={{ backgroundImage: 'url(\'/images/landing-hero.png\')' }}
         >
           <div className="text-center z-20 backdrop-blur-sm p-4">
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight drop-shadow-md mb-4">

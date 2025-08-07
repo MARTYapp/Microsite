@@ -102,5 +102,5 @@ export default function CealanOnboarding() {
         </div>
       </div>
     </div>
-  );
+  )
 }

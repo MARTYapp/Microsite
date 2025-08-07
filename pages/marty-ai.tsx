@@ -36,5 +36,5 @@ export default function MartyAI() {
         </Link>
       </div>
     </div>
-  );
+  )
 }
