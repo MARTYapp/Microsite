@@ -1,10 +1,10 @@
-import Hero from '@/components/sections/Hero'
-import Intro from '@/components/sections/Intro'
-import TryMarty from '@/components/sections/TryMarty'
-import WhyItWorks from '@/components/sections/WhyItWorks'
-import FounderManifesto from '@/components/sections/FounderManifesto'
-import InvestorLayer from '@/components/sections/InvestorLayer'
-import Footer from '@/components/global/Footer'
+import Hero from '@/components/HomeHero'
+import Intro from '@/components/Intro'
+import TryMarty from '@/components/TryMarty'
+import WhyItWorks from '@/components/WhyItWorks'
+import FounderManifesto from '@/components/FounderManifesto'
+import InvestorLayer from '@/components/InvestorLayer'
+import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export default function Home() {
