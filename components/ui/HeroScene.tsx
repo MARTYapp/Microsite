@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import ReactPlayer from 'react-player'
 
 const taglines = [
   'Quiet tech for loud minds.',
@@ -34,14 +33,13 @@ export default function HomeHero() {
     <section className="relative flex min-h-screen items-center justify-center px-4 text-center text-white bg-black">
       {/* Cinematic background video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <ReactPlayer
-          url="/videos/hero-loop.mp4"
-          playing
+        <video
+          src="/videos/hero-loop.mp4"
+          autoPlay
           loop
           muted
-          width="100%"
-          height="100%"
-          className="react-player object-cover"
+          playsInline
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0e0e11] to-black/80 backdrop-blur-sm" />
       </div>
