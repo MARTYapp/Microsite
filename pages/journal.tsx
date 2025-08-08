@@ -51,7 +51,7 @@ export default function MartyChat() {
       setEntry('')
       setSaved(true)
       setTimeout(() => setSaved(false), 3000)
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error saving journal:', err.message)
     } finally {
       setSaving(false)
