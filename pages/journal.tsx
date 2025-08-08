@@ -14,7 +14,7 @@ export default function MartyChat() {
   const [entry, setEntry] = useState('')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
-  const [history, setHistory] = useState([])
+  const [history, setHistory] = useState<{ entry: any; created_at: any }[]>([])
 
   useEffect(() => {
     const fetchEntries = async () => {

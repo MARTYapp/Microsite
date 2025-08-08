@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "optimize": "node scripts/marty-optimize.js",
+    "optimize": "echo '🛑 Skipping optimize — using sharp manually'",
     "build": "npm run optimize && next build"
   },
   "dependencies": {
