@@ -1,6 +1,13 @@
 import { useMemo } from 'react'
 import Head from 'next/head'
-import PosterWall from '@/components/ui/poster-wall-export'
+import dynamic from 'next/dynamic'
+const PosterWall = dynamic(async () => {
+  const m = await import('@/components/ui/poster-wall-export')
+  // support either default export or a named export
+  // fall back to the first exported member if needed
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (m as any).default ?? (m as any).PosterWall ?? (Object.values(m)[0] as any)
+})
 import MartyHoodie from '@/components/ui/MartyHoodie'
 import FuelTheFounder from '@/components/ui/FuelTheFounder'
 import Footer from '@/components/ui/Footer'
@@ -79,5 +86,4 @@ export default function Home() {
       </main>
     </>
   )
-}
 }
