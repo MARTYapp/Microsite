@@ -17,13 +17,14 @@ html {
 body,
 html {
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
   font-family: "Space Grotesk", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
   background-color: #0e0e11;
   position: relative;
+  transition: all 0.3s ease;
 }
 
 /* Background Grid Animation */
@@ -137,4 +138,56 @@ h1:hover {
   background: #c18fff;
   color: #000;
   box-shadow: 0 0 12px #b792ff88;
+}
+
+/* Chat Interface Styling */
+.chat-interface {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #1a1a24;
+  border-radius: 12px;
+  box-shadow: 0 0 24px #b792ff44;
+  overflow-y: auto;
+  max-height: 90vh;
+  font-size: 1rem;
+  color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.chat-interface .chat-bubble {
+  max-width: 75%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-interface .chat-bubble.user {
+  background-color: #b792ff;
+  color: #000;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-interface .chat-bubble.bot {
+  background-color: #33334d;
+  color: #ccc;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* Global anchor tag styles */
+a {
+  color: #b792ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #c18fff;
+  text-decoration: underline;
 }

@@ -8,6 +8,7 @@ const steps = [
   { label: '1. Checking for broken imports + missing files (build)', cmd: 'npm run build' },
   { label: '2. Running ESLint for code issues', cmd: 'npm run lint' },
   { label: '3. Scanning /public/Assets/ for ghost assets', cmd: 'ls -al public/Assets/' },
+  { label: '4. Running optimization CLI (marty-optimize)', cmd: 'npm run optimize' },
 ]
 
 steps.forEach(({ label, cmd }) => {

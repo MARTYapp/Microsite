@@ -1,0 +1,52 @@
+$ cp package-lock.json package-lock.before-fix.json
+
+cp: cannot stat 'package-lock.json': No such file or directory
+
+
+$ cp package.json package.before-fix.json
+
+cp: cannot stat 'package.json': No such file or directory
+
+
+$ npm uninstall bin-version-check
+
+/bin/sh: 1: npm: not found
+
+
+$ npm install cacheable-request@10.2.11 --save
+
+/bin/sh: 1: npm: not found
+
+
+$ npm install find-versions@4.0.0 --save
+
+/bin/sh: 1: npm: not found
+
+
+$ rm -rf node_modules package-lock.json
+
+
+
+$ npm install
+
+/bin/sh: 1: npm: not found
+
+
+$ npm audit fix
+
+/bin/sh: 1: npm: not found
+
+
+$ npm audit fix --force
+
+/bin/sh: 1: npm: not found
+
+
+$ cp package-lock.json package-lock.after-fix.json
+
+cp: cannot stat 'package-lock.json': No such file or directory
+
+
+$ cp package.json package.after-fix.json
+
+cp: cannot stat 'package.json': No such file or directory

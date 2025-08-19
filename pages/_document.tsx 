@@ -4,9 +4,21 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>{/* preload fonts or favicons here */}</Head>
-        <body>
+        <Head>
+          {/* Preload Fonts */}
+          <link
+            rel="preload"
+            href="/fonts/Inter-VariableFont_slnt,wght.ttf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+          {/* Favicon */}
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <body className="bg-black text-white antialiased">
           <Main />
+          <div id="modal-root" />
           <NextScript />
         </body>
       </Html>

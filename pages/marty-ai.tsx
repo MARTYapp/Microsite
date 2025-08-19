@@ -29,7 +29,7 @@ export default function MartyAI() {
         </li>
       </ul>
       <div className="mt-12">
-        <Link href="/journal" passHref>
+        <Link href="/journal" passHref legacyBehavior>
           <span className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200">
             🧠 Journal with MARTY
           </span>

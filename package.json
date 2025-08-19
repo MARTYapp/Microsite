@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "optimize": "echo '🛑 Skipping optimize — using sharp manually'",
+    "build": "npm run optimize && next build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
@@ -17,23 +18,33 @@
     "@supabase/supabase-js": "^2.53.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
+    "glob": "^11.0.3",
     "next": "^15.4.5",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-player": "^3.3.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@netlify/plugin-nextjs": "^5.12.0",
+    "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.14",
     "css-loader": "^7.1.2",
     "eslint": "^9.32.0",
-    "eslint-config-next": "15.4.5",
-    "postcss": "^8.5.6",
+    "eslint-config-next": "^15.4.5",
+    "postcss": "^8.4.24",
     "postcss-loader": "^8.1.1",
-    "tailwindcss": "^4.1.11",
+    "sharp": "^0.34.3",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.9.2"
+  },
+  "bin": {
+    "marty-optimize": "./bin/marty-optimize.js"
   }
 }

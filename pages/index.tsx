@@ -1,89 +1,88 @@
+import { useMemo } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
+const PosterWall = dynamic(async () => {
+  const m = await import('@/components/ui/poster-wall-export')
+  // support either default export or a named export
+  // fall back to the first exported member if needed
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (m as any).default ?? (m as any).PosterWall ?? (Object.values(m)[0] as any)
+})
+import MartyHoodie from '@/components/ui/MartyHoodie'
+import FuelTheFounder from '@/components/ui/FuelTheFounder'
+import Footer from '@/components/ui/Footer'
 
 export default function Home() {
+  // rotate Coco / Loft / Subway each load
+  const hero = useMemo(() => {
+    const vids = [
+      { src: '/Video/CocoLanding.mp4', poster: '/assets/CocoLanding.png' },
+      { src: '/Video/LoftLanding.mp4', poster: '/assets/LoftLanding.png' },
+      { src: '/Video/SubwayLanding.mp4', poster: '/assets/SubwayLanding.png' },
+    ]
+    return vids[Math.floor(Math.random() * vids.length)]
+  }, [])
+
   return (
     <>
       <Head>
         <title>The MARTY App</title>
-        <meta name="description" content="MARTY ≠ THERAPY — Built for the overthinkers, avoiders, and night-crawlers." />
+        <meta
+          name="description"
+          content="MARTY ≠ THERAPY — Built for the quiet ones, avoiders, and overthinkers."
+        />
       </Head>
 
-      <main className="bg-black text-white scroll-smooth min-h-screen overflow-x-hidden">
-      {/* 🎬 Hero Slide */}
-      <section
-        className="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center px-4"
-        style={{ backgroundImage: "url('/images/landing-hero.png')" }}
-      >
-        <div className="text-center z-20 backdrop-blur-sm p-4">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight drop-shadow-md mb-4">
-            MARTY ≠ THERAPY
-          </h1>
-          <p className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto">
-            “Change. Inhale. Acceptance. Exhale.”
-            <br />
-            For the Quiet Ones™, the executive dysfunction fam™, and the perfectionist overthinkers™ alike.
-          </p>
-        </div>
-        <div className="absolute bottom-6 text-sm text-white/50 animate-bounce">Scroll ↓</div>
-      </section>
-
-      {/* 💬 MARTY Chat CTA */}
-      <section className="py-32 px-6 bg-gradient-to-b from-zinc-900 to-black text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">Talk to MARTY</h2>
-        <p className="text-white/70 mb-8 max-w-2xl mx-auto text-lg">
-          Not a therapist. Not a vibe app. Just MARTY. Steady, private, AI reflection when you need it.
-        </p>
-        <Link href="/journal" passHref>
-          <span className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200">
-            🧠 Journal with MARTY
-          </span>
-        </Link>
-      </section>
-
-      {/* 💸 Fund the Founder */}
-      <section className="py-32 px-6 bg-black text-center border-t border-zinc-800">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-amber-400">Fund the Founder.</h2>
-        <p className="mb-6 text-white/70 max-w-xl mx-auto text-base md:text-lg">
-          No investors. No noise. Just one founder building something real.
-        </p>
-        <a
-          href="https://coff.ee/ericadler"
-          target="_blank"
-          className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
-        >
-          💸 Back the Build 💸
-        </a>
-      </section>
-
-      {/* 🛍️ Store Tease */}
-      <section className="py-24 px-6 bg-zinc-900 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Drop Incoming</h2>
-        <p className="text-white/60 mb-8">Crewnecks, posters, journals. No cringe merch. Just calm tech with texture.</p>
-        <Link href="/store" passHref>
-          <span className="inline-block bg-white text-black font-semibold py-2 px-6 rounded-full shadow hover:bg-zinc-200 transition">
-            🛒 Browse Store
-          </span>
-        </Link>
-      </section>
-
-      {/* 🧾 Footer */}
-      <footer className="w-full py-6 px-4 flex flex-col md:flex-row items-center justify-between text-xs text-white/50 bg-black/80 backdrop-blur-md border-t border-white/10 shadow-inner shadow-purple-500/20">
-        <div className="mb-2 md:mb-0">© 2025 The MARTY App. Built with precision + rebellion.</div>
-        <div className="text-white/70 text-sm tracking-wider">MARTY ≠ THERAPY</div>
-        <div className="flex gap-4 items-center">
-          <Link href="/terms" className="hover:text-white transition">Terms</Link>
-          <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
-          <a
-            target="_blank"
-            href="https://coff.ee/ericadler"
-            className="text-amber-400 hover:text-amber-300 font-medium shimmer-m glow-on-hover"
+      {/* Stack: hero → posters → merch → fund → footer */}
+      <main className="bg-black text-white min-h-screen w-full">
+        {/* HERO */}
+        <section className="relative h-screen w-full flex items-center justify-center">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={hero.poster}
+            className="absolute inset-0 w-full h-full object-cover"
           >
-            💸 Fund the Founder 💸
-          </a>
-        </div>
-      </footer>
+            <source src={hero.src} type="video/mp4" />
+          </video>
+
+          <div className="relative z-10 text-center px-6">
+            <h1 className="text-purple-400 text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">
+              MARTY ≠ THERAPY
+            </h1>
+            <p className="text-white/90 text-lg md:text-xl max-w-xl mx-auto mb-6">
+              “Change. Inhale. Acceptance. Exhale.”
+              <br />
+              For the Quiet Ones™, the executive dysfunction fam™, and the perfectionist overthinkers™ alike.
+            </p>
+            <p className="animate-bounce text-sm text-white/60">Scroll ↓</p>
+          </div>
+        </section>
+
+        {/* POSTERS */}
+        <section className="bg-black">
+          <div className="max-w-6xl mx-auto px-4 py-16">
+            <PosterWall />
+          </div>
+        </section>
+
+        {/* MERCH */}
+        <section className="bg-zinc-950">
+          <div className="max-w-6xl mx-auto px-4 py-16">
+            <MartyHoodie />
+          </div>
+        </section>
+
+        {/* FUND CTA */}
+        <section className="bg-black">
+          <div className="max-w-4xl mx-auto px-4 py-16">
+            <FuelTheFounder />
+          </div>
+        </section>
+
+        <Footer />
       </main>
     </>
   )

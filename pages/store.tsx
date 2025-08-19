@@ -75,10 +75,14 @@ export default function Store() {
         <meta name="description" content="Shop official MARTY gear and tools." />
       </Head>
 
-      <main className="bg-black text-white px-6 pb-16">
+      <main className="bg-gradient-to-b from-black via-zinc-900 to-black text-white px-6 pb-24 pt-12 md:pt-20">
+        <div className="w-full bg-amber-500 text-black text-center py-2 text-sm font-medium tracking-wide shadow-md">
+          🎁 New Drop: Radical Acceptance Lube now in stock — while supplies last.
+        </div>
+
         {/* 🛍️ Store Header */}
         <section className="max-w-4xl mx-auto text-center py-14">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-amber-400">
             WHAT MARTY’S INTO
           </h1>
           <p className="mt-4 text-lg leading-snug">
@@ -86,7 +90,7 @@ export default function Store() {
             READ IT. <br />
             USE IT. <br />
             <br />
-            Real tools, real style, real talk. <br />
+            Real tools, real style, <span className="text-white/90 font-semibold">real talk.</span> <br />
             Picked with purpose. No fluff. All function.
           </p>
         </section>
@@ -94,7 +98,7 @@ export default function Store() {
         {/* 🧒 Product Grid */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {merch.map(({ title, price, img, href }) => (
-            <div key={title} className="bg-neutral-900 p-4 rounded-xl shadow-md hover:shadow-xl transition">
+            <div key={title} className="bg-neutral-900 p-4 rounded-xl shadow-md hover:shadow-xl hover:ring-2 hover:ring-amber-400 hover:scale-[1.03] transition">
               <Image
                 src={img}
                 alt={title}

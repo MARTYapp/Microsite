@@ -10,12 +10,20 @@ const ALIAS = '@/'
 const resolveImportPath = (importPath, currentFile) => {
   if (importPath.startsWith(ALIAS)) {
     const relativePath = importPath.replace(ALIAS, '')
-    return path.join(PROJECT_ROOT, 'components', relativePath) + '.tsx'
+    const tsxPath = path.join(PROJECT_ROOT, 'components', relativePath) + '.tsx'
+    const tsPath = path.join(PROJECT_ROOT, 'components', relativePath) + '.ts'
+    if (fs.existsSync(tsxPath)) return tsxPath
+    if (fs.existsSync(tsPath)) return tsPath
+    return tsxPath // fallback
   }
 
   // Handle relative paths
   if (importPath.startsWith('.')) {
-    return path.resolve(path.dirname(currentFile), importPath) + '.tsx'
+    const tsxPath = path.resolve(path.dirname(currentFile), importPath) + '.tsx'
+    const tsPath = path.resolve(path.dirname(currentFile), importPath) + '.ts'
+    if (fs.existsSync(tsxPath)) return tsxPath
+    if (fs.existsSync(tsPath)) return tsPath
+    return tsxPath // fallback
   }
 
   return null // Ignore package imports
