@@ -3,10 +3,8 @@
 import { useContext } from 'react'
 import { UserContext, UserContextType } from '@/context/UserContext'
 
-export const useUser = (): UserContextType => {
+export const useUser = (): UserContextType | null => {
   const context = useContext(UserContext)
-  if (!context) {
-    throw new Error('useUser must be used within a UserProvider')
-  }
-  return context
+  // If not wrapped in <UserProvider>, return null instead of throwing
+  return context ?? null
 }
