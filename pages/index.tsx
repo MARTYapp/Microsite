@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import Link from 'next/link'
 
 type Slide = {
   id: string
@@ -10,6 +11,7 @@ type Slide = {
   ascii?: string
   visualHint?: string
   speakerNote?: string
+  video?: string
 }
 
 const SLIDES: Slide[] = [
@@ -29,14 +31,15 @@ const SLIDES: Slide[] = [
 ████████████████████████████████████████`,
     visualHint: 'Industrial ASCII art logo with stark black/white contrast',
     speakerNote: "We're not fixing therapy. We're creating something entirely new.",
+    video: "/LoftLanding.mp4",
   },
   {
     id: 'problem',
-    title: "Millions won't do therapy — but they still want change.",
+    title: "MILLIONS WON'T DO THERAPY — BUT THEY STILL WANT CHANGE.",
     bullets: [
-      'Therapy drop-off is brutal: stigma, cost, schedules.',
-      'Journals and "mood apps" feel clinical, or cringe.',
-      'The gap? People need a steady partner that actually moves with them.',
+      '⚡ THERAPY DROP-OFF IS BRUTAL: stigma, cost, schedules.',
+      '😖 JOURNALS AND "MOOD APPS" FEEL CLINICAL, OR CRINGE.',
+      '🔑 THE GAP? PEOPLE NEED A STEADY PARTNER THAT ACTUALLY MOVES WITH THEM.',
     ],
     ascii: `
 ┌─────────────────────────────────┐
@@ -56,11 +59,11 @@ const SLIDES: Slide[] = [
   },
   {
     id: 'solution',
-    title: 'MARTY — a steady AI partner that nudges, mirrors, and keeps receipts.',
+    title: 'MARTY — A STEADY AI PARTNER THAT NUDGES, MIRRORS, AND KEEPS RECEIPTS.',
     bullets: [
-      'Chat-first, iPhone-style UX: zero friction.',
-      'Adaptive reflections, not diagnoses.',
-      'Micro nudges → momentum → measurable change.',
+      '💬 CHAT-FIRST, iPHONE-STYLE UX: ZERO FRICTION.',
+      '🔍 ADAPTIVE REFLECTIONS, NOT DIAGNOSES.',
+      '🚀 MICRO NUDGES → MOMENTUM → MEASURABLE CHANGE.',
     ],
     ascii: `
 ┌──────── MARTY CHAT FLOW ────────┐
@@ -81,11 +84,11 @@ const SLIDES: Slide[] = [
   },
   {
     id: 'whynow',
-    title: 'Mental health apps feel stale. Culture is ready for useful, not clinical.',
+    title: 'MENTAL HEALTH APPS FEEL STALE. CULTURE IS READY FOR USEFUL, NOT CLINICAL.',
     bullets: [
-      'GenAI unlocked partner-level UX.',
-      'Creator economy primed for licensed rituals.',
-      'We already own “MARTY ≠ THERAPY” in the wild.',
+      '⚡ GENAI UNLOCKED PARTNER-LEVEL UX.',
+      '🎨 CREATOR ECONOMY PRIMED FOR LICENSED RITUALS.',
+      '🔑 WE ALREADY OWN “MARTY ≠ THERAPY” IN THE WILD.',
     ],
     ascii: `
 2019 ←──── CLINICAL APPS ────→ 2024
@@ -102,11 +105,11 @@ const SLIDES: Slide[] = [
   },
   {
     id: 'traction',
-    title: 'Cult energy > ad spend.',
+    title: 'CULT ENERGY > AD SPEND.',
     bullets: [
-      'Zero paid acquisition — users arrive and stick.',
-      'Beta testers are asking for “the real thing.”',
-      'Merch sell-through proves MARTY is a cultural brand, not just an app.',
+      '🚫 ZERO PAID ACQUISITION — USERS ARRIVE AND STICK.',
+      '🔥 BETA TESTERS ARE ASKING FOR “THE REAL THING.”',
+      '👕 MERCH SELL-THROUGH PROVES MARTY IS A CULTURAL BRAND, NOT JUST AN APP.',
     ],
     ascii: `
 ORGANIC GROWTH METRICS
@@ -123,11 +126,11 @@ Merch:     ██████░░░░ SOLD OUT
   },
   {
     id: 'product',
-    title: 'A cinematic chat that feels human, not clinical.',
+    title: 'A CINEMATIC CHAT THAT FEELS HUMAN, NOT CLINICAL.',
     bullets: [
-      'Adaptive DBT-aligned summaries.',
-      'Pattern recognition that spots stuck patterns & nudges forward.',
-      'Daily check-ins + lo-fi cinematic rooms.',
+      '🧠 ADAPTIVE DBT-ALIGNED SUMMARIES.',
+      '🔍 PATTERN RECOGNITION THAT SPOTS STUCK PATTERNS & NUDGES FORWARD.',
+      '📅 DAILY CHECK-INS + LO-FI CINEMATIC ROOMS.',
     ],
     ascii: `
 ┌─── MARTY PRODUCT SUITE ───┐
@@ -147,11 +150,11 @@ Merch:     ██████░░░░ SOLD OUT
   },
   {
     id: 'market',
-    title: "We're building a $2B category by 2028.",
+    title: "WE'RE BUILDING A $2B CATEGORY BY 2028.",
     bullets: [
-      'Millions underserved by therapy apps.',
-      '70M+ Americans with ADHD, overthinking, or exec dysfunction.',
-      'Global TAM expanding as “emotional OS” emerges.',
+      '🌍 MILLIONS UNDERSERVED BY THERAPY APPS.',
+      '70M+ AMERICANS WITH ADHD, OVERTHINKING, OR EXEC DYSFUNCTION.',
+      '📈 GLOBAL TAM EXPANDING AS “EMOTIONAL OS” EMERGES.',
     ],
     ascii: `
 TOTAL ADDRESSABLE MARKET
@@ -171,12 +174,12 @@ Traditional therapy apps: $800M TAM
   },
   {
     id: 'model',
-    title: 'Four stacked revenue streams.',
+    title: 'FOUR STACKED REVENUE STREAMS.',
     bullets: [
-      'Premium subscriptions.',
-      'Licensed B2B prompts + rituals.',
-      'Merch + affiliate flows.',
-      'Branded media + collabs.',
+      '💎 PREMIUM SUBSCRIPTIONS.',
+      '🏢 LICENSED B2B PROMPTS + RITUALS.',
+      '🛍️ MERCH + AFFILIATE FLOWS.',
+      '🎥 BRANDED MEDIA + COLLABS.',
     ],
     ascii: `
 REVENUE STACK
@@ -192,11 +195,11 @@ Total projection: $15M ARR by Year 3`,
   },
   {
     id: 'brand',
-    title: 'MARTY is already a cultural object.',
+    title: 'MARTY IS ALREADY A CULTURAL OBJECT.',
     bullets: [
-      'Slogans in the wild: “MARTY ≠ THERAPY.”',
-      'Merch: crewnecks, posters, even Radical Acceptance™ lube.',
-      '#FundTheFounder trending as CTA + identity.',
+      '🔥 SLOGANS IN THE WILD: “MARTY ≠ THERAPY.”',
+      '👕 MERCH: CREWNECKS, POSTERS, EVEN RADICAL ACCEPTANCE™ LUBE.',
+      '📢 #FUNDTHEFOUNDER TRENDING AS CTA + IDENTITY.',
     ],
     ascii: `
 CULTURAL PENETRATION
@@ -217,11 +220,11 @@ PRODUCTS IN MARKET:
   },
   {
     id: 'roadmap',
-    title: 'From cult favorite → mainstream adoption.',
+    title: 'FROM CULT FAVORITE → MAINSTREAM ADOPTION.',
     bullets: [
-      'Beta: 2,500 returning users by Thanksgiving 2025.',
-      'Next: feature polish + licensing pilots.',
-      'Scale: emotional OS → category leader by 2028.',
+      '🎯 BETA: 2,500 RETURNING USERS BY THANKSGIVING 2025.',
+      '⚙️ NEXT: FEATURE POLISH + LICENSING PILOTS.',
+      '🚀 SCALE: EMOTIONAL OS → CATEGORY LEADER BY 2028.',
     ],
     ascii: `
 ROADMAP TO DOMINANCE
@@ -240,10 +243,90 @@ MILESTONES:
   },
 ]
 
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const doc = document.documentElement;
+      const max = (doc.scrollHeight - doc.clientHeight) || 1;
+      const p = Math.min(1, Math.max(0, scrollTop / max));
+      setProgress(p);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+  return progress;
+}
+
+const BackgroundVideo: React.FC = () => {
+  const progress = useScrollProgress();
+  const overlayOpacity = Math.min(0.75, progress * 0.95); // dim heavier as you scroll
+  return (
+    <div className="fixed inset-0 -z-20 overflow-hidden">
+      <video
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        muted
+        autoPlay
+        loop
+        playsInline
+        src="/LoftLanding.mp4"
+        aria-hidden
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(7,14,28,0.85))',
+          opacity: overlayOpacity,
+        }}
+      />
+    </div>
+  );
+};
+
+const StickyCTA: React.FC = () => {
+  const progress = useScrollProgress();
+  const show = progress > 0.4;
+  return (
+    <div
+      className={[
+        'fixed inset-x-0 bottom-4 z-40 flex items-center justify-center px-4 transition-all duration-300',
+        show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none',
+      ].join(' ')}
+    >
+      <div className="max-w-4xl grow rounded-2xl border border-blue-400/30 bg-black/70 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+          <p className="px-1 text-center text-sm font-semibold tracking-wide text-white/90">
+            Be early. Build momentum, not mood logs.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Link href="/marty-ai" className="rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60">
+              Join Beta
+            </Link>
+            <Link href="/investor" className="rounded-full border border-blue-400/50 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60">
+              Investor Access
+            </Link>
+            <Link href="/store" className="rounded-full border border-blue-400/50 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60">
+              #FundTheFounder
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 function Section({ slide }: { slide: Slide }) {
   return (
-    <section className="relative min-h-screen w-full bg-deck-gradient text-white">
-      <div className="mx-auto max-w-5xl px-6 py-24 font-sans">
+    <section className="relative min-h-screen w-full text-white overflow-hidden bg-gradient-to-b from-black via-[#0b1a3a]/30 to-black/90">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-24 font-sans">
         <header className="mb-8">
           <h1 className="whitespace-pre-line text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white">
             {slide.title}
@@ -254,7 +337,7 @@ function Section({ slide }: { slide: Slide }) {
             </p>
           )}
           {slide.tagline && (
-            <p className="mt-3 whitespace-pre-line text-sm uppercase tracking-[0.2em] text-marty-purple">
+            <p className="mt-3 whitespace-pre-line text-sm uppercase tracking-[0.2em] text-blue-400">
               {slide.tagline}
             </p>
           )}
@@ -264,7 +347,7 @@ function Section({ slide }: { slide: Slide }) {
           <ul className="mt-6 space-y-3">
             {slide.bullets.map((b, i) => (
               <li key={i} className="flex items-start gap-3 text-white/90">
-                <span className="mt-2 inline-block h-2 w-2 flex-none rounded-full bg-white/60" />
+                <span className="mt-2 inline-block h-2 w-2 flex-none rounded-full bg-blue-400" />
                 <span>{b}</span>
               </li>
             ))}
@@ -272,7 +355,7 @@ function Section({ slide }: { slide: Slide }) {
         )}
 
         {slide.ascii && (
-          <pre className="mt-8 overflow-x-auto rounded-lg border border-white/10 bg-black/60 p-5 text-[12px] leading-[1.35] text-marty-steel shadow-inner">
+          <pre className="mt-8 overflow-x-auto rounded-xl border border-blue-400/40 bg-gradient-to-b from-black/70 to-[#0b1a3a]/60 p-5 text-[12px] leading-[1.35] text-blue-200 shadow-[0_0_24px_rgba(59,130,246,0.35)] ring-1 ring-blue-500/20">
             {slide.ascii}
           </pre>
         )}
@@ -281,9 +364,6 @@ function Section({ slide }: { slide: Slide }) {
           <div className="mt-3 text-xs text-gray-500">[Slide visual suggestion: {slide.visualHint}]</div>
         )}
 
-        {slide.speakerNote && (
-          <p className="mt-6 italic text-sm text-gray-400">{'> Speaker note: '}{slide.speakerNote}</p>
-        )}
 
         <footer className="mt-10 border-t border-white/10 pt-4 text-center text-xs text-gray-500">
           X @TheMARTYApp · Instagram 📷 · #FundTheFounder
@@ -303,11 +383,13 @@ export default function Home() {
           content="Not a therapist, not a vibe app. Just MARTY. A steady AI partner for Quiet Ones, Overthinkers, and the executive dysfunction fam."
         />
       </Head>
+      <BackgroundVideo />
       <main className="bg-marty-black">
         {SLIDES.map((slide) => (
           <Section key={slide.id} slide={slide} />
         ))}
       </main>
+      <StickyCTA />
     </>
   )
 }
