@@ -9,9 +9,9 @@ type ButtonProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const variantStyles = {
-  default: 'bg-blue-600 text-white hover:bg-blue-700',
-  secondary: 'bg-gray-700 text-white hover:bg-gray-800',
-  outline: 'border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
+  default: 'bg-marty-navy text-white hover:bg-marty-charcoal',
+  secondary: 'bg-marty-charcoal text-white hover:bg-black',
+  outline: 'border border-marty-steel text-marty-steel hover:bg-marty-steel hover:text-black',
 }
 
 const sizeStyles = {
