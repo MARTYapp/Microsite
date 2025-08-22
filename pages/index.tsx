@@ -1,13 +1,11 @@
-// pages/index.tsx
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
 /**
- * MARTY Landing — Jared x Loren
- * - Black→Blue gradients only
- * - Oversized type, tight hierarchy, intrigue-first copy
- * - Sections: Hero → Problem → Solution → Why Now → Traction → Market → Pricing → Roadmap → CTA
+ * MARTY Landing — Jared (structure) x Loren (type/visual)
+ * Black + Blue only • Intrigue-first copy • No merch
+ * Flow: Hero → Problem → Solution → Why Now → Traction → Market → Pricing → Roadmap → CTA
  */
 
 type Block = {
@@ -51,7 +49,7 @@ const SECTIONS: Block[] = [
       "We already own the streets with “MARTY ≠ THERAPY.”",
     ],
   },
-  // 4) Traction (your revised content)
+  // 4) Traction (your revised content, no merch)
   {
     id: "traction",
     eyebrow: "Traction",
@@ -59,7 +57,7 @@ const SECTIONS: Block[] = [
     bullets: [
       "Big Goals: 2.5K beta users by Q4 ’25",
       "Zero ad spend.",
-      "Merch sell-outs.",
+      "Organic referrals > 30%.",
     ],
     callout:
       "When people wear your brand before you even launch, you’ve already won.",
@@ -75,7 +73,7 @@ const SECTIONS: Block[] = [
       "Global TAM = emotional OS, not “health.”",
     ],
   },
-  // 6) Pricing (replaces former Brand section)
+  // 6) Pricing
   {
     id: "pricing",
     eyebrow: "Pricing",
@@ -83,7 +81,7 @@ const SECTIONS: Block[] = [
     bullets: [
       "Premium subscription — $9.99/mo: core access.",
       "Licensed B2B prompts & rituals — $50k+/deal.",
-      "Merch + affiliate flows — ~40% margins.",
+      "Affiliate flows — curated, brand-safe.",
       "Branded media & collabs — upside partnerships.",
     ],
     callout: "MARTY scales like software, performs like culture.",
@@ -107,13 +105,6 @@ const Eyebrow: React.FC<{ text: string }> = ({ text }) => (
   </div>
 );
 
-const Chip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-1.5 text-xs font-semibold text-white">
-    <i className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-    {children}
-  </span>
-);
-
 const Divider = () => (
   <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 );
@@ -125,26 +116,24 @@ const SectionBlock: React.FC<{ block: Block }> = ({ block }) => (
   >
     <div className="mx-auto max-w-6xl px-6 py-20">
       {block.eyebrow && <Eyebrow text={block.eyebrow} />}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
+      <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
         {block.title}
       </h2>
       {block.body && (
-        <p className="mt-5 max-w-3xl text-white/85 text-lg">{block.body}</p>
+        <p className="mt-5 max-w-3xl text-white/85 text-xl">{block.body}</p>
       )}
       {block.bullets && (
         <ul className="mt-6 space-y-3">
           {block.bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-3 text-white/90">
+            <li key={i} className="flex items-start gap-3">
               <span className="mt-2 inline-block h-2 w-2 flex-none rounded-full bg-blue-400" />
-              <span>{b}</span>
+              <span className="text-white/90 text-lg">{b}</span>
             </li>
           ))}
         </ul>
       )}
       {block.callout && (
-        <div className="mt-8">
-          <Chip>{block.callout}</Chip>
-        </div>
+        <p className="mt-8 text-sm italic text-white/70">{block.callout}</p>
       )}
     </div>
   </section>
@@ -167,16 +156,16 @@ export default function Home() {
           <div className="mb-3 text-[11px] uppercase tracking-[0.22em] text-white/55">
             the MARTY app
           </div>
-          <h1 className="text-left text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight">
+          <h1 className="text-left text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight">
             MARTY ≠ THERAPY
           </h1>
-          <p className="mt-5 max-w-2xl text-lg sm:text-xl text-white/85">
+          <p className="mt-5 max-w-3xl text-xl sm:text-2xl text-white/85">
             Not a therapist. Not a vibe app.
             <br />
             A new category in emotional tech.
           </p>
 
-          <p className="mt-6 max-w-2xl text-white/80">
+          <p className="mt-6 max-w-3xl text-white/80 text-lg md:text-xl">
             <em>
               Built for the millions who will never go to therapy — but still
               demand change.
@@ -186,26 +175,33 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/marty-ai"
-              className="rounded-full bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+              className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
             >
               Join Beta
             </Link>
             <Link
               href="/investor"
-              className="rounded-full border border-blue-400/40 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+              className="rounded-full border border-blue-400/40 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
             >
               Investor Access
             </Link>
-            <Link
-              href="/store"
-              className="rounded-full border border-blue-400/40 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+            {/* External support CTAs */}
+            <a
+              href="https://buymeacoffee.com/YOUR_HANDLE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-blue-400/40 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+            >
+              Buy Me a Coffee
+            </a>
+            <a
+              href="https://buy.stripe.com/YOUR_CHECKOUT_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-blue-400/40 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
             >
               #FundTheFounder
-            </Link>
-          </div>
-
-          <div className="mt-8">
-            <Chip>Black + Blue. Bold ≠ Clinical.</Chip>
+            </a>
           </div>
         </div>
       </header>
@@ -226,22 +222,24 @@ export default function Home() {
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/marty-ai"
-                className="rounded-full bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+                className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
               >
                 Join Beta
               </Link>
               <Link
                 href="/investor"
-                className="rounded-full border border-blue-400/40 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+                className="rounded-full border border-blue-400/40 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
               >
                 Investor Access
               </Link>
-              <Link
-                href="/store"
-                className="rounded-full border border-blue-400/40 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
+              <a
+                href="https://buy.stripe.com/YOUR_CHECKOUT_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-blue-400/40 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
               >
                 #FundTheFounder
-              </Link>
+              </a>
             </div>
             <p className="mt-6 text-xs text-gray-500">
               X @TheMARTYApp · Instagram 📷 · #FundTheFounder

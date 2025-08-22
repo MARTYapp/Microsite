@@ -1,93 +1,64 @@
-import { useEffect, useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
+import { useState, useRef, useEffect } from "react";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+export default function Journal() {
+  const [messages, setMessages] = useState<string[]>([]);
+  const [input, setInput] = useState("");
+  const endRef = useRef<HTMLDivElement | null>(null);
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-export default function MartyChat() {
-  const [entry, setEntry] = useState('')
-  const [saving, setSaving] = useState(false)
-  const [saved, setSaved] = useState(false)
-  const [history, setHistory] = useState<{ entry: any; created_at: any }[]>([])
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = input.trim();
+    if (!text) return;
+    setMessages((m) => [...m, text]);
+    setInput("");
+  };
 
   useEffect(() => {
-    const fetchEntries = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
-      if (!user) return
-      const { data, error } = await supabase
-        .from('journal_entries')
-        .select('entry, created_at')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false })
-      if (!error) setHistory(data)
-    }
-    fetchEntries()
-  }, [saved])
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages.length]);
 
-  const saveEntry = async () => {
-    if (!entry.trim()) return
-    setSaving(true)
-    try {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser()
-      if (error || !user) throw new Error('Auth session missing')
-
-      const { error: insertError } = await supabase
-        .from('journal_entries')
-        .insert([{ entry, user_id: user.id }])
-
-      if (insertError) throw new Error(insertError.message)
-
-      setEntry('')
-      setSaved(true)
-      setTimeout(() => setSaved(false), 3000)
-    } catch (err: any) {
-      console.error('Error saving journal:', err.message)
-    } finally {
-      setSaving(false)
-    }
-  }
   return (
-    <div className="max-w-sm mx-auto h-[90vh] bg-black text-white rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col">
-      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
-        {history.map((item, idx) => (
-          <div key={idx} className="flex flex-col items-end">
-            <p className="text-[10px] text-gray-400 mb-1">
-              {new Date(item.created_at).toLocaleTimeString()}
-            </p>
-            <div className="bg-purple-700 text-white p-3 rounded-2xl rounded-br-none max-w-[80%] self-end font-mono text-sm">
-              {item.entry}
-            </div>
+    <main className="min-h-screen bg-gradient-to-b from-black via-[#0b1a3a] to-black flex flex-col items-center py-16 px-4 text-white">
+      <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-10">
+        Your MARTY Journal
+      </h1>
+
+      <div className="w-full max-w-2xl flex-1 overflow-y-auto space-y-4 mb-6">
+        {messages.length === 0 && (
+          <div className="rounded-xl border border-blue-400/30 bg-black/40 px-4 py-5 text-white/70">
+            Start typing below — this space is for the thoughts you’d rather not
+            lose.
+          </div>
+        )}
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            className="px-4 py-3 rounded-xl border border-blue-400/30 bg-black/40 text-lg md:text-xl font-medium text-white/90"
+          >
+            {msg}
           </div>
         ))}
+        <div ref={endRef} />
       </div>
 
-      <div className="border-t border-white/10 p-3 bg-neutral-950 flex gap-2 items-center">
-        <textarea
-          value={entry}
-          onChange={(e) => setEntry(e.target.value)}
-          rows={1}
-          placeholder="Type to Marty..."
-          className="flex-1 resize-none bg-neutral-900 text-white font-mono text-sm p-3 rounded-full border border-neutral-800 focus:outline-none focus:ring-2 focus:ring-purple-600"
+      <form
+        onSubmit={handleSend}
+        className="w-full max-w-2xl flex items-center gap-3"
+      >
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your thought…"
+          className="flex-1 rounded-xl bg-black/70 border border-blue-400/30 px-4 py-3 text-white text-lg focus:outline-none focus:ring-2 focus:ring-blue-400/60"
         />
         <button
-          onClick={saveEntry}
-          disabled={saving}
-          className="px-4 py-2 bg-purple-700 hover:bg-purple-800 transition rounded-full text-sm font-semibold disabled:opacity-50"
+          type="submit"
+          className="rounded-xl bg-blue-500 hover:bg-blue-400 px-6 py-3 font-semibold text-white text-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/60"
         >
-          {saving ? '...' : 'Send'}
+          Send
         </button>
-      </div>
-    </div>
-  )
+      </form>
+    </main>
+  );
 }
