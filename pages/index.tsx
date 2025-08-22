@@ -151,7 +151,7 @@ function Hero() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
-            “Change. Inhale. Acceptance. Exhale.”
+            “Not a therapist, not a vibe app. Just MARTY.”
             <br />
             For the Quiet Ones™, the executive dysfunction fam™, and the perfectionist overthinkers™ alike.
           </p>
@@ -244,3 +244,4 @@ export default function Home() {
       </main>
     </>
   )
+}
