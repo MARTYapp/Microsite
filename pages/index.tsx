@@ -126,7 +126,7 @@ Merch:     ██████░░░░ SOLD OUT
     title: 'A cinematic chat that feels human, not clinical.',
     bullets: [
       'Adaptive DBT-aligned summaries.',
-      'Pattern recognition that spots avoidance & nudges action.',
+      'Pattern recognition that spots stuck patterns & nudges forward.',
       'Daily check-ins + lo-fi cinematic rooms.',
     ],
     ascii: `
@@ -135,7 +135,7 @@ Merch:     ██████░░░░ SOLD OUT
 │ 💬 CHAT ENGINE            │
 │ ├─ Pattern recognition    │
 │ ├─ DBT-aligned nudges     │
-│ └─ Avoidance detection    │
+│ └─ Stuck-pattern spotting │
 │                           │
 │ 🎬 CINEMATIC ROOMS        │
 │ ├─ Lo-fi environments     │
@@ -242,7 +242,7 @@ MILESTONES:
 
 function Section({ slide }: { slide: Slide }) {
   return (
-    <section className="relative min-h-screen w-full bg-gradient-to-b from-black via-[#0a0a0b] to-[#0b1220] text-white">
+    <section className="relative min-h-screen w-full bg-deck-gradient text-white">
       <div className="mx-auto max-w-5xl px-6 py-24 font-sans">
         <header className="mb-8">
           <h1 className="whitespace-pre-line text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white">
@@ -254,7 +254,7 @@ function Section({ slide }: { slide: Slide }) {
             </p>
           )}
           {slide.tagline && (
-            <p className="mt-3 whitespace-pre-line text-sm uppercase tracking-[0.2em] text-purple-300">
+            <p className="mt-3 whitespace-pre-line text-sm uppercase tracking-[0.2em] text-marty-purple">
               {slide.tagline}
             </p>
           )}
@@ -272,7 +272,7 @@ function Section({ slide }: { slide: Slide }) {
         )}
 
         {slide.ascii && (
-          <pre className="mt-8 overflow-x-auto rounded-lg border border-white/10 bg-black/60 p-5 text-[12px] leading-[1.35] text-[#cdd5e0] shadow-inner">
+          <pre className="mt-8 overflow-x-auto rounded-lg border border-white/10 bg-black/60 p-5 text-[12px] leading-[1.35] text-marty-steel shadow-inner">
             {slide.ascii}
           </pre>
         )}
@@ -303,7 +303,7 @@ export default function Home() {
           content="Not a therapist, not a vibe app. Just MARTY. A steady AI partner for Quiet Ones, Overthinkers, and the executive dysfunction fam."
         />
       </Head>
-      <main className="bg-black">
+      <main className="bg-marty-black">
         {SLIDES.map((slide) => (
           <Section key={slide.id} slide={slide} />
         ))}
