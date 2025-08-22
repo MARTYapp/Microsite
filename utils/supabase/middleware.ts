@@ -1,38 +1,25 @@
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { type NextRequest, NextResponse } from 'next/server'
 
-const PROTECTED_PATHS = ['/dashboard', '/journal', '/account']
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const publicKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
-export async function middleware(req: NextRequest) {
-  const { supabase, response } = createClient(req)
-
-  const { pathname } = req.nextUrl
-  const isProtected = PROTECTED_PATHS.some((p) => pathname.startsWith(p))
-
-  // Skip if not protected or already on login, or for non-GET (APIs/forms)
-  if (!isProtected || pathname.startsWith('/login') || req.method !== 'GET') {
-    return response
-  }
-
-  try {
-    const { data: { user }, error } = await supabase.auth.getUser()
-    if (error) {
-      // Log if you have an error reporter; fail open to avoid hard-blocking users
-      return response
-    }
-    if (!user) {
-      const url = new URL('/login', req.url)
-      url.searchParams.set('redirect', pathname)
-      return NextResponse.redirect(url)
-    }
-    return response
-  } catch {
-    // Fail open on unexpected errors
-    return response
-  }
+export const createClient = (request: NextRequest) => {
+  let response = NextResponse.next({ request: { headers: request.headers } })
+  const supabase = createServerClient(url, publicKey, {
+    cookies: {
+      get(name: string) {
+        return request.cookies.get(name)?.value
+      },
+      set(name: string, value: string, options?: CookieOptions) {
+        response.cookies.set(name, value, options)
+      },
+      remove(name: string, options?: CookieOptions) {
+        response.cookies.set(name, '', { ...options, maxAge: 0 })
+      },
+    },
+  })
+  return { supabase, response }
 }
-
-export const config = {
-  matcher: ['/dashboard/:path*', '/journal/:path*', '/account/:path*'],
-}
-
