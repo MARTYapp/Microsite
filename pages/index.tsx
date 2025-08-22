@@ -3,6 +3,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Script from 'next/script';
 
 // Allow the Stripe custom element in TSX
 

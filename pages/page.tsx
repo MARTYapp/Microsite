@@ -10,7 +10,10 @@ export default async function Page() {
   if (error) {
     return <div>Failed to load todos: {error.message}</div>
   }
-
+<stripe-buy-button
+  buy-button-id="buy_btn_..."
+  publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}
+/>
   return (
     <ul>
       {todos?.map((todo: any) => (
