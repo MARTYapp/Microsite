@@ -5,13 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Allow the Stripe custom element in TSX
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "stripe-buy-button": any;
-    }
-  }
-}
+
 
 export default function Home() {
   const [messages, setMessages] = useState([
