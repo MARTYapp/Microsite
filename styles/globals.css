@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 html, body { min-height: 100%; }
-.bg-hero { background: #0b0b0b; }
-.bg-monotone { background: #111; }
+.bg-hero { background: #ffffff; }        /* was near-black; now white */
+.bg-monotone { background: #f7f7f8; }    /* soft light gray */
