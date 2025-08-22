@@ -106,4 +106,5 @@ supabase/migrations/.snapshots/
 .vscode-test
 
 # Project config examples (keep if you want)
-!.env.local.example
+!.env.local.example.env
+.env.local
