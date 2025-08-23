@@ -1,24 +1,28 @@
-// pages/_app.tsx
-// pages/_app.tsx
 import type { AppProps } from "next/app";
-import Head from "next/head";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { LanguageProvider } from "@/lib/i18n";
+import LangToggle from "@/components/LangToggle";
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   return (
-    <>
-      <Head>
-        <title>The MARTY App</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="color-scheme" content="dark" />
-        <meta name="theme-color" content="#000000" />
-      </Head>
-      <main className={`${inter.className} min-h-screen bg-black text-white`}>
-        <Component {...pageProps} />
-      </main>
-    </>
+    <LanguageProvider>
+      <LayoutGroup>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={router.asPath}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
+      </LayoutGroup>
+      <LangToggle />
+    </LanguageProvider>
   );
 }

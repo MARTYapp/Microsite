@@ -1,7 +1,13 @@
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import HeadlineSwap from "@/components/HeadlineSwap";
+import NowBadge from "@/components/NowBadge";
+import { useLang } from "@/lib/i18n";
+
+const ThreeAccent = dynamic(() => import("@/components/ThreeAccent"), { ssr: false });
 
 type Msg = { from: "marty" | "user"; text: string };
 
@@ -12,15 +18,13 @@ const PRO_29 = process.env.NEXT_PUBLIC_PRO_29 ?? "https://buy.stripe.com/9B614od
 const ANGEL_99 = process.env.NEXT_PUBLIC_ANGEL_99 ?? "https://buy.stripe.com/8x2eVedj777w6vQc17aAw05";
 
 export default function Home() {
-  const [messages, setMessages] = useState<Msg[]>([
-    { from: "marty", text: "Hey. I'm Marty. Not therapy. Just me." },
-  ]);
+  const { t } = useLang();
+  const [messages, setMessages] = useState<Msg[]>([{ from: "marty", text: "Hey. I'm Marty. Not therapy. Just me." }]);
   const [input, setInput] = useState("");
   const [sentCount, setSentCount] = useState(0);
 
   const sendMessage = () => {
-    if (!input) return;
-    if (sentCount >= 2) return;
+    if (!input || sentCount >= 2) return;
     setMessages((prev) => [...prev, { from: "user", text: input }]);
     setInput("");
     setSentCount((n) => n + 1);
@@ -28,14 +32,22 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-black text-white">
-      {/* HERO */}
-      <section className="relative h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black to-[#1C1C1C]">
-        <h1 className="text-6xl font-extrabold tracking-tight uppercase mb-6">MARTY ≠ THERAPY</h1>
-        <p className="text-lg text-gray-300 mb-8">Not a therapist. Not a vibe app. Just MARTY.</p>
-        <Link href="/marty-ai"><Button variant="default" size="lg">Try Marty Now</Button></Link>
+      <section className="relative h-[90vh] flex flex-col justify-center items-center bg-gradient-to-b from-black to-[#1C1C1C] text-center">
+        <NowBadge />
+        <h1 className="text-6xl font-extrabold tracking-tight uppercase mt-4">{t.hero.title}</h1>
+        <div className="mt-3"><HeadlineSwap /></div>
+        <p className="text-lg text-gray-300 mt-6">{t.hero.tagline}</p>
+        <div className="mt-8">
+          <Link href="/marty-ai"><Button variant="default" size="lg">Try Marty Now</Button></Link>
+        </div>
       </section>
 
-      {/* PROTOTYPE CHAT */}
+      <section className="py-12 px-8">
+        <div className="mx-auto max-w-5xl">
+          <ThreeAccent />
+        </div>
+      </section>
+
       <section className="py-20 flex flex-col items-center bg-[#111]">
         <h2 className="text-3xl font-bold mb-6">Prototype Demo</h2>
         <Card className="w-full max-w-md bg-black border border-gray-800">
@@ -68,13 +80,11 @@ export default function Home() {
         </Card>
       </section>
 
-      {/* SUPPORT LADDER */}
       <section className="py-20 px-8 bg-gradient-to-b from-[#1C1C1C] to-black">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Fuel the Build • Join the Movement</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Fund the Founder */}
             <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-bold mb-2">Fund the Founder</h3>
@@ -85,7 +95,6 @@ export default function Home() {
               </Link>
             </Card>
 
-            {/* Monthly Supporter */}
             <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-bold mb-2">Monthly Supporter</h3>
@@ -97,7 +106,6 @@ export default function Home() {
               </div>
             </Card>
 
-            {/* Pro / Angel */}
             <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-bold mb-2">MARTY Pro / Angel</h3>
@@ -120,7 +128,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="py-10 bg-black text-center text-gray-500 text-sm">
         <p>© 2025 The MARTY App. All rights reserved.</p>
         <div className="flex justify-center gap-6 mt-4">
