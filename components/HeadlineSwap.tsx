@@ -1,30 +1,21 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useLang } from "@/lib/i18n";
-export default function HeadlineSwap() {
-  const { t } = useLang();
-  const words = t.hero.words;
+
+/**
+ * Simple rotating headline words without i18n object coupling.
+ * Pass words via props or it will use a sensible default.
+ */
+export default function HeadlineSwap({ words = ["Clarity", "Momentum", "Get unstuck"] }:{
+  words?: string[];
+}) {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setI((n) => (n + 1) % words.length), 2200);
+    const id = setInterval(() => setI(v => (v + 1) % words.length), 1800);
     return () => clearInterval(id);
   }, [words.length]);
   return (
-    <div className="h-12 overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={i}
-          initial={{ y: 24, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -24, opacity: 0 }}
-          transition={{ duration: 0.45 }}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight"
-        >
-          {words[i]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <span className="inline-block will-change-transform">
+      {words[i]}
+    </span>
   );
 }

@@ -1,77 +1,75 @@
 "use client";
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useLang } from "@/lib/i18n";
-import { personas, personaIds, type PersonaId } from "@/personas";
-import LangToggle from "@/components/LangToggle";
 
-function pickPersona(): PersonaId {
-  try {
-    const p = (new URLSearchParams(window.location.search).get("p") as PersonaId) || null;
-    if (p && personaIds.includes(p)) return p;
-  } catch {}
-  return personaIds[Math.floor(Math.random() * personaIds.length)];
-}
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { pickPersona } from "@/personas";
+import PersonaVisual from "@/components/PersonaVisual";
+import LangToggle from "@/components/LangToggle";
+import { useLang, t as choose } from "@/lib/i18n";
 
 export default function IntroHero() {
   const { lang } = useLang();
-  const [id, setId] = React.useState<PersonaId>("coco");
+  const search = useSearchParams();
+  const p = useMemo(() => pickPersona(search?.get("p") || undefined), [search]);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  React.useEffect(() => { setId(pickPersona()); }, []);
-  const cfg = personas[id];
+  const title = choose(p.title, p.title); // i18n hook-up later for ES strings
+  const tagline = choose(p.tagline, p.tagline);
 
   return (
-    <section className="relative overflow-hidden rounded-2xl bg-black/60">
-      <div className="absolute right-3 top-3 z-10">
-        <LangToggle />
-      </div>
-
-      <div className="relative">
-        <video
-          className="w-full h-[45vh] md:h-[60vh] object-cover"
-          autoPlay
-          playsInline
-          muted
-          loop
-          preload="metadata"
-          src={cfg.videoSrc}
-          poster="/videos/poster.jpg"
-        />
-      </div>
-
-      <div className="absolute inset-0 grid place-content-center text-center px-6">
-        <AnimatePresence mode="wait">
-          <motion.h1
-            key={`title-${id}-${lang}`}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.3 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight"
-          >
-            {cfg.title[lang]}
-          </motion.h1>
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={`tag-${id}-${lang}`}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.3, delay: 0.05 }}
-            className="mt-4 text-lg md:text-2xl text-white/80"
-          >
-            {cfg.tagline[lang]}
-          </motion.p>
-        </AnimatePresence>
-      </div>
-
-      {cfg.Accent ? (
-        <div className="absolute bottom-3 right-3 opacity-90">
-          <cfg.Accent />
+    <section className="relative py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* top row: badge + lang toggle */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="text-xs tracking-wider uppercase text-white/60">
+            theMARTYapp — Prototype
+          </div>
+          <LangToggle />
         </div>
-      ) : null}
+
+        {/* visual */}
+        <PersonaVisual
+          name={p.name}
+          gradientFrom={p.gradientFrom}
+          gradientTo={p.gradientTo}
+          rgbTint={p.rgbTint}
+        />
+
+        {/* copy */}
+        <div className="mt-8 text-center">
+          <AnimatePresence mode="wait">
+            {mounted && (
+              <motion.h1
+                key={lang + p.name + "-title"}
+                className="text-5xl sm:text-6xl font-extrabold tracking-tight"
+                initial={{ opacity: 0, y: 8, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -6, filter: "blur(6px)" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                {title}
+              </motion.h1>
+            )}
+          </AnimatePresence>
+
+          <p className="mt-4 text-lg text-white/70">{tagline}</p>
+
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <a href={p.ctaHref} className="inline-flex items-center px-6 py-3 rounded-xl bg-white text-black hover:bg-white/90 transition">
+              Try Marty Now
+            </a>
+            <a href="/support" className="inline-flex items-center px-6 py-3 rounded-xl border border-white/20 hover:bg-white/10 transition">
+              Support Marty
+            </a>
+          </div>
+
+          <p className="mt-4 text-xs text-white/40">
+            Tip: add <code>?p=jason</code>, <code>?p=coco</code>, or <code>?p=dad</code> to the URL.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
