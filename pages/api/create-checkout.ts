@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
+import { reqEnv } from "@/lib/env";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2023-08-16' });
 
@@ -14,8 +15,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const session = await stripe.checkout.sessions.create({
       mode: mode || 'payment',
       line_items: [{ price: priceId, quantity }],
-      success_url: process.env.NEXT_PUBLIC_SUCCESS_URL!,
-      cancel_url: process.env.NEXT_PUBLIC_CANCEL_URL!,
+      success_url: reqEnv("NEXT_PUBLIC_SUCCESS_URL"),
+      cancel_url: reqEnv("NEXT_PUBLIC_CANCEL_URL"),
       automatic_tax: { enabled: true },
     });
 

@@ -1,9 +1,10 @@
+import { optEnv } from "@/lib/env";
 
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
+const supabaseUrl = optEnv("NEXT_PUBLIC_SUPABASE_URL") || "";
+const supabaseKey = optEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY") || "";
 
 export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
   return createServerClient(
