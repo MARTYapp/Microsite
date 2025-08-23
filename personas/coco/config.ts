@@ -5,7 +5,6 @@ const cfg: PersonaConfig = {
   id: "coco",
   title:   { en: "theMARTYapp", es: "theMARTYapp" },
   tagline: { en: "Think less. Live more.", es: "Piensa menos. Vive más." },
-  videoSrc: "/videos/coco-loop.webm",
-  Accent: ThreeAccentLazy,
+  Accent: ThreeAccentLazy
 };
 export default cfg;
