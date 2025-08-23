@@ -13,6 +13,11 @@ export default function IntroHero() {
   const [i,setI]=useState(0);
   useEffect(()=>{ const id=setInterval(()=>setI(n=>(n+1)%words.length),2200); return ()=>clearInterval(id); },[words.length]);
 
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-30 dark:opacity-40">
+        <source src="/videos/ambient.mp4" type="video/mp4" />
+      </video>
+    </div>
   return (
     <section className="relative h-[90vh] flex flex-col items-center justify-center text-center
                         bg-gradient-to-b from-white to-gray-100 text-black dark:from-black dark:to-[#121212] dark:text-white">

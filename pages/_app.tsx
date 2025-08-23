@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { LanguageProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
 import LangToggle from "@/components/LangToggle";
-import ThemeToggle from "@/components/ThemeToggle";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -26,7 +25,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </AnimatePresence>
         </LayoutGroup>
         <LangToggle />
-        <ThemeToggle />
       </LanguageProvider>
     </ThemeProvider>
   );

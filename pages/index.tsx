@@ -131,6 +131,7 @@ export default function Home() {
       <footer className="py-10 bg-black text-center text-gray-500 text-sm">
         <p>© 2025 The MARTY App. All rights reserved.</p>
         <div className="flex justify-center gap-6 mt-4">
+          <a href="/investor" className="hover:text-white">Investor</a>
           <a href="https://twitter.com/TheMARTYApp" className="hover:text-white">@TheMARTYApp</a>
           <a href="https://instagram.com" className="hover:text-white">Instagram</a>
         </div>
