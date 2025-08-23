@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
-import Script from "next/script";
+import Script from 'next/script';
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Script from 'next/script';
 
 // Allow the Stripe custom element in TSX
 
@@ -24,6 +24,7 @@ export default function Home() {
   };
 
   return (
+      <Script async src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
     <div className="flex flex-col w-full min-h-screen bg-black text-white">
       {/* HERO */}
       <section className="relative h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black to-[#1C1C1C]">
@@ -117,7 +118,6 @@ export default function Home() {
       </footer>
 
       {/* Stripe script loader */}
-      <Script async src="https://js.stripe.com/v3/buy-button.js" />
-    </div>
+      </div>
   );
 }

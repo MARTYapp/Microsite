@@ -16,8 +16,8 @@ export default async function Page() {
   publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}
 />
   return (
-    <>
       <Script async src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
+    <>
       <stripe-buy-button buy-button-id="buy_btn_..." publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}></stripe-buy-button>
 
     <ul>

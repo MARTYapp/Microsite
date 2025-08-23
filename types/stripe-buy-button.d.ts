@@ -1,3 +1,4 @@
+/// <reference types="react" />
 declare namespace JSX {
   interface IntrinsicElements {
     'stripe-buy-button': React.DetailedHTMLProps<
