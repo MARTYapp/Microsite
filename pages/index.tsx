@@ -24,6 +24,7 @@ export default function Home() {
   };
 
   return (
+    <>
       <Script async src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
     <div className="flex flex-col w-full min-h-screen bg-black text-white">
       {/* HERO */}
