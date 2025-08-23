@@ -1,15 +1,13 @@
 import { useState } from "react";
 import Link from "next/link";
-import Script from 'next/script';
-
+import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Allow the Stripe custom element in TSX
-
+type Msg = { from: "marty" | "user"; text: string };
 
 export default function Home() {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Msg[]>([
     { from: "marty", text: "Hey. I'm Marty. Not therapy. Just me." },
   ]);
   const [input, setInput] = useState("");
@@ -24,9 +22,14 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Script async src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
     <div className="flex flex-col w-full min-h-screen bg-black text-white">
+      {/* Stripe loader (keep exactly one) */}
+      <Script
+        async
+        src="https://js.stripe.com/v3/buy-button.js"
+        strategy="afterInteractive"
+      />
+
       {/* HERO */}
       <section className="relative h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black to-[#1C1C1C]">
         <h1 className="text-6xl font-extrabold tracking-tight uppercase mb-6">
@@ -46,7 +49,7 @@ export default function Home() {
         <Card className="w-full max-w-md bg-black border border-gray-800">
           <CardContent className="p-4 space-y-3">
             <div className="space-y-2 h-64 overflow-y-auto">
-              {messages.map((m, i) => (
+              {messages.map((m: Msg, i: number) => (
                 <p
                   key={i}
                   className={`${m.from === "marty" ? "text-blue-400" : "text-gray-200"}`}
@@ -104,7 +107,7 @@ export default function Home() {
           {/* Stripe Buy Button */}
           <stripe-buy-button
             buy-button-id="buy_btn_1RnmLTL45NOzuZAPetj8mdK4"
-            publishable-key="pk_live_51RiWkVL45NOzuZAP09C7PjNtYwCweq8djVjxLSGqgqG5PVPq3bJd6GWjcBwpJBOynsvaHwYSKsvitjPJN3n02TLf00vZSARbmJ"
+            publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}
           ></stripe-buy-button>
         </Card>
       </section>
@@ -117,8 +120,6 @@ export default function Home() {
           <a href="https://instagram.com" className="hover:text-white">Instagram</a>
         </div>
       </footer>
-
-      {/* Stripe script loader */}
-      </div>
+    </div>
   );
 }
