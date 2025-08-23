@@ -1,3 +1,4 @@
+import IntroHero from "@/components/IntroHero"
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -32,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-black text-white">
-      <section className="relative h-[90vh] flex flex-col justify-center items-center bg-gradient-to-b from-black to-[#1C1C1C] text-center">
+      <IntroHero />
         <NowBadge />
         <h1 className="text-6xl font-extrabold tracking-tight uppercase mt-4">{t.hero.title}</h1>
         <div className="mt-3"><HeadlineSwap /></div>
@@ -40,7 +41,6 @@ export default function Home() {
         <div className="mt-8">
           <Link href="/marty-ai"><Button variant="default" size="lg">Try Marty Now</Button></Link>
         </div>
-      </section>
 
       <section className="py-12 px-8">
         <div className="mx-auto max-w-5xl">
