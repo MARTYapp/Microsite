@@ -11,20 +11,8 @@ export default async function Page() {
   if (error) {
     return <div>Failed to load todos: {error.message}</div>
   }
-<stripe-buy-button
-  buy-button-id="buy_btn_..."
-  publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}
-/>
-  return (
-    <>
       <Script async src="https://js.stripe.com/v3/buy-button.js" strategy="afterInteractive" />
     <>
-      <stripe-buy-button buy-button-id="buy_btn_..." publishable-key={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!}></stripe-buy-button>
-
-    <ul>
-      {todos?.map((todo: any) => (
-        <li key={todo.id}>{todo.title ?? todo.text ?? JSON.stringify(todo)}</li>
-      ))}
     </ul>
   )
 }
