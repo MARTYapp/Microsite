@@ -1,86 +1,77 @@
 "use client";
-
-import LangToggle from "@/components/LangToggle"
-import { useEffect, useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import MagicStars from "@/components/MagicStars";
-import Countdown from "@/components/Countdown";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
+import { personas, personaIds, type PersonaId } from "@/personas";
+import LangToggle from "@/components/LangToggle";
+
+function pickPersona(): PersonaId {
+  try {
+    const p = (new URLSearchParams(window.location.search).get("p") as PersonaId) || null;
+    if (p && personaIds.includes(p)) return p;
+  } catch {}
+  return personaIds[Math.floor(Math.random() * personaIds.length)];
+}
 
 export default function IntroHero() {
-  // Pause bg video on small screens or reduced-data
-  if (typeof window !== "undefined") {
-    const mSmall = window.matchMedia("(max-width: 768px)");
-    const mData = (window as any).navigator?.connection?.saveData === true;
-    const vid = document.getElementById("marty-bg-video") as HTMLVideoElement | null;
-    if (vid && (mSmall.matches || mData)) { try { vid.pause(); } catch {} }
-  }
-  const { t } = useLang();
-  const words = t.hero.words;
-  const [i,setI]=useState(0);
-  useEffect(()=>{ const id=setInterval(()=>setI(n=>(n+1)%words.length),2200); return ()=>clearInterval(id); },[words.length]);
+  const { lang } = useLang();
+  const [id, setId] = React.useState<PersonaId>("coco");
 
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      <video autoPlay muted loop playsInline preload="metadata" poster="/videos/ambient.jpg" className="w-full h-full object-cover opacity-30 dark:opacity-40" id="marty-bg-video"><source src="/videos/ambient.mp4" type="video/mp4" /></video>
-    </div>
+  React.useEffect(() => { setId(pickPersona()); }, []);
+  const cfg = personas[id];
+
   return (
-    <section className="relative h-[90vh] flex flex-col items-center justify-center text-center
-                        bg-gradient-to-b from-white to-gray-100 text-black dark:from-black dark:to-[#121212] dark:text-white">
-      <div className="absolute right-4 top-4 z-20">
+    <section className="relative overflow-hidden rounded-2xl bg-black/60">
+      <div className="absolute right-3 top-3 z-10">
         <LangToggle />
       </div>
-      <MagicStars/>
-      <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:.4}}>
-        <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-gray-700 bg-black/10 dark:bg-white/5 text-black/80 dark:text-white/80">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          Now shipping v0.x
-        </div>
-      </motion.div>
-      <motion.h1
-        initial={{opacity:0,y:10}}
-        animate={{opacity:1,y:0}}
-        transition={{delay:.05,duration:.5}}
-        className="mt-4 text-[11vw] leading-none font-extrabold tracking-tight uppercase"
-      >
-        {t.hero.title}
-      </motion.h1>
-      <div className="h-12 mt-3 overflow-hidden">
+
+      <div className="relative">
+        <video
+          className="w-full h-[45vh] md:h-[60vh] object-cover"
+          autoPlay
+          playsInline
+          muted
+          loop
+          preload="metadata"
+          src={cfg.videoSrc}
+          poster="/videos/poster.jpg"
+        />
+      </div>
+
+      <div className="absolute inset-0 grid place-content-center text-center px-6">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={i}
-            initial={{y:24,opacity:0}}
-            animate={{y:0,opacity:1}}
-            exit={{y:-24,opacity:0}}
-            transition={{duration:.45}}
-            className="text-4xl md:text-6xl font-extrabold tracking-tight"
+          <motion.h1
+            key={`title-${id}-${lang}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.3 }}
+            className="text-5xl md:text-7xl font-extrabold tracking-tight"
           >
-            {words[i]}
-          </motion.div>
+            {cfg.title[lang]}
+          </motion.h1>
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={`tag-${id}-${lang}`}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
+            className="mt-4 text-lg md:text-2xl text-white/80"
+          >
+            {cfg.tagline[lang]}
+          </motion.p>
         </AnimatePresence>
       </div>
-      <motion.p
-        initial={{opacity:0,y:10}}
-        animate={{opacity:1,y:0}}
-        transition={{delay:.1,duration:.45}}
-        className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-6 max-w-xl px-4"
-      >
-        {t.hero.tagline}
-      </motion.p>
 
-      {/* Cinematic countdown (set target date via env or fallback) */}
-      <Countdown target={process.env.NEXT_PUBLIC_MARTY_DATE ?? "2025-09-15T00:00:00-04:00"} />
-
-      <motion.div
-        initial={{opacity:0,y:10}}
-        animate={{opacity:1,y:0}}
-        transition={{delay:.15,duration:.45}}
-        className="mt-8 flex flex-wrap gap-3 justify-center"
-      >
-        <Link href="/marty-ai"><Button size="lg">Try Marty Now</Button></Link>
-        <Link href="/support"><Button variant="outline" size="lg">Support</Button></Link>
-      </motion.div>
+      {cfg.Accent ? (
+        <div className="absolute bottom-3 right-3 opacity-90">
+          <cfg.Accent />
+        </div>
+      ) : null}
     </section>
   );
 }
