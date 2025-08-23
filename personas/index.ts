@@ -1,9 +1,10 @@
+export type Trans = { en: string; es: string };
 export type PersonaKey = "jason" | "coco" | "dad";
 
 export type PersonaSkin = {
   name: PersonaKey;
-  title: string;
-  tagline: string;
+  title: Trans;
+  tagline: Trans;
   ctaHref: string;
   gradientFrom: string; // e.g. "#0ea5e9"
   gradientTo: string;   // e.g. "#22d3ee"
