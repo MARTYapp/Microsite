@@ -14,8 +14,8 @@ const dict: Record<Lang, Dict> = {
   es: {
     hero: {
       title: "MARTY",
-      words: ["No es Terapia", "No es una App de Vibra", "Solo MARTY"],
-      tagline: "Mente más afilada. Sin rodeos. Energía NYC.",
+      words: ["No es Terapia", "No es una app de vibra", "Solo MARTY"],
+      tagline: "Mente afilada. Sin rodeos. Energía NYC.",
     },
   },
 };

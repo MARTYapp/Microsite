@@ -52,5 +52,6 @@
   },
   "bin": {
     "marty-optimize": "./bin/marty-optimize.js"
-  }
+  },
+  "type": "module"
 }
