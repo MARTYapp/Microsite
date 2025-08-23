@@ -9,7 +9,7 @@ export default function Investor() {
         <div className="mt-8 flex gap-3 justify-center">
           <Link href="/support" className="underline">Support MARTY</Link>
           <a href={(process.env.NEXT_PUBLIC_INVESTOR_DECK_URL ?? "/deck.pdf")} className="underline">View Deck</a>
-          <a href="{process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}" className="underline">Book Call</a>
+          <a href={process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}className="underline">Book Call</a>
         </div>
       </section>
 
@@ -37,13 +37,13 @@ export default function Investor() {
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-3">Positioning</h2>
-          <p className="text-gray-300">MARTY ≠ therapy; it’s an assertive cognitive tool. Clear wedge against vibe apps and self-help sludge.</p>
+          <p className="text-gray-300">MARTY ≠ therapy; it's an assertive cognitive tool. Clear wedge against vibe apps and self-help sludge.</p>
         </div>
       </section>
 
       <section className="py-12 text-center">
         <a href={(process.env.NEXT_PUBLIC_INVESTOR_DECK_URL ?? "/deck.pdf")} className="inline-block px-6 py-3 rounded-xl border border-gray-700 hover:bg-white/5">View Full Deck</a>
-        <a href="{process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}" className="inline-block px-6 py-3 ml-3 rounded-xl border border-gray-700 hover:bg-white/5">Book Call</a>
+        <a href={process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}className="inline-block px-6 py-3 ml-3 rounded-xl border border-gray-700 hover:bg-white/5">Book Call</a>
       </section>
     </main>
   );
