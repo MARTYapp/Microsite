@@ -1,40 +1,69 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
-type Lang = "en" | "es";
-type Dict = {
-  hero: { title: string; words: string[]; tagline: string };
-};
-const dict: Record<Lang, Dict> = {
+import React, { createContext, useContext, useMemo, useState } from "react";
+
+export type Lang = "en" | "es";
+
+// Central copy dictionary (extend as you add surfaces)
+const COPY = {
   en: {
     hero: {
-      title: "MARTY",
-      words: ["Not Therapy", "Not a Vibe App", "Just MARTY"],
-      tagline: "Sharper mind. No fluff. NYC energy.",
+      title: "MARTY ≠ THERAPY",
+      tagline: "Not a therapist. Not a vibe app. Just MARTY.",
+      words: ["Not therapy", "Not a vibe app", "Just MARTY"],
     },
   },
   es: {
     hero: {
-      title: "MARTY",
-      words: ["No es Terapia", "No es una app de vibra", "Solo MARTY"],
-      tagline: "Mente afilada. Sin rodeos. Energía NYC.",
+      title: "MARTY ≠ TERAPIA",
+      tagline: "No es terapeuta. No es una app de vibras. Solo MARTY.",
+      words: ["No es terapia", "No es una app de vibras", "Solo MARTY"],
     },
   },
+} as const;
+
+type CopyShape = typeof COPY["en"];
+
+type LangCtx = {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  toggle: () => void;
+  // context.t is the current-language copy object so you can do: t.hero.title
+  t: CopyShape;
 };
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
-const LanguageContext = createContext<Ctx | null>(null);
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
-  useEffect(() => {
-    const saved = typeof window !== "undefined" ? (localStorage.getItem("lang") as Lang | null) : null;
-    if (saved) setLang(saved);
-  }, []);
-  useEffect(() => {
-    if (typeof window !== "undefined") localStorage.setItem("lang", lang);
+
+const LangContext = createContext<LangCtx | null>(null);
+
+export function LanguageProvider({
+  children,
+  initial = "en",
+}: {
+  children: React.ReactNode;
+  initial?: Lang;
+}) {
+  const [lang, setLang] = useState<Lang>(initial);
+
+  const value = useMemo<LangCtx>(() => {
+    const copy = COPY[lang] as CopyShape;
+    return {
+      lang,
+      setLang,
+      toggle: () => setLang((l) => (l === "en" ? "es" : "en")),
+      t: copy,
+    };
   }, [lang]);
-  const value = useMemo(() => ({ lang, setLang, t: dict[lang] }), [lang]);
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+
+  return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
+
 export function useLang() {
-  const ctx = useContext(LanguageContext);
+  const ctx = useContext(LangContext);
   if (!ctx) throw new Error("useLang must be used within LanguageProvider");
   return ctx;
 }
+
+/** Standalone helper for inline text: {t("English","Español")} */
+export function t(en: React.ReactNode, es: React.ReactNode) {
+  const { lang } = useLang();
+  return lang === "es" ? es : en;
+}
+
+export type { CopyShape };
