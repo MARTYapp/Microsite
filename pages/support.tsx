@@ -1,3 +1,4 @@
+import GoalBar from "@/components/GoalBar"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,6 +16,7 @@ export default function Support() {
         <h1 className="text-5xl font-extrabold tracking-tight uppercase mb-4">Support MARTY</h1>
         <p className="text-gray-300 max-w-2xl mx-auto">Back the build, join the inner circle, or go premium. Every dollar turns into product.</p>
       </header>
+      <div className="max-w-2xl mx-auto px-8"><GoalBar /></div>
 
       <main className="py-16 px-8">
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
