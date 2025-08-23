@@ -1,17 +1,16 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import type { Object3D } from "three";
 import { Suspense } from "react";
 
-// Minimal typing so we don't need to suppress errors
-type GLTFWithScene = { scene: THREE.Object3D };
+type GLTFWithScene = { scene: Object3D };
 
 function Model() {
   try {
     const gltf = useGLTF("/models/brain.glb") as unknown as GLTFWithScene;
     return <primitive object={gltf.scene} scale={1.1} />;
   } catch {
-    // Fallback if model missing or fails to load
     return (
       <mesh rotation={[0.2, 0.4, 0]}>
         <torusKnotGeometry args={[0.7, 0.22, 128, 24]} />
@@ -20,8 +19,9 @@ function Model() {
     );
   }
 }
-// Preload model when available (safe if file is missing)
-(useGLTF as any).preload?.("/models/brain.glb");
+
+// Preload when available (no-op if not supported)
+(useGLTF as unknown as { preload?: (p: string) => void }).preload?.("/models/brain.glb");
 
 export default function ThreeAccent() {
   return (
