@@ -2,6 +2,8 @@ export type Trans = { en: string; es: string };
 export type PersonaKey = "jason" | "coco" | "dad";
 
 export type PersonaSkin = {
+  id: string;
+
   name: PersonaKey;
   title: Trans;
   tagline: Trans;
@@ -9,13 +11,14 @@ export type PersonaSkin = {
   gradientFrom: string; // e.g. "#0ea5e9"
   gradientTo: string;   // e.g. "#22d3ee"
   rgbTint: string;      // "r,g,b" for the sweep
+
 };
 
 export const personas: Record<PersonaKey, PersonaSkin> = {
   jason: {
     name: "jason",
-    title: "MARTY ain’t therapy.",
-    tagline: "NYC grit. Blunt clarity. Get unstuck.",
+    title: { en: "MARTY ain’t therapy.", es: "MARTY ain’t therapy." },
+    tagline: { en: "NYC grit. Blunt clarity. Get unstuck.", es: "NYC grit. Blunt clarity. Get unstuck." },
     ctaHref: "/marty-ai",
     gradientFrom: "#1d4ed8",
     gradientTo: "#9333ea",
@@ -23,8 +26,8 @@ export const personas: Record<PersonaKey, PersonaSkin> = {
   },
   coco: {
     name: "coco",
-    title: "MARTY for focus.",
-    tagline: "Quiet momentum. Do the next right thing.",
+    title: { en: "MARTY for focus.", es: "MARTY for focus." },
+    tagline: { en: "Quiet momentum. Do the next right thing.", es: "Quiet momentum. Do the next right thing." },
     ctaHref: "/marty-ai",
     gradientFrom: "#0ea5e9",
     gradientTo: "#22d3ee",
@@ -32,8 +35,8 @@ export const personas: Record<PersonaKey, PersonaSkin> = {
   },
   dad: {
     name: "dad",
-    title: "MARTY for steady days.",
-    tagline: "Simple steps. Less noise. More living.",
+    title: { en: "MARTY for steady days.", es: "MARTY for steady days." },
+    tagline: { en: "Simple steps. Less noise. More living.", es: "Simple steps. Less noise. More living." },
     ctaHref: "/marty-ai",
     gradientFrom: "#16a34a",
     gradientTo: "#f59e0b",

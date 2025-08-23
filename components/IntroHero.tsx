@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
@@ -6,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { pickPersona } from "@/personas";
 import PersonaVisual from "@/components/PersonaVisual";
 import LangToggle from "@/components/LangToggle";
-import { useLang, t as choose } from "@/lib/i18n";
+import { useLang, t } from "@/lib/i18n";
 
 export default function IntroHero() {
   const { lang } = useLang();
@@ -15,8 +16,8 @@ export default function IntroHero() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const title = choose(p.title, p.title); // i18n hook-up later for ES strings
-  const tagline = choose(p.tagline, p.tagline);
+  const title = t(p.title.en, p.title.es); // i18n hook-up later for ES strings
+  const tagline = t(p.tagline.en, p.tagline.es);
 
   return (
     <section className="relative py-16 sm:py-24">
