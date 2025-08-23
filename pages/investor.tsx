@@ -8,12 +8,17 @@ export default function Investor() {
         <p className="text-gray-300 mt-4 max-w-2xl mx-auto">Clarity, culture, and a sharper mind product. This is not therapy — this is MARTY.</p>
         <div className="mt-8 flex gap-3 justify-center">
           <Link href="/support" className="underline">Support MARTY</Link>
-          <a href="/deck.pdf" className="underline">View Deck</a>
-          <a href="https://cal.com/your-handle/marty" className="underline">Book Call</a>
+          <a href={(process.env.NEXT_PUBLIC_INVESTOR_DECK_URL ?? "/deck.pdf")} className="underline">View Deck</a>
+          <a href="{process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}" className="underline">Book Call</a>
         </div>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 py-12 grid gap-8">
+        <div data-traction-cards className="grid sm:grid-cols-3 gap-4">
+          <div className="rounded-xl border border-gray-800 p-4"><div className="text-3xl font-extrabold">{process.env.NEXT_PUBLIC_METRIC_SIGNUPS ?? "—"}</div><div className="text-gray-400 text-sm">Signups</div></div>
+          <div className="rounded-xl border border-gray-800 p-4"><div className="text-3xl font-extrabold">{process.env.NEXT_PUBLIC_METRIC_MERCH ?? "—"}</div><div className="text-gray-400 text-sm">Merch sold</div></div>
+          <div className="rounded-xl border border-gray-800 p-4"><div className="text-3xl font-extrabold">{process.env.NEXT_PUBLIC_METRIC_PRESS ?? "—"}</div><div className="text-gray-400 text-sm">Press mentions</div></div>
+        </div>
         <div>
           <h2 className="text-2xl font-bold mb-3">Traction</h2>
           <ul className="text-gray-300 list-disc ml-5 space-y-1">
@@ -37,8 +42,8 @@ export default function Investor() {
       </section>
 
       <section className="py-12 text-center">
-        <a href="/deck.pdf" className="inline-block px-6 py-3 rounded-xl border border-gray-700 hover:bg-white/5">View Full Deck</a>
-        <a href="https://cal.com/your-handle/marty" className="inline-block px-6 py-3 ml-3 rounded-xl border border-gray-700 hover:bg-white/5">Book Call</a>
+        <a href={(process.env.NEXT_PUBLIC_INVESTOR_DECK_URL ?? "/deck.pdf")} className="inline-block px-6 py-3 rounded-xl border border-gray-700 hover:bg-white/5">View Full Deck</a>
+        <a href="{process.env.NEXT_PUBLIC_INVESTOR_CAL_URL ?? "https://cal.com/your-handle/marty"}" className="inline-block px-6 py-3 ml-3 rounded-xl border border-gray-700 hover:bg-white/5">Book Call</a>
       </section>
     </main>
   );

@@ -2,6 +2,7 @@ import GoalBar from "@/components/GoalBar"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { t } from "@/lib/i18n";
 
 const FUND_ONCE = process.env.NEXT_PUBLIC_FUND_ONCE ?? "https://donate.stripe.com/5kQ4gAdj78bA6vQd5baAw03";
 const MONTHLY_5 = process.env.NEXT_PUBLIC_MONTHLY_5 ?? "https://buy.stripe.com/00w14o92R4Zo9I25CJaAw01";
@@ -23,14 +24,14 @@ export default function Support() {
           <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold mb-2">Fund the Founder</h3>
-              <p className="mb-6 text-gray-300">One-time boost — direct fuel for Eric to ship MARTY.</p>
+              <p className="mb-6 text-gray-300">{t("One-time boost — direct fuel for Eric to ship MARTY.","Impulso único: combustible directo para que Eric lance MARTY.")}</p>
             </div>
             <Link href={FUND_ONCE} target="_blank" rel="noopener noreferrer"><Button className="w-full">Donate Once</Button></Link>
           </Card>
 
           <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-xl font-bold mb-2">Monthly Supporter</h3>
+              <h3 className="text-xl font-bold mb-2">{t("Monthly Supporter","Soporte mensual")}</h3>
               <p className="mb-6 text-gray-300">Small pledge, big impact. Keep momentum steady.</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -41,7 +42,7 @@ export default function Support() {
 
           <Card className="bg-black border border-gray-700 p-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-xl font-bold mb-2">MARTY Pro / Angel</h3>
+              <h3 className="text-xl font-bold mb-2">{t("MARTY Pro / Angel","MARTY Pro / Ángel")}</h3>
               <p className="mb-6 text-gray-300">For power users and angels. Unlock recognition + premium access.</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -66,15 +67,22 @@ export default function Support() {
 
           <details className="bg-[#0d0d0d] border border-gray-800 rounded-xl p-4">
             <summary className="cursor-pointer font-semibold">Refunds?</summary>
-            <p className="mt-2 text-gray-300">One-time donations are final. Monthly supporters and Pro/Angel tiers can cancel anytime; future charges stop immediately.</p>
+            <p className="mt-2 text-gray-300">{t("One-time donations are final. Monthly supporters and Pro/Angel tiers can cancel anytime; future charges stop immediately.","Las donaciones únicas son finales. Los apoyos mensuales y niveles Pro/Ángel pueden cancelarse en cualquier momento; los cargos futuros se detienen de inmediato.")}</p>
           </details>
 
           <details className="bg-[#0d0d0d] border border-gray-800 rounded-xl p-4">
             <summary className="cursor-pointer font-semibold">Do I need an account?</summary>
-            <p className="mt-2 text-gray-300">No account required to donate/support. Pro/Angel tiers may include app features that require sign-in once they’re live.</p>
+            <p className="mt-2 text-gray-300">{t("No account required to donate/support. Pro/Angel tiers may include app features that require sign-in once they’re live.","No necesitas cuenta para donar/apoyar. Los niveles Pro/Ángel pueden incluir funciones que requieran iniciar sesión cuando estén disponibles.")}</p>
           </details>
         </section>
-      </main>
+      
+      <div data-sticky-support-cta className="fixed inset-x-0 bottom-4 z-40 px-4 sm:px-6 md:px-8">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-gray-800 bg-black/70 backdrop-blur px-4 py-3 flex items-center justify-between gap-3">
+          <span className="text-sm text-gray-200">{t("Back MARTY now","Apoya a MARTY ahora")}</span>
+          <a href={process.env.NEXT_PUBLIC_FUND_ONCE ?? "/support"} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg bg-white text-black font-semibold">{t("Support","Apoyar")}</a>
+        </div>
+      </div>
+    </main>
 
       <footer className="py-10 bg-black text-center text-gray-500 text-sm">
         <p>© 2025 The MARTY App. All rights reserved.</p>
