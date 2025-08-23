@@ -1,4 +1,5 @@
 "use client";
+
 import { useMemo } from "react";
 export default function MagicStars() {
   const stars = useMemo(() => Array.from({ length: 80 }).map((_, i) => ({

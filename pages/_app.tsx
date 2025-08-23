@@ -1,3 +1,5 @@
+"use client";
+
 import type { AppProps } from "next/app";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useRouter } from "next/router";

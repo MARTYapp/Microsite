@@ -1,5 +1,6 @@
-import LangToggle from "@/components/LangToggle"
 "use client";
+
+import LangToggle from "@/components/LangToggle"
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MagicStars from "@/components/MagicStars";

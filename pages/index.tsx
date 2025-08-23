@@ -1,3 +1,5 @@
+"use client";
+
 import ThreeAccentLazy from "@/components/ThreeAccentLazy"
 import IntroHero from "@/components/IntroHero"
 import { useState } from "react";
