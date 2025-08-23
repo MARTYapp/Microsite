@@ -1,3 +1,4 @@
+import ThreeAccentLazy from "@/components/ThreeAccentLazy"
 import IntroHero from "@/components/IntroHero"
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -44,7 +45,7 @@ export default function Home() {
 
       <section className="py-12 px-8">
         <div className="mx-auto max-w-5xl">
-          <ThreeAccent />
+          <ThreeAccentLazy />
         </div>
       </section>
 

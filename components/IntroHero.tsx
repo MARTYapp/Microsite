@@ -8,15 +8,20 @@ import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
 
 export default function IntroHero() {
+  // Pause bg video on small screens or reduced-data
+  if (typeof window !== "undefined") {
+    const mSmall = window.matchMedia("(max-width: 768px)");
+    const mData = (window as any).navigator?.connection?.saveData === true;
+    const vid = document.getElementById("marty-bg-video") as HTMLVideoElement | null;
+    if (vid && (mSmall.matches || mData)) { try { vid.pause(); } catch {} }
+  }
   const { t } = useLang();
   const words = t.hero.words;
   const [i,setI]=useState(0);
   useEffect(()=>{ const id=setInterval(()=>setI(n=>(n+1)%words.length),2200); return ()=>clearInterval(id); },[words.length]);
 
     <div className="absolute inset-0 -z-10 overflow-hidden">
-      <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-30 dark:opacity-40">
-        <source src="/videos/ambient.mp4" type="video/mp4" />
-      </video>
+      <video autoPlay muted loop playsInline preload="metadata" poster="/videos/ambient.jpg" className="w-full h-full object-cover opacity-30 dark:opacity-40" id="marty-bg-video"><source src="/videos/ambient.mp4" type="video/mp4" /></video>
     </div>
   return (
     <section className="relative h-[90vh] flex flex-col items-center justify-center text-center
