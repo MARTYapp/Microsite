@@ -1,3 +1,4 @@
+import LangToggle from "@/components/LangToggle"
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +27,9 @@ export default function IntroHero() {
   return (
     <section className="relative h-[90vh] flex flex-col items-center justify-center text-center
                         bg-gradient-to-b from-white to-gray-100 text-black dark:from-black dark:to-[#121212] dark:text-white">
+      <div className="absolute right-4 top-4 z-20">
+        <LangToggle />
+      </div>
       <MagicStars/>
       <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:.4}}>
         <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-gray-700 bg-black/10 dark:bg-white/5 text-black/80 dark:text-white/80">

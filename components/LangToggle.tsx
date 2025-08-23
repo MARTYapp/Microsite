@@ -1,14 +1,16 @@
-"use client";
 import { useLang } from "@/lib/i18n";
+
 export default function LangToggle() {
-  const { lang, setLang } = useLang();
+  const { lang, toggle } = useLang();
+  const label = lang === "en" ? "ES" : "EN";
   return (
     <button
-      onClick={() => setLang(lang === "en" ? "es" : "en")}
-      className="fixed top-4 right-4 z-50 px-3 py-1 rounded-full border border-gray-700 bg-black/60 text-xs text-white hover:bg-black/80"
+      onClick={toggle}
       aria-label="Toggle language"
+      className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs tracking-wide uppercase
+                 hover:bg-white/10 transition-colors"
     >
-      {lang.toUpperCase()}
+      {label}
     </button>
   );
 }
