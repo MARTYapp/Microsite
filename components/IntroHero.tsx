@@ -57,7 +57,7 @@ export default function IntroHero() {
 
           <p className="mt-4 text-lg text-white/70">{tagline}</p>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full max-w-md">
             <a href={p.ctaHref} className="inline-flex items-center px-6 py-3 rounded-xl bg-white text-black hover:bg-white/90 transition">
               Try Marty Now
             </a>
