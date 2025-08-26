@@ -12,11 +12,11 @@ export default function FuelTheFounder() {
         No investors. No noise. Just one founder building something real
       </p>
       <Link
-        href="https://coff.ee/ericadler"
+        href="https://buymeacoffee.com/ericadler"
         target="_blank"
         className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
       >
-        💸 Back the Build 💸
+        ☕ Fuel the Founder ☕
       </Link>
     </section>
   )

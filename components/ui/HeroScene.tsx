@@ -70,7 +70,7 @@ export default function HomeHero() {
 
       {/* Bottom-right CTA */}
       <div className="absolute bottom-4 right-4 text-xs text-gray-500 z-20">
-        💸 <a href="https://coff.ee/ericadler" className="underline">Fund the Founder</a>
+        ☕ <a href="https://buymeacoffee.com/ericadler" className="underline">Fuel the Founder</a>
       </div>
     </section>
   )

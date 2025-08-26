@@ -34,12 +34,12 @@ export default function Layout({
         </Link>
         {' • '}
         <Link
-          href="https://coff.ee/ericadler"
+          href="https://buymeacoffee.com/ericadler"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-white"
         >
-          💸Fund the Founder 💸
+          ☕ Fuel the Founder
         </Link>
       </footer>
     </>

@@ -12,13 +12,13 @@ const ITEMS: Item[] = [
   {
     title: 'Crewneck — Beige / Navy',
     src: '/images/crewneck-beige-navy.png',
-    href: '/store',
+    href: '/shop',
     note: 'Limited drop — The Quiet Ones'
   },
   {
     title: 'Crewneck — Navy / Gold',
     src: '/images/crewneck-navy-gold.png',
-    href: '/store',
+    href: '/shop',
     note: 'Limited drop — Overthinkers'
   },
 ]
@@ -29,8 +29,8 @@ export default function MartyHoodie() {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Merch, not cringe</h2>
         <Link
-          href="/store"
-          className="inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
+           href="/shop"
+           className="inline-flex items-center rounded-full bg-white text-black px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
         >
           🛒 Browse Store
         </Link>

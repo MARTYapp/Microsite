@@ -29,7 +29,7 @@ export default function FundTheFounder({
 
   return (
     <section style={{display:'grid', gap:'16px', maxWidth:480}}>
-      <h2 style={{margin:0}}>Fund the Founder</h2>
+      <h2 style={{margin:0}}>☕ Fuel the Founder</h2>
       <div style={{display:'grid', gap:'8px'}}>
         {tiers.map(t => (
           <button key={t.priceId} disabled={loading===t.priceId}
@@ -40,7 +40,7 @@ export default function FundTheFounder({
         ))}
       </div>
       <a href={bmcUrl} target="_blank" rel="noopener noreferrer" style={{textAlign:'center', textDecoration:'underline'}}>
-        Buy Me a Coffee
+        ☕ Fuel the Founder
       </a>
     </section>
   );

@@ -35,7 +35,7 @@ export default function FundTheFounderEnv({ bmcUrl }: { bmcUrl: string }) {
 
   return (
     <section style={{display:'grid', gap:'16px', maxWidth:520}}>
-      <h2 style={{margin:0}}>Fund the Founder</h2>
+      <h2 style={{margin:0}}>☕ Fuel the Founder</h2>
 
       {configured.length > 0 ? (
         <div style={{display:'grid', gap:'8px'}}>
@@ -52,7 +52,7 @@ export default function FundTheFounderEnv({ bmcUrl }: { bmcUrl: string }) {
         </div>
       ) : (
         <div style={{padding:'12px 16px', border:'1px solid #444'}}>
-          Stripe tiers not configured yet. You can still support via Buy Me a Coffee below.
+          Stripe tiers not configured yet. You can still support via Fuel the Founder below.
         </div>
       )}
 
@@ -63,7 +63,7 @@ export default function FundTheFounderEnv({ bmcUrl }: { bmcUrl: string }) {
       )}
 
       <a href={bmcUrl} target="_blank" rel="noopener noreferrer" style={{textAlign:'center', textDecoration:'underline'}}>
-        Buy Me a Coffee
+        ☕ Fuel the Founder
       </a>
     </section>
   );

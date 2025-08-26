@@ -5,7 +5,7 @@ import React from 'react'
 export default function AppIcon() {
   return (
     <div className="app-icon">
-      <div className="marty-text">MARTY</div>
+      <div className="marty-text">M</div>
       <style jsx>{`
         .app-icon {
           width: 200px;
@@ -44,13 +44,15 @@ export default function AppIcon() {
         }
 
         .marty-text {
-          font-size: 36px;
+          font-size: 120px;
           font-weight: 900;
           color: #ffffff;
-          letter-spacing: -1px;
+          transform: rotate(-5deg);
           text-shadow:
-            0 2px 8px rgba(0, 0, 0, 0.35),
-            inset 0 0 1px rgba(255, 255, 255, 0.1);
+            0 4px 12px rgba(0, 0, 0, 0.6),
+            0 -2px 2px rgba(255, 255, 255, 0.2);
+          font-family: 'Impact', 'Arial Black', sans-serif;
+          letter-spacing: -4px;
           z-index: 1;
         }
       `}</style>

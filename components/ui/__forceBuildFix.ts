@@ -14,3 +14,9 @@ if (process.env.NODE_ENV === 'development') {
   console.log('[ForceInclude] Input:', Input.name)
   console.log('[ForceInclude] UI Components:', Object.keys(ui))
 }
+
+// Minimal type declaration for react-player to satisfy TS
+declare module 'react-player' {
+  const ReactPlayer: any
+  export = ReactPlayer
+}

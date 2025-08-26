@@ -35,11 +35,11 @@ export default function HeroScene() {
         THE MARTY APP
       </div>
       <Link
-        href="https://coff.ee/ericadler"
+        href="https://buymeacoffee.com/ericadler"
         className="absolute top-6 right-6 text-amber-400 hover:text-amber-300 font-semibold text-xs tracking-wider shimmer-m z-20"
         target="_blank"
       >
-        $END ME $
+        ☕ Fuel the Founder
       </Link>
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         <AnimatePresence mode="wait">

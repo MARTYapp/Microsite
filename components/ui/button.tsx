@@ -6,6 +6,7 @@ type ButtonProps = {
   className?: string
   variant?: 'default' | 'secondary' | 'outline'
   size?: 'sm' | 'md' | 'lg'
+  fullWidth?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const variantStyles = {
@@ -25,10 +26,11 @@ export const Button = ({
   className = '',
   variant = 'default',
   size = 'md',
+  fullWidth = false,
   ...props
 }: ButtonProps) => (
   <button
-    className={`${variantStyles[variant]} ${sizeStyles[size]} rounded ${className}`}
+    className={`${variantStyles[variant]} ${sizeStyles[size]} rounded ${fullWidth ? 'w-full' : ''} ${className}`}
     {...props}
   >
     {children}

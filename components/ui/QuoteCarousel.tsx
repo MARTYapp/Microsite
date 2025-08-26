@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function QuoteCarousel() {
   const quotes = [
@@ -12,19 +13,31 @@ export default function QuoteCarousel() {
     '“The only app that actually gets how I think.”',
   ]
 
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % quotes.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [quotes.length])
+
   return (
     <section className="py-16 px-4 bg-black text-center text-white">
-      {quotes.map((quote, i) => (
-        <motion.blockquote
-          key={i}
-          className="text-xl md:text-2xl font-medium max-w-xl mx-auto mb-8 last:mb-0 drop-shadow-glow"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-        >
-          {quote}
-        </motion.blockquote>
-      ))}
+      <div className="relative h-24 flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          <motion.blockquote
+            key={index}
+            className="absolute text-xl md:text-2xl font-medium max-w-xl mx-auto drop-shadow-glow"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.6 }}
+          >
+            {quotes[index]}
+          </motion.blockquote>
+        </AnimatePresence>
+      </div>
     </section>
   )
 }

@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="flex gap-4 items-center">
         <Link href="/terms" className="hover:text-white transition">Terms</Link>
         <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
-        <Link href="https://coff.ee/ericadler" target="_blank" className="text-amber-400 hover:text-amber-300 font-medium shimmer-m glow-on-hover">💸 Fund the Founder 💸</Link>
+        <Link href="https://buymeacoffee.com/ericadler" target="_blank" className="text-amber-400 hover:text-amber-300 font-medium shimmer-m glow-on-hover">☕ Fuel the Founder ☕</Link>
       </div>
     </footer>
   )

@@ -1,12 +1,13 @@
-// /components/ui/Logo.tsx
 'use client'
 
 export default function Logo() {
   return (
-    <div className="text-left leading-none text-white">
-      <div className="text-3xl font-normal">the</div>
-      <div className="text-6xl font-extrabold tracking-tight -mt-2">MARTY</div>
-      <div className="text-4xl font-medium -mt-1">app</div>
+    <div className="flex flex-col leading-none text-white">
+      <div className="text-sm font-normal">the</div>
+      <div className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text drop-shadow-md">
+        MARTY
+      </div>
+      <div className="text-base font-medium -mt-1">app</div>
     </div>
   )
 }

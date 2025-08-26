@@ -3,15 +3,15 @@ import Image from 'next/image'
 type Poster = { src: string; alt: string; caption?: string }
 
 const POSTERS: Poster[] = [
-  { src: '/assets/SubwayLanding.png', alt: 'MARTY — Subway Landing', caption: 'New York Subway — The Quiet Ones' },
-  { src: '/assets/LoftLanding.png', alt: 'MARTY — Loft Landing', caption: 'Loft Light — Acceptance' },
-  { src: '/assets/CocoLanding.png', alt: 'MARTY — Coco Landing', caption: 'Coco — The Overthinkers' },
+  { src: '/assets/SubwayLanding.png', alt: 'MARTY — Subway Landing', caption: 'New York Subway — MARTY ≠ THERAPY' },
+  { src: '/assets/LoftLanding.png', alt: 'MARTY — Loft Landing', caption: 'Loft Light — Just MARTY' },
+  { src: '/assets/CocoLanding.png', alt: 'MARTY — Coco Landing', caption: 'Cinematic Frame — Not Therapy, Not Vibes' },
 ]
 
 export default function PosterWall() {
   return (
     <div className="w-full">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Scenes from MARTY</h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 uppercase">MARTY ≠ THERAPY</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {POSTERS.map((p, i) => (
           <figure
