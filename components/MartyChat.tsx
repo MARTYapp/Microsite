@@ -17,7 +17,18 @@ export default function MartyChat() {
   const [messages, setMessages] = useState<Msg[]>(SEED);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [prefersReduced, setPrefersReduced] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Reduced motion
+  useEffect(() => {
+    const m = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    const set = () => setPrefersReduced(!!m?.matches);
+    set();
+    m?.addEventListener?.("change", set);
+    return () => m?.removeEventListener?.("change", set);
+  }, []);
 
   // Load history
   useEffect(() => {
@@ -58,9 +69,39 @@ export default function MartyChat() {
     return "Heard. Now pick one next action. 10 minutes, timer on.";
   }, []);
 
+  // Commands
+  const handleCommand = (raw: string) => {
+    const cmd = raw.trim().toLowerCase();
+    if (cmd === "/reset") {
+      setMessages(SEED);
+      try { localStorage.removeItem(STORAGE_KEY); } catch {}
+      return true;
+    }
+    if (cmd === "/export") {
+      try {
+        const blob = new Blob([JSON.stringify(messages, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "marty-chat-export.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch {}
+      return true;
+    }
+    return false;
+  };
+
   const send = (text: string) => {
     const clean = text.trim();
     if (!clean) return;
+
+    // Slash commands
+    if (handleCommand(clean)) {
+      setInput("");
+      return;
+    }
+
     const userMsg: Msg = {
       id: messages.length + 1,
       from: "user",
@@ -80,30 +121,45 @@ export default function MartyChat() {
       };
       setMessages((prev) => [...prev, reply]);
       setIsTyping(false);
-    }, 900);
+    }, prefersReduced ? 0 : 900);
   };
 
   // Auto-scroll
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isTyping]);
+    chatEndRef.current?.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
+  }, [messages, isTyping, prefersReduced]);
 
-  // Keyboard
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (input.trim()) send(input);
-    }
-  };
+  // Auto-resize textarea
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "0px";
+    el.style.height = Math.min(el.scrollHeight, 160) + "px"; // cap height
+  }, [input]);
 
-  // Clear chat (for demos)
+  // Clear chat (button)
   const reset = () => {
     setMessages(SEED);
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
   };
 
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (input.trim()) send(input);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (input.trim()) send(input);
+    }
+  };
+
   return (
-    <section className="h-[92vh] max-w-md mx-auto bg-black text-white flex flex-col px-4 pt-6 pb-4">
+    <section
+      className="h-[92vh] max-w-md mx-auto bg-black text-white flex flex-col px-4 pt-6 pb-4"
+      style={{ paddingBottom: "calc(1rem + env(safe-area-inset-bottom))" }}
+    >
       <header className="mb-3 flex items-center justify-between text-xs text-white/60">
         <span>🧠 Texting MARTY</span>
         <button
@@ -130,9 +186,9 @@ export default function MartyChat() {
             )}
           >
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: prefersReduced ? 1 : 0, y: prefersReduced ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: prefersReduced ? 0 : 0.25 }}
               className={clsx(
                 "inline-block px-4 py-2 rounded-2xl",
                 msg.from === "user"
@@ -158,17 +214,20 @@ export default function MartyChat() {
         <div ref={chatEndRef} />
       </div>
 
-      <div className="mt-4 flex items-center gap-2">
-        <input
-          className="flex-1 bg-white/10 text-white px-4 py-3 rounded-full outline-none placeholder:text-white/40"
+      <form onSubmit={onSubmit} className="mt-4 flex items-end gap-2">
+        <textarea
+          ref={textareaRef}
+          className="flex-1 bg-white/10 text-white px-4 py-3 rounded-2xl outline-none placeholder:text-white/40 resize-none"
           placeholder="Say it like it is…"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKeyDown}
           aria-label="Message input"
+          rows={1}
+          maxLength={2000}
         />
         <button
-          onClick={() => send(input)}
+          type="submit"
           disabled={!input.trim()}
           className={clsx(
             "rounded-full px-4 py-3 font-semibold transition",
@@ -180,7 +239,7 @@ export default function MartyChat() {
         >
           Send
         </button>
-      </div>
+      </form>
     </section>
   );
 }
