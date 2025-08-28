@@ -1,77 +1,91 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+// optional star field if you use it:
+// import MagicStars from '@/components/MagicStars';
 
-const taglines = [
-  'Quiet tech for loud minds.',
-  'Built for the avoiders, the overthinkers, and the night-crawlers.',
-  'Not your therapist. Not your dad. Just MARTY.',
-]
-
-export default function HomeHero() {
-  const [mode, setMode] = useState<'stim' | 'calm'>('calm')
-  const [currentTagline, setCurrentTagline] = useState(0)
-  const audioRef = useRef<HTMLAudioElement>(null)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTagline((prev) => (prev + 1) % taglines.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.3
-      audioRef.current.play().catch(() => {
-        // Fail silently on autoplay restrictions
-      })
-    }
-  }, [])
-
+export default function HeroScene() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-4 text-center text-white bg-black">
-      {/* Cinematic background video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          src="/videos/hero-loop.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0e0e11] to-black/80 backdrop-blur-sm" />
-      </div>
+    <section
+      className="
+        relative
+        min-h-[100svh]           /* full safe viewport height */
+        w-full
+        bg-black
+        text-white
+        overflow-hidden
+        px-4
+        pt-[calc(env(safe-area-inset-top)+24px)]
+        pb-[calc(env(safe-area-inset-bottom)+32px)]
+      "
+      aria-label="MARTY hero"
+    >
+      {/* background overlays (optional) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+      {/* <MagicStars /> */}
 
-      {/* Audio ambiance */}
-      <audio ref={audioRef} src="/audio/wind-subtle.mp3" loop />
+      {/* constrained content */}
+      <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center text-center">
+        {/* Logo above heading */}
+        <div className="mb-5">
+          <Image
+            src="/images/TMALOGO.png"
+            alt="the MARTY app logo"
+            width={220}
+            height={220}
+            priority
+            className="h-auto w-[min(220px,40vw)]"
+          />
+        </div>
 
-      {/* Top-left branding */}
-      <div className="absolute top-6 left-6 text-sm text-white/70 tracking-widest z-20">
-        THE MARTY APP
-      </div>
-
-      {/* Main content */}
-      <div className="z-20 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-glow">
-          The MARTY App
-        </h1>
-        <p className="text-lg md:text-2xl mb-8 drop-shadow-glow">
-          {taglines[currentTagline]}
-        </p>
-        <button
-          className="rounded-xl border border-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-all duration-200 glow-on-hover"
-          onClick={() => setMode(mode === 'stim' ? 'calm' : 'stim')}
+        {/* Main heading */}
+        <h1
+          className="
+            font-extrabold tracking-tight leading-none
+            text-[clamp(36px,8vw,104px)]
+          "
         >
-          {mode === 'stim' ? '🌙 Calm Mode' : '⚡ Stim Mode'}
-        </button>
-      </div>
+          MARTY ≠ THERAPY
+        </h1>
 
-      {/* Bottom-right CTA */}
-      <div className="absolute bottom-4 right-4 text-xs text-gray-500 z-20">
-        ☕ <a href="https://buymeacoffee.com/ericadler" className="underline">Fuel the Founder</a>
+        {/* Subheading */}
+        <p
+          className="
+            mt-3 font-semibold
+            text-[clamp(18px,3.5vw,34px)]
+          "
+        >
+          Just MARTY
+        </p>
+
+        {/* Taglines (single line block with wrap + max width to avoid clipping) */}
+        <p className="mt-5 max-w-2xl text-balance text-white/75 text-[clamp(14px,2.6vw,18px)] leading-relaxed">
+          Quiet tech for loud minds. Built for the avoiders, the overthinkers, and the night-crawlers.
+          Not your therapist. Not your dad. Just MARTY.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/journal"
+            className="inline-flex items-center rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-white/90"
+          >
+            Try Marty Now
+          </Link>
+          <Link
+            href="/fund"
+            className="inline-flex items-center rounded-full border border-white px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-black"
+          >
+            Fund Marty
+          </Link>
+        </div>
+
+        {/* subtle scroll cue */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-white/50">
+          scroll
+        </div>
       </div>
     </section>
-  )
+  );
 }

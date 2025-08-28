@@ -32,6 +32,9 @@
     "types/**/*.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "_archive",
+    "personas",
+    "_archive/personas"
   ]
 }
